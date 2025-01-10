@@ -36,7 +36,7 @@ const LoginField = () => {
   };
 
   return (
-    <div className="grid gap-6">
+    <form className="grid gap-6">
       <div className="grid gap-2">
         <Label htmlFor="email">Email</Label>
         <Input
@@ -85,7 +85,7 @@ const LoginField = () => {
       <Button type="submit" className="w-full" onClick={onSubmit}>
         Login
       </Button>
-    </div>
+    </form>
   );
 };
 

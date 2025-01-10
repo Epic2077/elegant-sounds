@@ -15,6 +15,15 @@ import {
 export function ModeToggle() {
   const { setTheme } = useTheme();
 
+  const themes = [
+    { name: "Light", value: "light", color: "bg-white" },
+    { name: "Dark", value: "dark", color: "bg-black" },
+    { name: "System", value: "system", color: "bg-gray-500" },
+    { name: "Solarized", value: "solarized-theme", color: "bg-yellow-200" },
+    { name: "Vibrant", value: "vibrant-theme", color: "bg-blue-500" },
+    { name: "Midnight", value: "midnight-theme", color: "bg-blue-900" },
+  ];
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,15 +34,17 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
+        {themes.map((theme) => (
+          <DropdownMenuItem
+            key={theme.value}
+            onClick={() => setTheme(theme.value)}
+          >
+            <span
+              className={`inline-block w-3 h-3 mr-2 rounded-full ${theme.color}`}
+            ></span>
+            {theme.name}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
