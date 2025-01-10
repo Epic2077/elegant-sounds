@@ -18,10 +18,10 @@ export function ModeToggle() {
   const themes = [
     { name: "Light", value: "light", color: "bg-white" },
     { name: "Dark", value: "dark", color: "bg-black" },
-    { name: "System", value: "system", color: "bg-gray-500" },
     { name: "Solarized", value: "solarized-theme", color: "bg-yellow-200" },
     { name: "Vibrant", value: "vibrant-theme", color: "bg-blue-500" },
     { name: "Midnight", value: "midnight-theme", color: "bg-blue-900" },
+    { name: "System", value: "system", color: "bg-gray-500" },
   ];
 
   return (
