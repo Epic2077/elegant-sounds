@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Be_Vietnam_Pro } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ModeToggle } from "@/components/theme/ToggleBtn";
@@ -8,6 +9,12 @@ import { ModeToggle } from "@/components/theme/ToggleBtn";
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -29,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} ${beVietnamPro.variable} antialiased min-h-screen`}
+        className={`${spaceGrotesk.variable} ${beVietnamPro.variable} ${poppins.variable} antialiased min-h-screen`}
       >
         <ThemeProvider
           attribute="class"
