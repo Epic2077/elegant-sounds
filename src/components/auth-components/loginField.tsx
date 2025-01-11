@@ -61,6 +61,7 @@ const LoginField = () => {
         </div>
         <div className="relative items-center">
           <Input
+            placeholder="••••••••"
             id="password"
             type={isView ? "text" : "password"}
             required

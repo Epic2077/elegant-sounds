@@ -36,10 +36,18 @@ export function LoginForm({
             Login with GitHub
           </Button>
         </form>
-        <Button variant="outline" className="w-full">
-          <Chrome />
-          Login with Google
-        </Button>
+        <form
+          action={async () => {
+            "use server";
+
+            await signIn("google");
+          }}
+        >
+          <Button type="submit" variant="outline" className="w-full">
+            <Chrome />
+            Login with Google
+          </Button>
+        </form>
       </div>
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
