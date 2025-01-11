@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function ForgotPassword() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 py-12 px-4 dark:bg-gray-950">
+    <div className="flex min-h-screen flex-col items-center justify-center  py-12 px-4 bg-transparent">
       <div className="mx-auto w-full max-w-md space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
@@ -28,6 +28,7 @@ export default function ForgotPassword() {
               autoComplete="email"
               required
               placeholder="Email address"
+              className="z-10"
             />
           </div>
           <Button type="submit" className="w-full">
@@ -36,7 +37,7 @@ export default function ForgotPassword() {
         </form>
         <div className="flex justify-center">
           <Link
-            href="#"
+            href="login/"
             className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
             prefetch={false}
           >

@@ -4,9 +4,13 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <ForgotPassword />
-      <BackgroundBeams />
+    <div className="relative">
+      <div className="relative z-10">
+        <ForgotPassword />
+      </div>
+      <div className="absolute inset-0 z-0">
+        <BackgroundBeams />
+      </div>
     </div>
   );
 };
