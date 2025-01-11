@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Chrome, Github } from "lucide-react";
-import LoginField from "./auth-components/loginField";
+import LoginField from "./loginField";
 import { signIn } from "@/auth";
+import Link from "next/link";
 
 export function LoginForm({
   className,
@@ -42,9 +43,9 @@ export function LoginForm({
       </div>
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
-        <a href="#" className="underline underline-offset-4">
+        <Link href="signup/" className="underline underline-offset-4">
           Sign up
-        </a>
+        </Link>
       </div>
     </div>
   );

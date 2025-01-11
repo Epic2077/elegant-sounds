@@ -1,7 +1,7 @@
 import { AudioLines } from "lucide-react";
 import Image from "next/image";
 
-import { LoginForm } from "@/components/login-form";
+import { LoginForm } from "@/components/auth-components/login-form";
 import Link from "next/link";
 
 export default function LoginPage() {
