@@ -11,7 +11,7 @@ const layout = ({ children }: { children: ReactNode }) => {
         <div className="absolute top-10 left-10 z-20">
           <div className="flex justify-center gap-2 md:justify-start">
             <Link
-              href="/"
+              href="/home"
               className="flex items-center gap-2 font-medium --font-poppins"
             >
               <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
