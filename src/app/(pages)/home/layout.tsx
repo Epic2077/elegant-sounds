@@ -4,13 +4,13 @@ import { ReactNode } from "react";
 
 const layout = ({ children }: { children: ReactNode }) => {
   return (
-    <body className="relative">
+    <section className="relative">
       <header className=" relative z-20">
         <Header />
       </header>
       <main>{children}</main>
       <footer></footer>
-    </body>
+    </section>
   );
 };
 

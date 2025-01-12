@@ -3,9 +3,9 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div>
+    <section>
       <Hero />
-    </div>
+    </section>
   );
 };
 

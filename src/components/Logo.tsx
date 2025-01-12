@@ -4,16 +4,16 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <div className="">
+    <div className="p-4">
       <div className="flex justify-center gap-2 md:justify-start">
         <Link
           href="/home"
-          className="flex items-center gap-2 font-medium --font-poppins"
+          className="flex items-center gap-2 font-medium text-lg md:text-xl --font-poppins"
         >
           <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <AudioLines className="size-4" />
+            <AudioLines className="h-4 w-4" />
           </div>
-          3legant.
+          <span className="hidden sm:inline">3legant.</span>
         </Link>
       </div>
     </div>

@@ -2,19 +2,14 @@ import React from "react";
 import Highlight from "../../ui/highlight";
 import { Button } from "../../ui/button";
 import HeroImage from "./hero-image";
-import * as motion from "motion/react-client";
+import LeftToRight from "@/widget/animations/rightToLeftFade-Animation";
 
 function HeroContent() {
   return (
     <div className="flex flex-col md:flex-row gap-5 items-center w-full">
       <HeroImage />
       <div className="flex-1 text-center md:text-left">
-        <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="w-full md:w-auto"
-        >
+        <LeftToRight>
           <h1 className="text-4xl md:text-6xl lg:text-[80px] w-full md:w-[538px]">
             Listen to <br className="mb-3" />
             the <Highlight>amazing</Highlight>
@@ -25,7 +20,7 @@ function HeroContent() {
           </p>
 
           <Button className="mt-4 bg-primary px-10">Shop Now</Button>
-        </motion.div>
+        </LeftToRight>
       </div>
     </div>
   );

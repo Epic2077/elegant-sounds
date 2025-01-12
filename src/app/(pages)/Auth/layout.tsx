@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 
 const layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <section>
       <header>
         <div className="absolute top-10 left-10 z-20">
           <div className="flex justify-center gap-2 md:justify-start">
@@ -22,8 +22,8 @@ const layout = ({ children }: { children: ReactNode }) => {
           </div>
         </div>
       </header>
-      <body>{children}</body>
-    </div>
+      <main>{children}</main>
+    </section>
   );
 };
 
