@@ -4,6 +4,7 @@ import { Chrome, Github } from "lucide-react";
 import LoginField from "./loginField";
 import { signIn } from "@/auth";
 import Link from "next/link";
+import * as motion from "motion/react-client";
 
 export function LoginForm({
   className,
@@ -11,50 +12,57 @@ export function LoginForm({
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Login to your account</h1>
-        <p className="text-balance text-sm text-muted-foreground">
-          Enter your email below to login to your account
-        </p>
-      </div>
-      <div className="grid gap-6">
-        <LoginField />
-        <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
-          <span className="relative z-10 bg-background px-2 text-muted-foreground">
-            Or continue with
-          </span>
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="w-full md:w-auto flex flex-col gap-6"
+      >
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h1 className="text-2xl font-bold">Login to your account</h1>
+          <p className="text-balance text-sm text-muted-foreground">
+            Enter your email below to login to your account
+          </p>
         </div>
-        <form
-          action={async () => {
-            "use server";
+        <div className="grid gap-6">
+          <LoginField />
+          <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+            <span className="relative z-10 bg-background px-2 text-muted-foreground">
+              Or continue with
+            </span>
+          </div>
+          <form
+            action={async () => {
+              "use server";
 
-            await signIn("github");
-          }}
-        >
-          <Button type="submit" variant="outline" className="w-full">
-            <Github />
-            Login with GitHub
-          </Button>
-        </form>
-        <form
-          action={async () => {
-            "use server";
+              await signIn("github");
+            }}
+          >
+            <Button type="submit" variant="outline" className="w-full">
+              <Github />
+              Login with GitHub
+            </Button>
+          </form>
+          <form
+            action={async () => {
+              "use server";
 
-            await signIn("google");
-          }}
-        >
-          <Button type="submit" variant="outline" className="w-full">
-            <Chrome />
-            Login with Google
-          </Button>
-        </form>
-      </div>
-      <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
-        <Link href="signup/" className="underline underline-offset-4">
-          Sign up
-        </Link>
-      </div>
+              await signIn("google");
+            }}
+          >
+            <Button type="submit" variant="outline" className="w-full">
+              <Chrome />
+              Login with Google
+            </Button>
+          </form>
+        </div>
+        <div className="text-center text-sm">
+          Don&apos;t have an account?{" "}
+          <Link href="signup/" className="underline underline-offset-4">
+            Sign up
+          </Link>
+        </div>
+      </motion.div>
     </div>
   );
 }

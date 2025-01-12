@@ -22,7 +22,7 @@ export default function Highlight({
       transition={{
         duration: 2,
         ease: "linear",
-        delay: 0.5,
+        delay: 0.8,
       }}
       style={{
         backgroundRepeat: "no-repeat",
