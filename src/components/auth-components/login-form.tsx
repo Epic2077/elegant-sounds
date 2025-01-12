@@ -4,7 +4,7 @@ import { Chrome, Github } from "lucide-react";
 import LoginField from "./loginField";
 import { signIn } from "@/auth";
 import Link from "next/link";
-import * as motion from "motion/react-client";
+import LeftToRightFade from "@/widget/leftToRightFade-Animation";
 
 export function LoginForm({
   className,
@@ -12,12 +12,7 @@ export function LoginForm({
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="w-full md:w-auto flex flex-col gap-6"
-      >
+      <LeftToRightFade>
         <div className="flex flex-col items-center gap-2 text-center">
           <h1 className="text-2xl font-bold">Login to your account</h1>
           <p className="text-balance text-sm text-muted-foreground">
@@ -62,7 +57,7 @@ export function LoginForm({
             Sign up
           </Link>
         </div>
-      </motion.div>
+      </LeftToRightFade>
     </div>
   );
 }

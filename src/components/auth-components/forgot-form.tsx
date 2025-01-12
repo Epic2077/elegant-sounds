@@ -2,16 +2,11 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import * as motion from "motion/react-client";
+import TopToBottomFade from "@/widget/animations/topToBottomFade-Animation";
 
 export default function ForgotPassword() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="w-full md:w-auto flex flex-col gap-6"
-    >
+    <TopToBottomFade>
       <div className="flex min-h-screen flex-col items-center justify-center  py-12 px-4 bg-transparent">
         <div className="mx-auto w-full max-w-md space-y-8">
           <div>
@@ -53,6 +48,6 @@ export default function ForgotPassword() {
           </div>
         </div>
       </div>
-    </motion.div>
+    </TopToBottomFade>
   );
 }

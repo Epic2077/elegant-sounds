@@ -7,15 +7,11 @@ import { Button } from "../ui/button";
 import { signIn } from "@/auth";
 import Link from "next/link";
 import * as motion from "motion/react-client";
+import RightToLeftFade from "@/widget/animations/rightToLeftFade-Animation";
 
 export default function SignupFormDemo() {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8 }}
-      className="w-full md:w-auto flex flex-col gap-6"
-    >
+    <RightToLeftFade>
       <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input ">
         <h1 className="text-2xl font-bold text-center mb-2">
           Welcome to <span className="text-primary">3legant-Sounds</span>
@@ -108,6 +104,6 @@ export default function SignupFormDemo() {
           </Link>
         </div>
       </div>
-    </motion.div>
+    </RightToLeftFade>
   );
 }
