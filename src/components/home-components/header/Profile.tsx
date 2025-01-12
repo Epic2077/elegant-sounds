@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,24 +20,26 @@ const Profile = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="rounded-full p-2 border-2 border-primary">
-          <UserIcon className="h-5 w-5" />
-        </div>
+        <Avatar>
+          <AvatarFallback>
+            <UserIcon className="h-5 w-5" />
+          </AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-52">
+      <DropdownMenuContent className=" sm:w-64 md:w-72 lg:w-80">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Login</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>
-                  <Link href="/auth/login"> Sign In </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link href="/auth/signup"> Sign Up </Link>
-                </DropdownMenuItem>
+              <DropdownMenuSubContent className="w-40 sm:w-48 md:w-56 lg:w-64">
+                <Link href="/auth/login">
+                  <DropdownMenuItem>Sign In</DropdownMenuItem>
+                </Link>
+                <Link href="/auth/signup">
+                  <DropdownMenuItem>Sign Up</DropdownMenuItem>
+                </Link>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>

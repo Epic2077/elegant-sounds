@@ -4,7 +4,7 @@ import { Chrome, Github } from "lucide-react";
 import LoginField from "./loginField";
 import { signIn } from "@/auth";
 import Link from "next/link";
-import LeftToRightFade from "@/widget/leftToRightFade-Animation";
+import LeftToRightFade from "@/widget/animations/leftToRightFade-Animation";
 
 export function LoginForm({
   className,

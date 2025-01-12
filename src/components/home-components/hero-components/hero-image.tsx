@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import LeftToRightFade from "@/widget/leftToRightFade-Animation";
+import LeftToRightFade from "@/widget/animations/leftToRightFade-Animation";
 
 const HeroImage = () => {
   return (
