@@ -37,6 +37,13 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          themes={[
+            "light",
+            "dark",
+            "solarized-theme",
+            "vibrant-theme",
+            "spotify-theme",
+          ]}
         >
           {children}
           <Toaster />

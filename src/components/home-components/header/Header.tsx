@@ -6,7 +6,7 @@ import Burger from "./BurgerMenu";
 
 const Header = () => {
   return (
-    <div className="w-full h-[60px] flex items-center bg-background px-4 md:px-8 lg:px-32 fixed justify-between">
+    <div className="w-full h-[60px] flex items-center bg-background px-4 md:px-8 lg:px-32 fixed sm:relative justify-between">
       <div id="logo" className="flex-shrink-0">
         <Logo />
       </div>

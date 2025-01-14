@@ -17,39 +17,34 @@ import { AudioLines } from "lucide-react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+    title: "Headphones",
+    href: "/shop/categories/headphones",
+    description: "High-quality headphones for an immersive audio experience.",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
+    title: "Speakers",
+    href: "/shop/categories/speakers",
+    description: "Top-notch speakers to fill your room with sound.",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    title: "Microphones",
+    href: "/shop/categories/microphones",
+    description: "Professional microphones for recording and streaming.",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    title: "EarBuds",
+    href: "/shop/categories/audio-interfaces",
+    description: "Compact and convenient earbuds for on-the-go listening.",
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    title: "Brands",
+    href: "/shop/categories/mixers",
+    description: "Checkout our top brands for music devices.",
   },
   {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    title: "Accessories",
+    href: "/shop/categories/accessories",
+    description: "Essential accessories for your music devices.",
   },
 ];
 
@@ -79,26 +74,26 @@ export function Navigation() {
                       3legant Sounds
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
+                      Your one-stop shop for premium music devices, offering the
+                      best for your audio needs.
                     </p>
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/docs" title="Best Selling">
+                Discover our most popular music devices products.
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/shop/new-arrivals" title="New Arrivals">
+                Check out the latest additions to our devices collection.
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem href="/shop/sale" title="On Sale">
+                Grab the best deals on our top devices.
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
@@ -116,7 +111,7 @@ export function Navigation() {
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              About Me
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
