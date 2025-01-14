@@ -54,7 +54,7 @@ const LoginField = () => {
           <Label htmlFor="password">Password</Label>
           <Link
             href="forgot-password/"
-            className="ml-auto text-sm underline-offset-4 hover:underline"
+            className="ml-auto text-sm underline-offset-4 hover:underline hover:text-primary"
           >
             Forgot your password?
           </Link>

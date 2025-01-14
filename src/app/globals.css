@@ -115,26 +115,27 @@ body {
     --chart-5: 27 87% 67%;
   }
 
-  .midnight-theme {
-    --background: 240 100% 10%;
-    --foreground: 240 100% 90%;
-    --card: 240 100% 15%;
-    --card-foreground: 240 100% 90%;
-    --popover: 240 100% 15%;
-    --popover-foreground: 240 100% 90%;
-    --primary: 260 100% 50%;
-    --primary-foreground: 240 100% 90%;
-    --secondary: 280 100% 50%;
-    --secondary-foreground: 240 100% 90%;
-    --muted: 240 100% 20%;
-    --muted-foreground: 240 100% 80%;
-    --accent: 280 100% 50%;
-    --accent-foreground: 240 100% 90%;
+  .spotify-theme {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 140 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 30%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 80%;
+    --accent: 140 50% 40%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 240 100% 90%;
-    --border: 240 100% 25%;
-    --input: 240 100% 25%;
-    --ring: 260 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --spotify: 140 100% 50%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 140 100% 50%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;

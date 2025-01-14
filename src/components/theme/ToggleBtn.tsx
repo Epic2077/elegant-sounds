@@ -21,7 +21,7 @@ export function ModeToggle() {
     { name: "Dark", value: "dark", color: "bg-black" },
     { name: "Solarized", value: "solarized-theme", color: "bg-yellow-200" },
     { name: "Vibrant", value: "vibrant-theme", color: "bg-rose-500" },
-    { name: "Midnight", value: "midnight-theme", color: "bg-blue-900" },
+    { name: "Spotify", value: "spotify-theme", color: "bg-emerald-400" },
     { name: "System", value: "system", color: "bg-gray-500" },
   ];
 

@@ -6,12 +6,12 @@ import { ReactNode } from "react";
 
 const layout = ({ children }: { children: ReactNode }) => {
   return (
-    <div>
+    <section>
       <header>
         <div className="absolute top-10 left-10 z-20">
           <div className="flex justify-center gap-2 md:justify-start">
             <Link
-              href="/"
+              href="/home"
               className="flex items-center gap-2 font-medium --font-poppins"
             >
               <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
@@ -22,8 +22,8 @@ const layout = ({ children }: { children: ReactNode }) => {
           </div>
         </div>
       </header>
-      <body>{children}</body>
-    </div>
+      <main>{children}</main>
+    </section>
   );
 };
 
