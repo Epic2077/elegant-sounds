@@ -15,7 +15,7 @@ export function LoginForm({
       <LeftToRightFade>
         <div className="flex flex-col items-center gap-2 text-center">
           <h1 className="text-2xl font-bold">Login to your account</h1>
-          <p className="text-balance text-sm text-muted-foreground">
+          <p className="text-balance text-sm text-muted-foreground mb-6">
             Enter your email below to login to your account
           </p>
         </div>
@@ -53,7 +53,10 @@ export function LoginForm({
         </div>
         <div className="text-center text-sm mt-6">
           Don&apos;t have an account?{" "}
-          <Link href="signup/" className="underline underline-offset-4">
+          <Link
+            href="signup/"
+            className="underline underline-offset-4 hover:text-primary"
+          >
             Sign up
           </Link>
         </div>

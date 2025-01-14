@@ -6,7 +6,11 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-logo";
 export function LogoCarousel() {
   return (
     <div className="h-36 rounded-md flex flex-col antialiased bg-background items-center justify-center relative overflow-hidden">
-      <InfiniteMovingCards items={testimonials} direction="left" speed="slow" />
+      <InfiniteMovingCards
+        items={testimonials}
+        direction="right"
+        speed="slow"
+      />
     </div>
   );
 }

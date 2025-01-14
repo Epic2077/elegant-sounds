@@ -96,7 +96,10 @@ export default function SignupFormDemo() {
       </div>
       <div className="text-center text-sm mt-4">
         Already have an account?{" "}
-        <Link href="login/" className="underline underline-offset-4">
+        <Link
+          href="login/"
+          className="underline underline-offset-4 hover:text-primary"
+        >
           Login
         </Link>
       </div>
