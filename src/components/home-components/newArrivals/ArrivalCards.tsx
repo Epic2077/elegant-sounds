@@ -3,6 +3,7 @@
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { cn } from "@/lib/utils";
+import FadeIn from "@/widget/animations/FadeIn";
 import { ArrowBigRightDash, Heart, Tag } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -20,7 +21,7 @@ interface ArrivalCardsProps {
 
 const ArrivalCards = ({ product }: ArrivalCardsProps) => {
   return (
-    <div>
+    <FadeIn>
       <BackgroundGradient
         className="rounded-3xl w-[280px] bg-card grid gap-1 p-4 "
         containerClassName="w-max"
@@ -77,7 +78,7 @@ const ArrivalCards = ({ product }: ArrivalCardsProps) => {
           <ArrowBigRightDash className="w-5 text-ring" />
         </div>
       </BackgroundGradient>
-    </div>
+    </FadeIn>
   );
 };
 
