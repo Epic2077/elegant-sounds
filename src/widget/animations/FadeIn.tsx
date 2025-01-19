@@ -6,7 +6,7 @@ const FadeIn = ({ children }: { children: React.ReactNode }) => {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 1 }}
       className="w-full md:w-auto"
     >
       {children}

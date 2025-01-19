@@ -1,3 +1,5 @@
+import BestSeller from "@/components/home-components/Best Seller/BestSeller";
+import Collection from "@/components/home-components/collection/Collection";
 import { Hero } from "@/components/home-components/hero-components/hero";
 import { LogoCarousel } from "@/components/home-components/logo-carousel/LogoCarousel";
 import NewArrivals from "@/components/home-components/newArrivals/NewArrivals";
@@ -11,10 +13,13 @@ const Home = () => {
       <div className="w-full">
         <LogoCarousel />
       </div>
-      <section className="px-28">
+      <section className="px-28 flex flex-col gap-28">
         <NewArrivals />
-      </section>
-      <section className="mt-16">
+
+        <Collection />
+
+        <BestSeller />
+
         <Offer />
       </section>
     </section>

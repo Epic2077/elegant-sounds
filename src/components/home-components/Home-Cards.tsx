@@ -8,18 +8,24 @@ import { ArrowBigRightDash, Heart, Tag } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-interface ArrivalCardsProps {
-  product: {
-    brand: string;
-    name: string;
-    price: number;
-    img: string;
-    category: string;
-    id: number;
-  };
+interface Product {
+  brand: string;
+  name: string;
+  price: number;
+  img: string;
+  category: string;
+  id: number;
 }
 
-const ArrivalCards = ({ product }: ArrivalCardsProps) => {
+interface ArrivalCardsProps {
+  product: Product;
+  status?: "New" | "Hot";
+}
+
+const HomeCards: React.FC<ArrivalCardsProps> = ({
+  product,
+  status = "New",
+}) => {
   return (
     <FadeIn>
       <BackgroundGradient
@@ -28,7 +34,7 @@ const ArrivalCards = ({ product }: ArrivalCardsProps) => {
       >
         <div className="mb-[6px] relative w-full">
           <div className="absolute top-2 left-2 bg-primary py-1.5 px-4 rounded">
-            <p className="text-xs">New</p>
+            <p className="text-xs">{status}</p>
           </div>
 
           <div
@@ -82,4 +88,4 @@ const ArrivalCards = ({ product }: ArrivalCardsProps) => {
   );
 };
 
-export default ArrivalCards;
+export default HomeCards;

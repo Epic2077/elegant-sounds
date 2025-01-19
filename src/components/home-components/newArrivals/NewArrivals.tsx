@@ -1,9 +1,8 @@
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
-import LeftToRightFade from "@/widget/animations/leftToRightFade-Animation";
 import RightToLeftFade from "@/widget/animations/rightToLeftFade-Animation";
 import React from "react";
-import ArrivalCards from "./ArrivalCards";
-import TopToBottomFade from "@/widget/animations/topToBottomFade-Animation";
+import HomeCards from "../Home-Cards";
+import Header4 from "../Header4";
 
 const NewArrivals = () => {
   const fakeArrivals = [
@@ -43,9 +42,7 @@ const NewArrivals = () => {
   return (
     <section>
       <div className="flex items-center justify-between">
-        <LeftToRightFade>
-          <h2 className="text-[40px] font-medium">New Arrivals</h2>
-        </LeftToRightFade>
+        <Header4 title="New Arrivals" />
         <RightToLeftFade>
           <InteractiveHoverButton className="text-sm">
             Show All
@@ -55,7 +52,7 @@ const NewArrivals = () => {
 
       <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
         {fakeArrivals.map((product) => (
-          <ArrivalCards key={product.id} product={product} />
+          <HomeCards key={product.id} product={product} />
         ))}
       </div>
     </section>
