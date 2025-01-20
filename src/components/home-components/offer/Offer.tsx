@@ -6,17 +6,17 @@ import React from "react";
 
 const Offer = () => {
   return (
-    <div className="w-full h-[450px] bg-muted flex rounded-3xl">
-      <div className="w-[50%] relative transition-all duration-500 ease-in-out">
-        <Image
-          src="/images/offer.png"
-          alt="offer"
-          layout="fill"
-          objectFit="cover"
-          className="dark:grayscale-[50%] rounded-3xl hover:mt-[-24px] hover:ml-6 transition-all duration-500 ease-in-out"
-        />
-      </div>
-      <FadeIn>
+    <FadeIn>
+      <div className="w-full h-[450px] bg-muted flex rounded-3xl">
+        <div className="w-[50%] relative transition-all duration-500 ease-in-out">
+          <Image
+            src="/images/offer.png"
+            alt="offer"
+            layout="fill"
+            objectFit="cover"
+            className="dark:grayscale-[50%] rounded-3xl hover:mt-[-24px] hover:ml-6 transition-all duration-500 ease-in-out"
+          />
+        </div>
         <div className="w-full h-full flex flex-col gap-4 px-16  justify-center">
           <p className="text-base text-primary">PROMOTION</p>
           <div className="flex gap-3 items-center">
@@ -37,8 +37,8 @@ const Offer = () => {
             Get Started
           </Button>
         </div>
-      </FadeIn>
-    </div>
+      </div>
+    </FadeIn>
   );
 };
 

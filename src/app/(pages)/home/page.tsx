@@ -4,6 +4,7 @@ import { Hero } from "@/components/home-components/hero-components/hero";
 import { LogoCarousel } from "@/components/home-components/logo-carousel/LogoCarousel";
 import NewArrivals from "@/components/home-components/newArrivals/NewArrivals";
 import Offer from "@/components/home-components/offer/Offer";
+import Values from "@/components/home-components/Values/Values";
 import React from "react";
 
 const Home = () => {
@@ -21,6 +22,8 @@ const Home = () => {
         <BestSeller />
 
         <Offer />
+
+        <Values />
       </section>
     </section>
   );
