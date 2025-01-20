@@ -52,7 +52,7 @@ const NewArrivals = () => {
 
       <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
         {fakeArrivals.map((product) => (
-          <HomeCards key={product.id} product={product} />
+          <HomeCards key={product.id} product={product} status="New" />
         ))}
       </div>
     </section>

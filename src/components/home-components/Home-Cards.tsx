@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import FadeIn from "@/widget/animations/FadeIn";
 import { ArrowBigRightDash, Heart, Tag } from "lucide-react";
 import Image from "next/image";
+import { off } from "process";
 import React from "react";
 
 interface Product {
@@ -20,11 +21,15 @@ interface Product {
 interface ArrivalCardsProps {
   product: Product;
   status?: "New" | "Hot";
+  off?: boolean;
+  offPercentage?: number;
 }
 
 const HomeCards: React.FC<ArrivalCardsProps> = ({
   product,
-  status = "New",
+  status,
+  off = false,
+  offPercentage,
 }) => {
   return (
     <FadeIn>
@@ -33,9 +38,16 @@ const HomeCards: React.FC<ArrivalCardsProps> = ({
         containerClassName="w-max"
       >
         <div className="mb-[6px] relative w-full">
-          <div className="absolute top-2 left-2 bg-primary py-1.5 px-4 rounded">
+          <div className="absolute top-2 left-2 bg-primary py-1.5 px-4 rounded flex flex-col gap-6">
             <p className="text-xs">{status}</p>
           </div>
+          {off && offPercentage !== undefined && (
+            <div className="absolute top-2 left-16 bg-primary py-1.5 px-4 rounded flex flex-col gap-6">
+              <span className="text-xs text-primary-foreground">
+                {offPercentage}% OFF
+              </span>
+            </div>
+          )}
 
           <div
             className={cn(
