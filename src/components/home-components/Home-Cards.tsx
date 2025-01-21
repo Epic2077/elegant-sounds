@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import FadeIn from "@/widget/animations/FadeIn";
 import { ArrowBigRightDash, Heart, Tag } from "lucide-react";
 import Image from "next/image";
-import { off } from "process";
 import React from "react";
 
 interface Product {

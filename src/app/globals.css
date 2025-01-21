@@ -28,7 +28,7 @@ body {
     --input: 220 13% 91%;
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
+    --chart-1: 224 71.4% 4.1%;
     --chart-2: 40 100% 70%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
@@ -81,7 +81,7 @@ body {
     --border: 45 100% 85%;
     --input: 45 100% 85%;
     --ring: 192 100% 50%;
-    --chart-1: 12 76% 61%;
+    --chart-1: 224 71.4% 4.1%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
@@ -108,7 +108,7 @@ body {
     --border: 210 100% 85%;
     --input: 210 100% 85%;
     --ring: 340 100% 50%;
-    --chart-1: 12 76% 61%;
+    --chart-1: 224 71.4% 4.1%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
@@ -136,11 +136,57 @@ body {
     --border: 0 0% 25%;
     --input: 0 0% 25%;
     --ring: 140 100% 50%;
-    --chart-1: 12 76% 61%;
+    --chart-1: 0 0% 30%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 30%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 75%;
+  }
+  .cursor {
+    width: 30px;
+    height: 30px;
+    background-color: hsla(var(--primary));
+    opacity: 0.5;
+    /*Usetheprimarycolor*/
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+    -webkit-transition: transform 0.1s ease-out;
+    -moz-transition: transform 0.1s ease-out;
+    -ms-transition: transform 0.1s ease-out;
+    -o-transition: transform 0.1s ease-out;
+  }
+
+  /* Larger circle follower */
+  .cursor.text-effect {
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border: 3px solid hsl(var(--primary));
+    opacity: 0.5;
+  }
+  .cursor::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid hsl(var(--primary));
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: ripple 0.6s ease-out;
+  }
+
+  @keyframes ripple {
+    from {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(2);
+      opacity: 0;
+    }
   }
 }
 

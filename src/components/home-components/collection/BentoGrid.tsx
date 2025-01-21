@@ -84,7 +84,7 @@ export function Bento() {
       <motion.div
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
         className={features[2].className}
       >
         <BentoCard key={features[2].name} {...features[2]} />

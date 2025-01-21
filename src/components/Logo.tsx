@@ -1,8 +1,13 @@
+import { cn } from "@/lib/utils";
 import { AudioLines } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-const Logo = () => {
+interface LogoProps {
+  textClassName?: string;
+}
+
+const Logo: React.FC<LogoProps> = ({ textClassName }) => {
   return (
     <div className="p-4">
       <div className="flex justify-center gap-2 md:justify-start">
@@ -13,7 +18,7 @@ const Logo = () => {
           <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <AudioLines className="h-4 w-4" />
           </div>
-          <span className="hidden sm:inline">3legant.</span>
+          <h5 className={cn("hidden sm:inline", textClassName)}>3legant.</h5>
         </Link>
       </div>
     </div>

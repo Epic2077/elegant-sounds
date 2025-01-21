@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ModeToggle } from "@/components/theme/ToggleBtn";
 import { Toaster } from "@/components/ui/toaster";
+import Cursor from "@/components/cursor";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -45,6 +46,7 @@ export default function RootLayout({
             "spotify-theme",
           ]}
         >
+          <Cursor />
           {children}
           <Toaster />
           <div className="fixed bottom-8 right-8 z-20">

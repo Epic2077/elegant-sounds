@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button";
-import FadeIn from "@/widget/animations/FadeIn";
+import Grow from "@/widget/animations/grow";
+import { MagneticButton } from "@/widget/animations/MagneticButton";
 import { AudioLines } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
 const Offer = () => {
   return (
-    <FadeIn>
+    <Grow>
       <div className="w-full h-[450px] bg-muted flex rounded-3xl">
         <div className="w-[50%] relative transition-all duration-500 ease-in-out">
           <Image
@@ -33,12 +33,12 @@ const Offer = () => {
             Enjoy high-quality music streaming with our exclusive offer.
             Don&apos;t miss out on this limited-time promotion!
           </p>
-          <Button className="px-6 py-2 hover:bg-primary bg-transparent text-foreground border-2 border-primary w-40 rounded-md mt-3">
+          <MagneticButton className="px-6 py-2 hover:bg-primary bg-transparent text-foreground border-2 border-primary w-40 rounded-md mt-3">
             Get Started
-          </Button>
+          </MagneticButton>
         </div>
       </div>
-    </FadeIn>
+    </Grow>
   );
 };
 

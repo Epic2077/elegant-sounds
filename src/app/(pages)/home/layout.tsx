@@ -1,3 +1,4 @@
+import Footer from "@/components/home-components/Footer/Footer";
 import Header from "@/components/home-components/header/Header";
 import React from "react";
 import { ReactNode } from "react";
@@ -9,7 +10,9 @@ const layout = ({ children }: { children: ReactNode }) => {
         <Header />
       </header>
       <main>{children}</main>
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </section>
   );
 };
