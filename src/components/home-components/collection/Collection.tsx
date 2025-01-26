@@ -5,11 +5,11 @@ import Header4 from "../Header4";
 
 const Collection = () => {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-8 md:gap-12">
       <LeftToRightFade>
         <Header4 title="Shop Collection" />
       </LeftToRightFade>
-      <div className=" px-32 ">
+      <div className="px-4  sm:px-8 lg:px-16 xl:px-32">
         <Bento />
       </div>
     </div>

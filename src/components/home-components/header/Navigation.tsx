@@ -37,14 +37,14 @@ const components: { title: string; href: string; description: string }[] = [
     description: "Compact and convenient earbuds for on-the-go listening.",
   },
   {
-    title: "Brands",
-    href: "/shop/categories/mixers",
-    description: "Checkout our top brands for music devices.",
-  },
-  {
     title: "Accessories",
     href: "/shop/categories/accessories",
     description: "Essential accessories for your music devices.",
+  },
+  {
+    title: "Show All",
+    href: "/shop/categories",
+    description: "Show all the categories.",
   },
 ];
 
