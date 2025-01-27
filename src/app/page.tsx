@@ -1,9 +1,13 @@
+"use client";
+
 import Logo from "@/components/Logo";
+import { useAuth } from "@/utils/AuthContext";
 import { MagneticButton } from "@/widget/animations/MagneticButton";
 import { AudioLines, GithubIcon, Play } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
+  const { accessToken } = useAuth();
   return (
     <div className="relative w-screen h-screen">
       <div className="absolute left-0 w-[50%] h-screen bg-background"></div>
@@ -28,6 +32,7 @@ export default function Home() {
           </div>
           <div className="mt-24 bg-primary rounded-r-2xl flex items-center gap-3 w-56 py-[2px]">
             <h6 className="ml-6">Made By Ashkan2077</h6>
+            <p>just testing accessToken: {accessToken}</p>
             <GithubIcon className="w-4 h-4" />
           </div>
         </div>

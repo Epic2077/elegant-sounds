@@ -19,3 +19,9 @@ export interface SignupResponse {
   user: User;
   profile: Profile;
 }
+
+export interface LoginResponse {
+  tokens: Tokens;
+  user: User;
+  profile: Profile;
+}

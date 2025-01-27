@@ -27,7 +27,11 @@ const Profile = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" sm:w-64 md:w-72 lg:w-80">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>
+          {!!localStorage.getItem("username")
+            ? localStorage.getItem("username")
+            : "My Account"}
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuSub>
