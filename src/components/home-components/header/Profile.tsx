@@ -2,19 +2,14 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-  DropdownMenuPortal,
-  DropdownMenuSubContent,
-  DropdownMenuItem,
-  DropdownMenuSub,
 } from "@/components/ui/dropdown-menu";
 import { UserIcon } from "lucide-react";
-import Link from "next/link";
 import React from "react";
+import NotLoggedIn from "./profileComponents/NotLoggedIn";
+import ProfileDetail from "./profileComponents/ProfileDetail";
 
 const Profile = () => {
   return (
@@ -29,29 +24,15 @@ const Profile = () => {
       <DropdownMenuContent className=" sm:w-64 md:w-72 lg:w-80">
         <DropdownMenuLabel>
           {!!localStorage.getItem("username")
-            ? localStorage.getItem("username")
+            ? "Welcome " + localStorage.getItem("username")
             : "My Account"}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          {!!localStorage.getItem("username") ? (
-            <DropdownMenuItem>Test</DropdownMenuItem>
-          ) : (
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>Login</DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent className="w-40 sm:w-48 md:w-56 lg:w-64">
-                  <Link href="/auth/login">
-                    <DropdownMenuItem>Sign In</DropdownMenuItem>
-                  </Link>
-                  <Link href="/auth/signup">
-                    <DropdownMenuItem>Sign Up</DropdownMenuItem>
-                  </Link>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
-            </DropdownMenuSub>
-          )}
-        </DropdownMenuGroup>
+        {!!localStorage.getItem("username") ? (
+          <ProfileDetail />
+        ) : (
+          <NotLoggedIn />
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
