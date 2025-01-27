@@ -34,19 +34,23 @@ const Profile = () => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Login</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent className="w-40 sm:w-48 md:w-56 lg:w-64">
-                <Link href="/auth/login">
-                  <DropdownMenuItem>Sign In</DropdownMenuItem>
-                </Link>
-                <Link href="/auth/signup">
-                  <DropdownMenuItem>Sign Up</DropdownMenuItem>
-                </Link>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
+          {!!localStorage.getItem("username") ? (
+            <DropdownMenuItem>Test</DropdownMenuItem>
+          ) : (
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Login</DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent className="w-40 sm:w-48 md:w-56 lg:w-64">
+                  <Link href="/auth/login">
+                    <DropdownMenuItem>Sign In</DropdownMenuItem>
+                  </Link>
+                  <Link href="/auth/signup">
+                    <DropdownMenuItem>Sign Up</DropdownMenuItem>
+                  </Link>
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+          )}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
