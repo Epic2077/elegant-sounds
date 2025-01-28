@@ -1,35 +1,60 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 
 interface AuthContextType {
   isLoggedIn: boolean;
-  login: (username: string) => void;
-  logout: () => void;
+  isLoading: boolean;
+  login: () => void;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    !!localStorage.getItem("username")
-  );
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
-  const login = (username: string) => {
-    localStorage.setItem("username", username);
+  useEffect(() => {
+    const validateAuth = async () => {
+      try {
+        const res = await fetch("/api/auth/validate", {
+          credentials: "include",
+        });
+
+        if (!res.ok) throw new Error("Validation failed");
+
+        const { isLoggedIn } = await res.json();
+        setIsLoggedIn(isLoggedIn);
+      } catch (error) {
+        setIsLoggedIn(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    validateAuth();
+  }, []);
+
+  const login = () => {
     setIsLoggedIn(true);
+    router.push("/home"); // Redirect to protected page after login
   };
 
-  const logout = () => {
-    localStorage.removeItem("username");
-    setIsLoggedIn(false);
-    router.push("/login"); // Redirect to login page after logout
+  const logout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      setIsLoggedIn(false);
+      router.push("/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, isLoading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,6 +1,6 @@
+// lib/api.ts
 import { BASE_URL } from "@/app/api/Base";
 import axios from "axios";
-import { refreshToken } from "./auth";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -12,19 +12,30 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    //check if the error is due to an expired token
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
-        // Attempt to refresh the token
-        const newAccessToken = await refreshToken();
-        originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+        // Refresh token flow
+        const { data } = await axios.post(
+          `${BASE_URL}/api/auth/refresh`,
+          {},
+          { withCredentials: true }
+        );
+
+        // Update Authorization header
+        originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
         return api(originalRequest);
       } catch (refreshError) {
-        // If refresh fails, log the user out
-        console.error("Refresh token expired or invalid:", refreshError);
-        localStorage.removeItem("username"); // 👈 Call global logout
+        // Proper logout flow
+        await axios.post(
+          `${BASE_URL}/api/auth/logout`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+        window.location.href = "/login";
         return Promise.reject(refreshError);
       }
     }

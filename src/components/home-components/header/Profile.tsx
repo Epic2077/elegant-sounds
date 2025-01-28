@@ -10,8 +10,10 @@ import { UserIcon } from "lucide-react";
 import React from "react";
 import NotLoggedIn from "./profileComponents/NotLoggedIn";
 import ProfileDetail from "./profileComponents/ProfileDetail";
+import { useAuth } from "@/utils/AuthContext";
 
 const Profile = () => {
+  const { isLoggedIn } = useAuth();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -23,16 +25,12 @@ const Profile = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" sm:w-64 md:w-72 lg:w-80">
         <DropdownMenuLabel>
-          {!!localStorage.getItem("username")
+          {isLoggedIn
             ? "Welcome " + localStorage.getItem("username")
             : "My Account"}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {!!localStorage.getItem("username") ? (
-          <ProfileDetail />
-        ) : (
-          <NotLoggedIn />
-        )}
+        {isLoggedIn ? <ProfileDetail /> : <NotLoggedIn />}
       </DropdownMenuContent>
     </DropdownMenu>
   );

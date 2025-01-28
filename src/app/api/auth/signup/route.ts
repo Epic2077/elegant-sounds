@@ -26,6 +26,8 @@ export async function POST(request: Request) {
     nextResponse.cookies.set("accessToken", response.data.tokens.accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
+      path: "/",
+      sameSite: "lax",
     });
 
     return nextResponse;

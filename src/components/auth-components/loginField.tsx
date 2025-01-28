@@ -51,8 +51,7 @@ const LoginField = () => {
       console.log("Response data:", result);
 
       if (response.ok) {
-        login(result.profile.firstName);
-        localStorage.setItem("username", result.profile.firstName);
+        login();
 
         toast({
           title: "Login Success",

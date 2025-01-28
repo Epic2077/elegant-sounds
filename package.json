@@ -26,6 +26,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",
     "gsap": "^3.12.7",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.470.0",
     "motion": "^11.18.1",
     "next": "15.1.4",
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/jsonwebtoken": "^9.0.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
