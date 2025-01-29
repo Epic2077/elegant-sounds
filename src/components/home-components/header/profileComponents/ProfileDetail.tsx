@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const ProfileDetail = () => {
+const ProfileDetail = ({ onLogoutClick }: { onLogoutClick: () => void }) => {
   return (
     <div>
       <DropdownMenuGroup>
@@ -61,12 +61,10 @@ const ProfileDetail = () => {
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
-        <Link href="#">
-          <DropdownMenuItem>
-            <LogOut className="w-4 h-4 mr-2" />
-            Logout
-          </DropdownMenuItem>
-        </Link>
+        <DropdownMenuItem onClick={onLogoutClick}>
+          <LogOut className="w-4 h-4 mr-2" />
+          Logout
+        </DropdownMenuItem>
       </DropdownMenuGroup>
     </div>
   );

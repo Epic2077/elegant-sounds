@@ -38,16 +38,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     validateAuth();
   }, []);
 
-  const login = () => {
+  const login = async () => {
     setIsLoggedIn(true);
-    router.push("/home"); // Redirect to protected page after login
+    try {
+      const res = await fetch("/api/auth/userInfo", {
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (data.user.role === 3) {
+        router.push("/dashboard");
+      } else {
+        router.push("/home"); // Redirect to protected page after login
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
   const logout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
       setIsLoggedIn(false);
-      router.push("/login");
     } catch (error) {
       console.error("Logout failed:", error);
     }

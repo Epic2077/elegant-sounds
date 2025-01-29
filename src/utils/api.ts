@@ -7,38 +7,56 @@ const api = axios.create({
   withCredentials: true,
 });
 
+let isRefreshing = false;
+let failedRequests: any[] = [];
+
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
 
     if (error.response?.status === 401 && !originalRequest._retry) {
+      if (isRefreshing) {
+        return new Promise((resolve) => {
+          failedRequests.push(() => resolve(api(originalRequest)));
+        });
+      }
+
       originalRequest._retry = true;
+      isRefreshing = true;
 
       try {
-        // Refresh token flow
+        // Attempt to refresh tokens
         const { data } = await axios.post(
-          `${BASE_URL}/api/auth/refresh`,
+          `${BASE_URL}/auth/refresh`,
           {},
           { withCredentials: true }
         );
 
-        // Update Authorization header
-        originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
+        // Update access token in cookies
+        document.cookie = `accessToken=${data.accessToken}; path=/; secure=${
+          process.env.NODE_ENV === "production"
+        }; sameSite=lax`;
+
+        // Retry failed requests
+        failedRequests.forEach((cb) => cb());
+        failedRequests = [];
+
         return api(originalRequest);
       } catch (refreshError) {
-        // Proper logout flow
+        // Clear cookies and redirect to login
         await axios.post(
-          `${BASE_URL}/api/auth/logout`,
+          `${BASE_URL}/auth/logout`,
           {},
-          {
-            withCredentials: true,
-          }
+          { withCredentials: true }
         );
-        window.location.href = "/login";
+        window.location.href = "/auth/login";
         return Promise.reject(refreshError);
+      } finally {
+        isRefreshing = false;
       }
     }
+
     return Promise.reject(error);
   }
 );
