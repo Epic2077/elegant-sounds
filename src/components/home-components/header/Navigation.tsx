@@ -113,7 +113,7 @@ export function Navigation() {
         </NavigationMenuItem>
         {isAdmin && (
           <NavigationMenuItem>
-            <Link href="/dashboard" legacyBehavior passHref>
+            <Link href="/admin/dashboard" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Dashboard
               </NavigationMenuLink>
