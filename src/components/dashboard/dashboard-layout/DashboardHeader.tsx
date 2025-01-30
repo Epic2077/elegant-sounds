@@ -139,10 +139,11 @@ export default function DashboardHeader() {
           <Typography
             variant="h6"
             noWrap
-            component="div"
+            component="a"
+            href="/home"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            3legant.
           </Typography>
           <Search>
             <SearchIconWrapper>
