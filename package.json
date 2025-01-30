@@ -33,6 +33,7 @@
     "framer-motion": "^11.18.2",
     "gsap": "^3.12.7",
     "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.470.0",
     "motion": "^11.18.1",
     "next": "15.1.4",
@@ -51,6 +52,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/jsonwebtoken": "^9.0.8",
+    "@types/lodash": "^4.17.15",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
