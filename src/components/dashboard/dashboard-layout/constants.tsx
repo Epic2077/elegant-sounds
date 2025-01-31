@@ -14,7 +14,7 @@ import {
 
 export const SIDEBAR_ITEMS = [
   { href: "/admin/dashboard", Icon: Dashboard, text: "Dashboard" },
-  { href: "/admin/dashboard/badges", Icon: Label, text: "Labels" },
+  { href: "/admin/dashboard/badges", Icon: Label, text: "Badges" },
   { href: "/admin/dashboard/brands", Icon: Loyalty, text: "Brands" },
   { href: "/admin/dashboard/categories", Icon: Category, text: "Categories" },
   { href: "/admin/dashboard/cities", Icon: LocationCity, text: "Cities" },
