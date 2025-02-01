@@ -24,8 +24,8 @@ export default function CategoryField({
       error={error}
       helperText={helperText}
       options={data?.results ?? []}
-      getOptionLabel={(o) => o.titleFa}
-      groupBy={(o) => o.parent?.titleFa ?? "root"}
+      getOptionLabel={(o) => o.titleEn}
+      groupBy={(o) => o.parent?.titleEn ?? "root"}
       isLoading={isLoading}
       label="Category"
       name={name}
