@@ -10,7 +10,7 @@ export default async function UpdateCategory({ params }: ServerPageProps) {
     <Box maxWidth={500}>
       <Card>
         <CardContent>
-          <Typography variant="h5">ویرایش دسته بندی</Typography>
+          <Typography variant="h5">Edit Category</Typography>
           <CategoryForm defaultValue={category} />
         </CardContent>
       </Card>
