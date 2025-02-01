@@ -3,7 +3,7 @@ import * as React from "react";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -22,7 +22,7 @@ export default function MiniDrawer() {
     <Drawer variant="permanent" open={isOpen}>
       <DrawerHeader>
         <IconButton onClick={handleClose}>
-          <ChevronRightIcon />
+          <ChevronLeftIcon />
         </IconButton>
       </DrawerHeader>
       <Divider />

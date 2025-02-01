@@ -124,7 +124,7 @@ export default function DashboardHeader() {
 
   return (
     <>
-      <AppBar position="fixed" open={isOpen}>
+      <AppBar position="fixed" open={isOpen} color="transparent">
         <Toolbar>
           <IconButton
             size="large"
