@@ -23,7 +23,7 @@ export function ColorsTable({
             <IconButton
               color="secondary"
               component={Link}
-              href={"/dashboard/colors/update/" + p.id}
+              href={"/admin/dashboard/colors/update/" + p.id}
             >
               <Edit />
             </IconButton>

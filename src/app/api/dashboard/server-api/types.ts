@@ -38,7 +38,7 @@ export type ServerPageProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export interface Column<T extends { id: string }> {
+export interface Column<T extends { id?: string; _id?: string }> {
   title: string;
   render: (row: T) => ReactNode;
 }
@@ -94,4 +94,55 @@ export interface IProduct extends Timestamp {
   specifications: IPropertyValue[];
   expert_reviews: string;
   id: string;
+}
+export interface IUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: 1 | 2 | 3;
+  isActive: boolean;
+  id: string;
+}
+export interface ISeller extends Timestamp {
+  user: IUser;
+  name: string;
+  slug: string;
+  id: string;
+}
+
+export enum OrderStatus {
+  Pending = "pending",
+  Processing = "processing",
+  Shipped = "shipped",
+  Delivered = "delivered",
+  Cancelled = "cancelled",
+}
+export interface IOrder {
+  shippingAddress: {
+    street: string;
+    city: string;
+    postalCode: string;
+    location: [number, number];
+  };
+  user: IUser;
+  deliveryDate: string;
+  orderStatus: OrderStatus;
+  orderItems: [IOrderItem];
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+}
+export interface IOrderItem {
+  id: string;
+  productSeller: {
+    product: IProduct;
+    seller: string;
+    price: number;
+    count: number;
+    discount: number;
+    id: string;
+  };
+  quantity: number;
+  order: string;
+  seller: ISeller;
 }

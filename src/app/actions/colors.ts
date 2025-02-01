@@ -44,7 +44,7 @@ export async function createOrUpdateColorAction(
       };
     }
   }
-  redirect("/dashboard/colors");
+  redirect("/admin/dashboard/colors");
 }
 
 export async function deleteColorAction(id: string) {
