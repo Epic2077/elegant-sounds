@@ -55,11 +55,11 @@ export function ProductTable({
         },
         {
           title: "Category",
-          render: (row) => row.category.titleFa,
+          render: (row) => row.category.titleEn,
         },
         {
           title: "Brand",
-          render: (row) => row.brand.titleFa,
+          render: (row) => row.brand.titleEn,
         },
         {
           title: "Update",

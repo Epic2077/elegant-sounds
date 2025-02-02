@@ -22,7 +22,7 @@ export const SIDEBAR_ITEMS = [
   {
     href: "/admin/dashboard/properties",
     Icon: EditAttributes,
-    text: "Attributes",
+    text: "Properties",
   },
   { href: "/admin/dashboard/products", Icon: PhoneAndroid, text: "Products" },
   { href: "/admin/dashboard/users", Icon: People, text: "Users" },
