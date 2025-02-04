@@ -14,6 +14,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { AudioLines } from "lucide-react";
+import { useUserInfo } from "@/utils/userContext";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -37,18 +38,20 @@ const components: { title: string; href: string; description: string }[] = [
     description: "Compact and convenient earbuds for on-the-go listening.",
   },
   {
-    title: "Brands",
-    href: "/shop/categories/mixers",
-    description: "Checkout our top brands for music devices.",
-  },
-  {
     title: "Accessories",
     href: "/shop/categories/accessories",
     description: "Essential accessories for your music devices.",
   },
+  {
+    title: "Show All",
+    href: "/shop/categories",
+    description: "Show all the categories.",
+  },
 ];
 
 export function Navigation() {
+  const { isAdmin } = useUserInfo();
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -108,6 +111,15 @@ export function Navigation() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+        {isAdmin && (
+          <NavigationMenuItem>
+            <Link href="/admin/dashboard" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Dashboard
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        )}
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>

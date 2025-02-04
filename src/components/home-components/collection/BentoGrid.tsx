@@ -16,13 +16,13 @@ const features = [
       <Image
         src="/images/collection/headphone.png"
         alt="headphone"
-        width={470}
-        height={480}
+        width={450}
+        height={450}
         className="mx-auto "
       />
     ),
     className:
-      "row-span-2 row-start-1 row-end-3 col-start-1 col-end-5  sm:col-end-2 lg:col-end-4 h-full",
+      "row-start-1 row-end-3 col-start-1 col-end-4 sm:row-start-1 sm:row-end-3 md:row-start-1 md:row-end-3 lg:row-end-3 sm:col-start-1  sm:col-end-2 md:col-start-1 md:col-end-3 lg:col-start-1 lg:col-end-3 h-full",
   },
   {
     name: "Earbuds",
@@ -40,7 +40,7 @@ const features = [
       />
     ),
     className:
-      "col-start-1 col-end-2 sm:col-start-3 sm:col-end-4 sm:row-start-1 lg:col-start-4 lg:col-end-5",
+      " col-start-1 col-end-2 sm:col-start-2 sm:col-end-3 sm:row-start-1 md:col-start-3 md:col-end-4 lg:col-start-3 lg:col-end-4",
   },
   {
     name: "Accessories",
@@ -58,13 +58,13 @@ const features = [
       />
     ),
     className:
-      "col-start-1 col-end-2 sm:col-start-3 sm:col-end-4 lg:col-start-4 lg:col-end-5",
+      "col-start-1 col-end-2 sm:col-start-2 sm:col-end-3 md:col-start-3 md:col-end-4 lg:col-start-3 lg:col-end-4",
   },
 ];
 
 export function Bento() {
   return (
-    <BentoGrid className="grid grid-cols-1 lg:grid-cols-2 gap-5 h-[665px]">
+    <BentoGrid className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 h-auto lg:h-[665px]">
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -92,3 +92,5 @@ export function Bento() {
     </BentoGrid>
   );
 }
+
+export { BentoGrid, BentoCard };

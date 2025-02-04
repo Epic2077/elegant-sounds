@@ -75,7 +75,7 @@ const Cursor = () => {
 
       // Get interactive elements
       const textElements = document.querySelectorAll<HTMLElement>(
-        "h1, h2, h3, h4, h5, h6, button, a, .hover-effect, [data-cursor-hover]"
+        "h1, h2, h3, h4, h5, h6, button"
       );
 
       // Initialize positions
@@ -110,7 +110,7 @@ const Cursor = () => {
     }
   }, []);
 
-  return <div ref={cursorRef} className="cursor z-20" />;
+  return <div ref={cursorRef} className="hidden cursor z-20 lg:block" />;
 };
 
 export default Cursor;

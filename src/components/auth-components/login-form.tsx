@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Chrome, Github } from "lucide-react";
-import LoginField from "./loginField";
+import LoginField from "@/components/auth-components/loginField";
 import { signIn } from "@/auth";
 import Link from "next/link";
 import LeftToRightFade from "@/widget/animations/leftToRightFade-Animation";

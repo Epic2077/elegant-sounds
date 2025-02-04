@@ -8,8 +8,16 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import signupSchema from "@/validation/signupSchema";
 import { Eye, EyeOff } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
+import { SignupRequest } from "@/types/Auth";
+import { useAuth } from "@/utils/AuthContext";
 
 const SignupField = () => {
+  const { toast } = useToast();
+  const router = useRouter();
+  const { login } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -27,9 +35,58 @@ const SignupField = () => {
     confirmPassword: string;
   }
 
-  const onSubmit = (data: SignupFormData) => {
-    console.log(data);
-    // Handle form submission
+  const onSubmit = async (data: SignupRequest) => {
+    try {
+      console.log("Submitting form data:", data);
+
+      const { confirmPassword, ...signupData } = data;
+      console.log("Submitting form data after removing confirm:", signupData);
+
+      // Call the signup Api Route
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signupData),
+        credentials: "include",
+      });
+
+      console.log("Response status:", response.status);
+
+      const result = await response.json();
+      console.log("Response data:", result);
+
+      if (response.ok) {
+        // Store the accessToken in memory
+        const accessToken = result.tokens.accessToken;
+        console.log("Access Token:", accessToken);
+
+        login(result.profile.firstName);
+
+        toast({
+          title: "Success!",
+          description: "You have signed up successfully.",
+        });
+
+        router.push("/home");
+      } else {
+        // Handle other errors
+        toast({
+          title: "Error",
+          description: result.message || "Signup failed. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error in onSubmit:", error);
+      // Handle generic errors
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const [isView, setIsView] = useState(false);

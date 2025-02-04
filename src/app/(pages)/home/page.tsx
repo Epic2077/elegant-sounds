@@ -1,4 +1,5 @@
 import BestSeller from "@/components/home-components/Best Seller/BestSeller";
+// import Category from "@/components/home-components/Categories/Categories";
 import Collection from "@/components/home-components/collection/Collection";
 import { Hero } from "@/components/home-components/hero-components/hero";
 import { LogoCarousel } from "@/components/home-components/logo-carousel/LogoCarousel";
@@ -9,20 +10,19 @@ import React from "react";
 
 const Home = () => {
   return (
-    <section className="grid gap-12">
+    <section className="grid gap-12 w-screen">
       <Hero />
-      <div className="w-full">
+      <div className="w-screen">
         <LogoCarousel />
       </div>
-      <section className="px-28 flex flex-col gap-28">
+      <section className="px-4 sm:px-8 md:px-16 lg:px-28 flex flex-col gap-12 sm:gap-16 md:gap-20 lg:gap-28">
+        {/* <Category /> */}
         <NewArrivals />
-
-        <Collection />
-
+        <div>
+          <Collection />
+        </div>
         <BestSeller />
-
         <Offer />
-
         <Values />
       </section>
     </section>

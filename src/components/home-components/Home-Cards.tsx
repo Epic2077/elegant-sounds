@@ -3,7 +3,7 @@
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { cn } from "@/lib/utils";
-import FadeIn from "@/widget/animations/FadeIn";
+import { BlurFade } from "@/widget/animations/FadeIn";
 import { ArrowBigRightDash, Heart, Tag } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -31,7 +31,7 @@ const HomeCards: React.FC<ArrivalCardsProps> = ({
   offPercentage,
 }) => {
   return (
-    <FadeIn>
+    <BlurFade className="w-max mx-auto">
       <BackgroundGradient
         className="rounded-3xl w-[280px] bg-card grid gap-1 p-4 "
         containerClassName="w-max"
@@ -95,7 +95,7 @@ const HomeCards: React.FC<ArrivalCardsProps> = ({
           <ArrowBigRightDash className="w-5 text-ring" />
         </div>
       </BackgroundGradient>
-    </FadeIn>
+    </BlurFade>
   );
 };
 

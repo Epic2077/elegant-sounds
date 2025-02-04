@@ -1,5 +1,5 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
-import FadeIn from "@/widget/animations/FadeIn";
+import { BlurFade } from "@/widget/animations/FadeIn";
 import { Banknote, LockIcon, PhoneIcon, TruckIcon } from "lucide-react";
 import React from "react";
 
@@ -28,11 +28,11 @@ const Values = () => {
   ];
 
   return (
-    <FadeIn>
+    <BlurFade>
       <div className="w-full mx-auto px-8">
         <HoverEffect items={value}></HoverEffect>
       </div>
-    </FadeIn>
+    </BlurFade>
   );
 };
 
