@@ -7,7 +7,7 @@ export default async function UsersPage({ searchParams }: ServerPageProps) {
   const params = await searchParams;
   const users = getAllUsers(params);
   return (
-    <TableContainer title="Users" createLink="/admin/dashboard/users/create">
+    <TableContainer title="Users">
       <UsersTable users={users} />
     </TableContainer>
   );

@@ -47,7 +47,7 @@ export default function CityForm({ defaultValue }: CityFormProps) {
             },
           ]}
         />
-        <SubmitButton variant="contained">Add City</SubmitButton>
+        <SubmitButton variant="contained">Save</SubmitButton>
       </Stack>
     </form>
   );

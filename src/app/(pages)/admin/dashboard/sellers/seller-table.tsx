@@ -1,10 +1,10 @@
 "use client";
-import { deleteSellerAction } from "@/app/actions/sellers";
+// import { deleteSellerAction } from "@/app/actions/sellers";
 import {
   ISeller,
   PaginatedResultApi,
 } from "@/app/api/dashboard/server-api/types";
-import DeleteAlertDialog from "@/components/dashboard/DeleteAlertDialog";
+// import DeleteAlertDialog from "@/components/dashboard/DeleteAlertDialog";
 import AITable from "@/components/dashboard/tables/AITable";
 import { Edit, Delete } from "@mui/icons-material";
 import { Stack, Tooltip, IconButton } from "@mui/material";
@@ -31,7 +31,7 @@ export function SellerTable({
                 <Edit />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Delete">
+            {/* <Tooltip title="Delete">
               <DeleteAlertDialog
                 onConfirm={async () => deleteSellerAction(p.id)}
               >
@@ -39,7 +39,7 @@ export function SellerTable({
                   <Delete />
                 </IconButton>
               </DeleteAlertDialog>
-            </Tooltip>
+            </Tooltip> */}
           </Stack>
         )}
         data={allSeller}

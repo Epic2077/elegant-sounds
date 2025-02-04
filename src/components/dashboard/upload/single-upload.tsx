@@ -2,7 +2,6 @@
 import { Box, CircularProgress, IconButton, Paper, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { getAccessToken } from "@/app/api/dashboard/server-api/city";
 import { upload } from "@/app/api/dashboard/client-api/upload";
 type Props = {
   name: string;
@@ -16,22 +15,10 @@ export default function SingleUpload({
   defaultValue = "",
 }: Props) {
   const [urls, setUrls] = useState<string[]>([]);
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-
-  const fetchAccessToken = async () => {
-    const token = await getAccessToken();
-    if (!token) {
-      throw new Error("No access token found");
-    }
-    setAccessToken(token);
-  };
-
-  useEffect(() => {
-    fetchAccessToken();
-  }, []);
 
   const [progress, setProgress] = useState(0);
   const handleFileSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const accessToken = document.cookie;
     if (!e.target.files) {
       return;
     }
