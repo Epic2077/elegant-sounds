@@ -1,10 +1,10 @@
 "use client";
-import { deleteProductAction } from "@/app/actions/products";
+// import { deleteProductAction } from "@/app/actions/products";
 import {
   IProduct,
   PaginatedResultApi,
 } from "@/app/api/dashboard/server-api/types";
-import DeleteAlertDialog from "@/components/dashboard/DeleteAlertDialog";
+// import DeleteAlertDialog from "@/components/dashboard/DeleteAlertDialog";
 import AITable from "@/components/dashboard/tables/AITable";
 import { Delete, Edit } from "@mui/icons-material";
 import { IconButton, Stack, Tooltip } from "@mui/material";
@@ -28,7 +28,7 @@ export function ProductTable({
               <Edit />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Delete">
+          {/* <Tooltip title="Delete">
             <DeleteAlertDialog
               onConfirm={async () => deleteProductAction(p.id)}
             >
@@ -36,7 +36,7 @@ export function ProductTable({
                 <Delete />
               </IconButton>
             </DeleteAlertDialog>
-          </Tooltip>
+          </Tooltip> */}
         </Stack>
       )}
       data={products}
@@ -44,6 +44,16 @@ export function ProductTable({
         {
           title: "Code",
           render: (row) => row.code,
+        },
+        {
+          title: "Image",
+          render: (row) => (
+            <img
+              src={row.images.main}
+              alt="Product Image"
+              style={{ width: "60px", height: "60px" }}
+            />
+          ),
         },
         {
           title: "English Title",

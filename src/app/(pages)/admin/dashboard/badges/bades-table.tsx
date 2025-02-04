@@ -53,7 +53,13 @@ export function BadgesTable({
           },
           {
             title: "icon",
-            render: (row) => row.icon,
+            render: (row) => (
+              <img
+                src={row.icon}
+                alt="Product Image"
+                style={{ width: "50px", height: "50px" }}
+              />
+            ),
           },
           {
             title: "Update",

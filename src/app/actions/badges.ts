@@ -44,7 +44,7 @@ export async function createOrUpdateBadgeAction(
       };
     }
   }
-  redirect("/dashboard/badges");
+  redirect("/admin/dashboard/badges");
 }
 
 export async function deleteBadgeAction(id: string) {

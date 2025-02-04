@@ -26,7 +26,7 @@ export function UsersTable({
                 component={Link}
                 href={"/admin/dashboard/users/update/" + p.id}
               >
-                <Edit />
+                {p.role !== 3 && <Edit />}
               </IconButton>
             </Tooltip>
           </Stack>
