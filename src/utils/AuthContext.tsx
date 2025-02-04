@@ -17,25 +17,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
+  const checkAuth = async () => {
+    try {
+      const res = await fetch("/api/auth/validate", {
+        credentials: "include",
+      });
+      const { isLoggedIn } = await res.json();
+      setIsLoggedIn(isLoggedIn);
+    } catch (error) {
+      console.log(error);
+      setIsLoggedIn(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const validateAuth = async () => {
-      try {
-        const res = await fetch("/api/auth/validate", {
-          credentials: "include",
-        });
-
-        if (!res.ok) throw new Error("Validation failed");
-
-        const { isLoggedIn } = await res.json();
-        setIsLoggedIn(isLoggedIn);
-      } catch (error) {
-        setIsLoggedIn(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    validateAuth();
+    checkAuth();
   }, []);
 
   const login = async () => {
@@ -46,7 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
       const data = await res.json();
       if (data.user.role === 3) {
-        router.push("/dashboard");
+        router.push("/admin/dashboard");
       } else {
         router.push("/home"); // Redirect to protected page after login
       }
@@ -77,4 +75,17 @@ export const useAuth = () => {
     throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
+};
+
+export const EnsureClientAuthenticated = () => {
+  const { isLoggedIn, isLoading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && !isLoggedIn) {
+      router.push("/auth/login");
+    }
+  }, [isLoggedIn, isLoading, router]);
+
+  return null;
 };
