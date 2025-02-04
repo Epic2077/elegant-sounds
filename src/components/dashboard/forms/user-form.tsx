@@ -1,8 +1,8 @@
 // "use client";
-// import { useUserQuery } from "@/api/client-api/user";
 // import React, { useState } from "react";
 // import AsyncListField from "../fields/async-list-filed";
 // import { IUser } from "@/app/api/dashboard/server-api/types";
+// import { useUserQuery } from "@/app/api/dashboard/client-api/user";
 
 // type Props = {
 //   name: string;

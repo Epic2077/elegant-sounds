@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
       const data = await res.json();
       if (data.user.role === 3) {
-        router.push("/dashboard");
+        router.push("/admin/dashboard");
       } else {
         router.push("/home"); // Redirect to protected page after login
       }
