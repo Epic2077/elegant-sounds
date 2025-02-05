@@ -13,6 +13,8 @@ async function DashboardLayout({
 }>) {
   return (
     <>
+      <AdminRedirectModal />
+
       <QueryProvider>
         <Box sx={{ display: "flex" }}>
           <DrawerProvider>
@@ -25,7 +27,6 @@ async function DashboardLayout({
           </Box>
         </Box>
       </QueryProvider>
-      <AdminRedirectModal />
     </>
   );
 }
