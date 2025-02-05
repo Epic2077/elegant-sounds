@@ -8,6 +8,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 interface UserContextType {
   isAdmin: boolean;
   isUser: boolean;
+  isSeller: boolean;
   profile: Profile | null;
   user: User | null;
 }
@@ -16,6 +17,7 @@ export const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSeller, setIsSeller] = useState(false);
   const [isUser, setIsUser] = useState(true);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [user, setUser] = useState<User | null>(null);
@@ -43,6 +45,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
       // Update roles based on the user's role
       setIsAdmin(data.user.role === 3);
+      setIsSeller(data.user.role === 2);
       setIsUser(data.user.role === 1);
     } catch (error) {
       console.log("Failed to fetch user info:", error);
@@ -54,7 +57,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ isAdmin, isUser, profile, user }}>
+    <UserContext.Provider value={{ isAdmin, isSeller, isUser, profile, user }}>
       {children}
     </UserContext.Provider>
   );

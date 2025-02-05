@@ -18,7 +18,7 @@ import { useUserInfo } from "@/utils/userContext";
 
 const Profile = () => {
   const { isLoggedIn, logout } = useAuth();
-  const { isUser, isAdmin, profile } = useUserInfo();
+  const { isUser, isAdmin, isSeller, profile } = useUserInfo();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -40,6 +40,8 @@ const Profile = () => {
     status = "admin ";
   } else if (isUser === true && isAdmin === false) {
     status = "user ";
+  } else if (isSeller === true && isAdmin === false) {
+    status = "seller ";
   }
 
   return (

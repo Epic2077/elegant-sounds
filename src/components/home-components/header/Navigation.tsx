@@ -50,7 +50,7 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export function Navigation() {
-  const { isAdmin } = useUserInfo();
+  const { isAdmin, isSeller } = useUserInfo();
 
   return (
     <NavigationMenu>
@@ -116,6 +116,15 @@ export function Navigation() {
             <Link href="/admin/dashboard" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Dashboard
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        )}
+        {isSeller && (
+          <NavigationMenuItem>
+            <Link href="/seller/shop" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Your-Shop
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
