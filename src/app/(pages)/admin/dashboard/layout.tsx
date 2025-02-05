@@ -3,6 +3,7 @@ import DashboardHeader from "@/components/dashboard/dashboard-layout/DashboardHe
 import DrawerProvider from "@/components/dashboard/dashboard-layout/DrawerProvider";
 import MiniDrawer from "@/components/dashboard/dashboard-layout/MiniDrawer";
 import QueryProvider from "@/components/dashboard/QueryProvider";
+import { AdminRedirectModal } from "@/modules/AdminRedirectModal";
 import { Box } from "@mui/material";
 
 async function DashboardLayout({
@@ -11,18 +12,21 @@ async function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <QueryProvider>
-      <Box sx={{ display: "flex" }}>
-        <DrawerProvider>
-          <DashboardHeader />
-          <MiniDrawer />
-        </DrawerProvider>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <DrawerHeader />
-          {children}
+    <>
+      <QueryProvider>
+        <Box sx={{ display: "flex" }}>
+          <DrawerProvider>
+            <DashboardHeader />
+            <MiniDrawer />
+          </DrawerProvider>
+          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <DrawerHeader />
+            {children}
+          </Box>
         </Box>
-      </Box>
-    </QueryProvider>
+      </QueryProvider>
+      <AdminRedirectModal />
+    </>
   );
 }
 

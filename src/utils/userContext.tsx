@@ -42,8 +42,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       setProfile(data.profile);
 
       // Update roles based on the user's role
-      setIsAdmin(data.user.role === 3); // Assuming role 3 is admin
-      setIsUser(data.user.role === 1); // Assuming role 1 is user
+      setIsAdmin(data.user.role === 3);
+      setIsUser(data.user.role === 1);
     } catch (error) {
       console.log("Failed to fetch user info:", error);
     }
