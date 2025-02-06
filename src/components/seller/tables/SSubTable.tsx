@@ -1,7 +1,12 @@
-import { Accordion } from "@/components/ui/accordion";
-import { DropdownMenu } from "@/components/ui/dropdown-menu";
-import { TableRow } from "@/components/ui/table";
-import { TableCell } from "@mui/material";
+"use client";
+import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { ReactNode } from "react";
 
 type Props<T> = {
@@ -22,13 +27,52 @@ export default function SSubTable<T>({
   subTitleSchema,
   colSpan,
 }: Props<T>) {
+  const safeData = Array.isArray(data) ? data : [];
   return (
-    <TableRow>
-      <TableCell className="py-0" colSpan={colSpan}>
-        <Accordion type="single" collapsible className="w-full">
-          yes
-        </Accordion>
-      </TableCell>
-    </TableRow>
+    <>
+      <TableRow>
+        <TableCell className="py-0" colSpan={colSpan}>
+          <Collapsible className="w-full" open={open}>
+            <CollapsibleContent>
+              <div className="mt-1">
+                <div>
+                  <h6>{header}</h6>
+                </div>
+                <Table aria-label="purchases">
+                  <TableHeader>
+                    <TableRow>
+                      {subTitleSchema.map((item) => (
+                        <TableCell key={item.title}>{item.title}</TableCell>
+                      ))}
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {safeData.length === 0 && (
+                      <TableRow>
+                        <TableCell
+                          className="text-center"
+                          colSpan={subTitleSchema.length}
+                        >
+                          Nothing Here
+                        </TableCell>
+                      </TableRow>
+                    )}
+                    {safeData.map((row) => (
+                      <TableRow key={(row as any).id}>
+                        {subTitleSchema.map((item) => (
+                          <TableCell key={(row as any).id + item.title}>
+                            {item.render(row)}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+        </TableCell>
+      </TableRow>
+    </>
   );
 }

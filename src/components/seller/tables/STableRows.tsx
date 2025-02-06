@@ -26,14 +26,12 @@ export default function STableRow<
     <Fragment>
       <TableRow>
         {!!subTable && (
-          <TableCell>
-            <TableCell
-              aria-label="expand row"
-              className="text-small"
-              onClick={() => setOpen(!open)}
-            >
-              {open ? <ChevronUp /> : <ChevronDown />}
-            </TableCell>
+          <TableCell
+            aria-label="expand row"
+            className="text-small"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <ChevronUp /> : <ChevronDown />}
           </TableCell>
         )}
         {schema.map((item) => (
