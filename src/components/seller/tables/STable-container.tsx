@@ -14,7 +14,7 @@ export async function STableContainer({
   children,
 }: STableContainerProps) {
   return (
-    <div>
+    <div className="mt-2 p-3 px-4 border-2 border-primary rounded-xl">
       <header className="flex justify-between items-center">
         <h1 className="text-4xl">{title}</h1>
         {createLink && (
@@ -23,7 +23,7 @@ export async function STableContainer({
           </Link>
         )}
       </header>
-      <main>{children}</main>
+      <main className="mt-4 px-4">{children}</main>
     </div>
   );
 }
