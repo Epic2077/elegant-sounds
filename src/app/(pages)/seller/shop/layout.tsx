@@ -11,7 +11,7 @@ async function SellerLayout({
       <header className="w-full grid ">
         <SellerHeader />
       </header>
-      <main>{children}</main>
+      <main className="px-9">{children}</main>
     </section>
   );
 }

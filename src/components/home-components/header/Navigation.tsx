@@ -112,13 +112,22 @@ export function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         {isAdmin && (
-          <NavigationMenuItem>
-            <Link href="/admin/dashboard" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Dashboard
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+          <>
+            <NavigationMenuItem>
+              <Link href="/admin/dashboard" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Dashboard
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/seller/shop" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Your-Shop
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </>
         )}
         {isSeller && (
           <NavigationMenuItem>
