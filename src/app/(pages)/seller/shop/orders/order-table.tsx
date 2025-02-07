@@ -1,12 +1,14 @@
 "use client";
+
 import {
   IOrder,
   IOrderItem,
   PaginatedResultApi,
 } from "@/app/api/dashboard/server-api/types";
-import AITable from "@/components/dashboard/tables/AITable";
+import SellerTable from "@/components/seller/tables/SellerTable";
 import { use } from "react";
-export function OrdersTable({
+
+export function SOrderTable({
   orders,
 }: {
   orders: Promise<PaginatedResultApi<IOrder>>;
@@ -14,7 +16,7 @@ export function OrdersTable({
   const allOrders = use(orders);
   return (
     <>
-      <AITable
+      <SellerTable
         data={allOrders}
         schema={[
           {
@@ -30,12 +32,12 @@ export function OrdersTable({
             render: (row) => row.orderStatus,
           },
           {
-            title: "City",
+            title: "city",
             render: (row) => row.shippingAddress.city,
           },
         ]}
         subTable={{
-          header: "Order List",
+          header: "Item",
           key: "orderItems",
           schema: [
             {
