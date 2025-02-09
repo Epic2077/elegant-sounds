@@ -39,14 +39,17 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
       const data = await res.json();
 
+      console.log("Fetched Data:", data);
       // Update state with fetched data
       setUser(data.user);
       setProfile(data.profile);
 
       // Update roles based on the user's role
-      setIsAdmin(data.user.role === 3);
-      setIsSeller(data.user.role === 2);
-      setIsUser(data.user.role === 1);
+      if (data.profile) {
+        setIsAdmin(data.user.role === 3);
+        setIsSeller(data.user.role === 2);
+        setIsUser(data.user.role === 1);
+      }
     } catch (error) {
       console.log("Failed to fetch user info:", error);
     }

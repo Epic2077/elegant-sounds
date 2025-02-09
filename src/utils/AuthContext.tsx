@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         credentials: "include",
       });
       const data = await res.json();
-      if (data.user.role === 3) {
+      if (data.profile.role === 3) {
         router.push("/admin/dashboard");
         window.location.reload();
       } else {

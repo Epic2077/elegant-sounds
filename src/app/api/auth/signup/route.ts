@@ -1,5 +1,5 @@
 import { SignupRequest, SignupResponse } from "@/types/Auth";
-import { BASE_URL } from "../../Base";
+import { BASE_URL } from "../../../Base";
 import axios from "axios";
 import { NextResponse } from "next/server";
 

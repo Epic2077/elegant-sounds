@@ -3,9 +3,9 @@ import "server-only";
 
 import { ICategory, PaginatedResultApi } from "./types";
 import { revalidateTag } from "next/cache";
-import { ADMIN_BASE_URL } from "../../Base";
+import { ADMIN_BASE_URL } from "../../../Base";
 import { CategoryType } from "@/lib/validation";
-import { serverApiFetch } from "./base";
+import { serverApiFetch } from "../../base";
 import { getAccessToken } from "./city";
 
 // Create a new category

@@ -4,10 +4,10 @@ import "server-only";
 
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { ADMIN_BASE_URL } from "../../Base";
+import { ADMIN_BASE_URL } from "../../../Base";
 import { CityType } from "@/lib/validation";
 import { ICity, PaginatedResultApi } from "./types";
-import { serverApiFetch } from "./base";
+import { serverApiFetch } from "../../base";
 
 // Helper to get access token
 export async function getAccessToken() {

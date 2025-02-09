@@ -18,7 +18,7 @@ import { useUserInfo } from "@/utils/userContext";
 
 const Profile = () => {
   const { isLoggedIn, logout } = useAuth();
-  const { isUser, isAdmin, isSeller, profile } = useUserInfo();
+  const { isUser, isAdmin, isSeller, user } = useUserInfo();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -56,9 +56,7 @@ const Profile = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className=" sm:w-64 md:w-72 lg:w-80">
           <DropdownMenuLabel>
-            {isLoggedIn
-              ? "Welcome " + status + profile?.firstName
-              : "My Account"}
+            {isLoggedIn ? "Welcome " + status + user?.firstName : "My Account"}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           {isLoggedIn ? (

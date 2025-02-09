@@ -25,6 +25,9 @@ export default function SellerTable<
   T extends { id: string },
   G extends { id: string }
 >({ schema, data, subTable, actions }: SellerTableProps<T, G>) {
+  const results = data?.results || [];
+  const isEmpty = results.length === 0;
+
   return (
     <section>
       <Table>
@@ -38,7 +41,7 @@ export default function SellerTable<
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.results.length === 0 && (
+          {isEmpty ? (
             <TableRow>
               <TableCell
                 className="text-center"
@@ -47,16 +50,17 @@ export default function SellerTable<
                 No Data Available
               </TableCell>
             </TableRow>
+          ) : (
+            results.map((row) => (
+              <STableRow
+                key={row.id}
+                schema={schema}
+                data={row}
+                subTable={subTable}
+                action={actions}
+              />
+            ))
           )}
-          {data.results.map((row) => (
-            <STableRow
-              key={row.id}
-              schema={schema}
-              data={row}
-              subTable={subTable}
-              action={actions}
-            />
-          ))}
         </TableBody>
       </Table>
     </section>

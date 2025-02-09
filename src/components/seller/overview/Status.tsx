@@ -1,19 +1,22 @@
 import { Boxes, CreditCardIcon, DollarSign, Package } from "lucide-react";
 import React from "react";
 import StatusCard from "../charts/StatusCard";
-import { getProducts } from "@/app/api/dashboard/server-api/products";
-import { getCategories } from "@/app/api/dashboard/server-api/categories";
-import { getOrders } from "@/app/api/dashboard/server-api/orders";
+import { getCategories } from "@/app/api/shop/server-api/categories";
+import { getOrders } from "@/app/api/shop/server-api/orders";
+import { getProducts } from "@/app/api/shop/server-api/products";
 
 const Status = async () => {
   const products = await getProducts();
-  const productAmount = products.results.length;
+  // console.log(products);
+  const productAmount = products.results.length || 0;
 
   const categories = await getCategories();
+  // console.log(categories);
   const categoryAmount = categories.results.length;
 
   const orders = await getOrders();
-  const orderAmount = orders.results.length;
+  console.log("Orders:", orders);
+  const orderAmount = orders.results?.length || 0;
 
   const FakeData = [
     {

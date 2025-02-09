@@ -6,15 +6,20 @@ import { signIn } from "@/auth";
 import Link from "next/link";
 import LeftToRightFade from "@/widget/animations/leftToRightFade-Animation";
 
+interface LoginFormProps extends React.ComponentPropsWithoutRef<"div"> {
+  status?: string;
+}
+
 export function LoginForm({
   className,
+  status = "to your account",
   ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+}: LoginFormProps) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <LeftToRightFade>
         <div className="flex flex-col items-center gap-2 text-center">
-          <h1 className="text-2xl font-bold">Login to your account</h1>
+          <h1 className="text-2xl font-bold">Login {status}</h1>
           <p className="text-balance text-sm text-muted-foreground mb-6">
             Enter your email below to login to your account
           </p>
@@ -54,7 +59,7 @@ export function LoginForm({
         <div className="text-center text-sm mt-6">
           Don&apos;t have an account?{" "}
           <Link
-            href="signup/"
+            href="/auth/signup"
             className="underline underline-offset-4 hover:text-primary"
           >
             Sign up

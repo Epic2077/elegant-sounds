@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../../Base";
+import { BASE_URL } from "../../../Base";
 import { NextResponse } from "next/server";
 import { LoginRequest, LoginResponse } from "@/types/Auth";
 
@@ -7,12 +7,13 @@ export async function POST(request: Request) {
   try {
     //Parse request body
     const body: LoginRequest = await request.json();
-    const { email, password } = body;
+    const { email, password, role } = body;
 
     // Forward to backend
     const response = await axios.post<LoginResponse>(`${BASE_URL}/auth/login`, {
       email,
       password,
+      role,
     });
 
     //set cookies for authentication
