@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { IProperty } from "@/app/api/dashboard/server-api/types";
-import MultiAsyncListField from "./multi-async-list-field";
 import { usePropertiesQuery } from "@/app/api/dashboard/client-api/properties";
+import { IProperty } from "@/app/api/dashboard/server-api/types";
+import React, { useState } from "react";
+import MultiAsyncListField from "./multi-async-list-field";
 
 type PropertiesFieldProps = {
   name: string;

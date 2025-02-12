@@ -84,7 +84,7 @@ export const deleteCategory = async (id: string) => {
 };
 
 // Get category by Id
-export const getCategory = async (id: string): Promise<ICategory> => {
+export const getCategoryById = async (id: string): Promise<ICategory> => {
   const accessToken = await getAccessToken();
   return serverApiFetch<ICategory>(
     `${SHOP_BASE_URL}/categories/${id}`,
