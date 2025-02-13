@@ -3,6 +3,4 @@ export interface User {
   role: number;
   isActive: boolean;
   id: number;
-  firstName?: string;
-  lastName?: string;
 }
