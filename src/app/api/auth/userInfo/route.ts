@@ -1,6 +1,6 @@
 import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
-import { BASE_URL } from "../../Base";
+import { BASE_URL } from "../../../Base";
 
 export async function GET(request: NextRequest) {
   try {

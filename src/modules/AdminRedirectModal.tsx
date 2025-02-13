@@ -30,7 +30,7 @@ export const AdminRedirectModal = () => {
   if (showPage) return null;
 
   return (
-    <div className="fixed inset-0 bg-background bg-opacity-50 flex items-center justify-center p-4 z-30">
+    <div className="fixed inset-0 bg-background bg-opacity-50 flex items-center justify-center p-4 z-30 w-screen h-screen">
       <div className="bg-foreground rounded-lg p-6 max-w-md w-full">
         <h2 className="text-lg font-bold mb-4">Session Alert</h2>
         <p className="mb-4">

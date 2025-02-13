@@ -19,6 +19,7 @@ import { AppBar } from "./components/HeaderAppBar";
 import Search from "./components/Search";
 import SearchIconWrapper from "./components/SearchIconWrapper";
 import StyledInputBase from "./components/StyledInputBase";
+import Link from "next/link";
 
 export default function DashboardHeader() {
   const { isOpen, handleOpen } = React.useContext(DrawerContext);
@@ -66,7 +67,9 @@ export default function DashboardHeader() {
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>Account</MenuItem>
       <Divider />
-      <MenuItem onClick={handleMenuClose}>Exit</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link href="/home">Exit</Link>
+      </MenuItem>
     </Menu>
   );
 
@@ -131,7 +134,7 @@ export default function DashboardHeader() {
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, color: "black", bgcolor: "white", p: "3px" }}
             onClick={handleOpen}
           >
             <MenuIcon />
@@ -141,7 +144,7 @@ export default function DashboardHeader() {
             noWrap
             component="a"
             href="/home"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block" }, mx: 2 }}
           >
             3legant.
           </Typography>

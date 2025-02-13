@@ -27,9 +27,9 @@ const BottomBar = () => {
         <LinkPreview url="https://github.com/Epic2077">
           <GitHubLogoIcon className="w-6 h-6 text-white" />
         </LinkPreview>
-        <Link href="#">
+        <LinkPreview url="https://www.linkedin.com/in/mohammadhosseinsadeghi/">
           <LinkedInLogoIcon className="w-6 h-6 text-white" />
-        </Link>
+        </LinkPreview>
       </div>
     </div>
   );

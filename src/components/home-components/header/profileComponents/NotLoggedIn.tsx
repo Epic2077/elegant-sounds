@@ -20,13 +20,19 @@ const NotLoggedIn = () => {
             <Link href="/auth/login">
               <DropdownMenuItem>
                 <LogIn className="w-4 h-4 mr-2" />
-                Sign In
+                Login
               </DropdownMenuItem>
             </Link>
-            <Link href="/auth/signup">
+            <Link href="/seller/auth/login">
               <DropdownMenuItem>
                 <LogIn className="w-4 h-4 mr-2" />
-                Sign Up
+                Login As Seller
+              </DropdownMenuItem>
+            </Link>
+            <Link href="/admin/auth/login">
+              <DropdownMenuItem>
+                <LogIn className="w-4 h-4 mr-2" />
+                Login As Admin
               </DropdownMenuItem>
             </Link>
           </DropdownMenuSubContent>

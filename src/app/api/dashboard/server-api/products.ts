@@ -4,8 +4,8 @@ import "server-only";
 import { IProduct, PaginatedResultApi } from "./types";
 import { revalidateTag } from "next/cache";
 import { ProductType } from "@/lib/validation";
-import { ADMIN_BASE_URL } from "../../Base";
-import { serverApiFetch } from "./base";
+import { ADMIN_BASE_URL } from "../../../Base";
+import { serverApiFetch } from "../../base";
 import { getAccessToken } from "./city";
 
 // Create a new Product

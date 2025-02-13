@@ -3,8 +3,8 @@ import "server-only";
 
 import { IBadge, PaginatedResultApi } from "./types";
 import { revalidateTag } from "next/cache";
-import { ADMIN_BASE_URL } from "../../Base";
-import { serverApiFetch } from "./base";
+import { ADMIN_BASE_URL } from "../../../Base";
+import { serverApiFetch } from "../../base";
 import { getAccessToken } from "./city";
 
 export const createBadge = async (body: Partial<IBadge>) => {

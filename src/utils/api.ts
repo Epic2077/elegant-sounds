@@ -1,5 +1,5 @@
 // lib/api.ts
-import { BASE_URL } from "@/app/api/Base";
+import { BASE_URL } from "@/app/Base";
 import axios from "axios";
 
 const api = axios.create({

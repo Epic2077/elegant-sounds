@@ -8,7 +8,7 @@ import Offer from "@/components/home-components/offer/Offer";
 import Values from "@/components/home-components/Values/Values";
 import React from "react";
 
-const Home = () => {
+const Home = async () => {
   return (
     <section className="grid gap-12 w-screen">
       <Hero />

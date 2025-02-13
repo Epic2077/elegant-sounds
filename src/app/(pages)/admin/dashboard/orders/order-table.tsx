@@ -60,4 +60,4 @@ export function OrdersTable({
     </>
   );
 }
-export const RoleMap = ["مشتری", "فروشنده", "ادمین"];
+export const RoleMap = ["User", "Seller", "Admin"];

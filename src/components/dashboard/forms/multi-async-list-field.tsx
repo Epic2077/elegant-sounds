@@ -1,9 +1,12 @@
+"use client";
+
 import { Autocomplete, CircularProgress, TextField } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
 import { debounce } from "@mui/material/utils";
 
 type Props<T extends { id: string }> = {
   name: string;
+  bg?: string;
   defaultValue?: T[];
   isLoading: boolean;
   options: T[];
@@ -18,6 +21,7 @@ export default function MultiAsyncListField<T extends { id: string }>({
   defaultValue,
   isLoading,
   options = [],
+  bg,
   groupBy,
   getOptionLabel,
   label,
@@ -64,6 +68,10 @@ export default function MultiAsyncListField<T extends { id: string }>({
         getOptionLabel={getOptionLabel}
         renderInput={(params) => (
           <TextField
+            sx={{
+              bgcolor: bg,
+              borderRadius: 2,
+            }}
             {...params}
             label={label}
             slotProps={{

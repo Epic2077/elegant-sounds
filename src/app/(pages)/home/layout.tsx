@@ -1,6 +1,6 @@
+import Cursor from "@/components/cursor";
 import Footer from "@/components/home-components/Footer/Footer";
 import Header from "@/components/home-components/header/Header";
-import NotificationBar from "@/components/home-components/header/NotificationBar";
 
 import React from "react";
 import { ReactNode } from "react";
@@ -13,7 +13,11 @@ const layout = ({ children }: { children: ReactNode }) => {
           <Header />
         </div>
       </header>
-      <main>{children}</main>
+      <main>
+        <Cursor />
+
+        {children}
+      </main>
       <footer>
         <Footer />
       </footer>
