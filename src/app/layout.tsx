@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ModeToggle } from "@/components/theme/ToggleBtn";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/utils/AuthContext";
-import { UserContext, UserProvider } from "@/utils/userContext";
+import { UserProvider } from "@/utils/userContext";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
