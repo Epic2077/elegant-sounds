@@ -1,16 +1,26 @@
 "use client";
 
-import { Stack } from "@mui/material";
-import React, { useActionState } from "react";
+import {
+  Alert,
+  Box,
+  Checkbox,
+  Divider,
+  FormControlLabel,
+  MenuItem,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import React, { useActionState, useState } from "react";
 import AIForm from "./AIForm";
-import SubmitButton from "../SubmitButton";
-import SingleUpload from "../upload/single-upload";
-import CategoryField from "../fields/category-feild";
 import BrandField from "../fields/brand-field";
-import BadgeField from "../fields/badges-field";
 import ColorsField from "../fields/colors-field";
 import { createOrUpdateProductAction } from "@/app/actions/products";
-import { IProduct } from "@/app/api/dashboard/server-api/types";
+import SingleUpload from "../upload/single-upload";
+import CategoryField from "../fields/category-feild";
+import BadgeField from "../fields/badges-field";
+import SubmitButton from "../SubmitButton";
+import { ICategory, IProduct } from "@/app/api/dashboard/server-api/types";
 
 type ProductFormProps = {
   defaultValue?: IProduct;
@@ -21,48 +31,52 @@ function ProductForm({ defaultValue }: ProductFormProps) {
     message: "",
     success: false,
   });
+  const [category, setCategory] = useState<ICategory | null>(
+    defaultValue?.category ?? null
+  );
   return (
     <form action={action}>
       {defaultValue?.id && (
-        <input hidden name="id" defaultValue={defaultValue.id} />
+        <input hidden defaultValue={defaultValue.id} name="id" />
       )}
-      <Stack spacing={2} mt={2}>
-        <Stack gap={2} direction="row">
+      {state.message && <Alert severity="warning">{state.message}</Alert>}
+      <Stack mt={2} spacing={2}>
+        <Stack direction="row" gap={2}>
           <SingleUpload
-            name="images.main"
             defaultValue={defaultValue?.images.main}
+            name="images.main"
           />
           <SingleUpload
             multi
-            name="images.list"
             defaultValue={defaultValue?.images.list}
+            name="images.list"
           />
         </Stack>
-
         <Stack direction="row" gap={2}>
           <CategoryField
-            name="category"
             defaultValue={defaultValue?.category}
+            name="category"
+            onChange={setCategory}
           />
-          <BrandField name="brand" defaultValue={defaultValue?.brand} />
+          <BrandField defaultValue={defaultValue?.brand} name="brand" />
         </Stack>
         <Stack direction="row" gap={2}>
-          <BadgeField name="badges" defaultValue={defaultValue?.badges} />
-          <ColorsField name="colors" defaultValue={defaultValue?.colors} />
+          <BadgeField defaultValue={defaultValue?.badges} name="badges" />
+          <ColorsField defaultValue={defaultValue?.colors} name="colors" />
         </Stack>
         <AIForm
           schema={[
             {
               name: "code",
               type: "number",
-              label: "Product Code",
+              label: "Code",
               defaultValue: defaultValue?.code,
               error: !!state.errors?.code,
               helperText: state.errors?.code,
             },
             {
               name: "titleEn",
-              label: "English Name",
+              label: "English Title",
               size: 6,
               type: "string",
               defaultValue: defaultValue?.titleEn,
@@ -71,7 +85,7 @@ function ProductForm({ defaultValue }: ProductFormProps) {
             },
             {
               name: "titleFa",
-              label: "Farsi Name",
+              label: "Farsi Title",
               size: 6,
               type: "string",
               defaultValue: defaultValue?.titleFa,
@@ -79,15 +93,77 @@ function ProductForm({ defaultValue }: ProductFormProps) {
               helperText: state.errors?.titleFa,
             },
             {
-              name: "expert_reviews",
-              label: "Description",
+              name: "review",
+              label: "Review",
               type: "textarea",
-              defaultValue: defaultValue?.expert_reviews,
-              error: !!state.errors?.expert_reviews,
-              helperText: state.errors?.expert_reviews,
+              defaultValue: defaultValue?.review,
+              error: !!state.errors?.review,
+              helperText: state.errors?.review,
+            },
+            {
+              name: "expert_review",
+              label: "ٍExpert Review",
+              type: "textarea",
+              defaultValue: defaultValue?.expert_review,
+              error: !!state.errors?.expert_review,
+              helperText: state.errors?.expert_review,
             },
           ]}
         />
+        <Divider />
+        <Typography>Properties</Typography>
+        {category?.properties.map((item, i) => (
+          <Stack key={item.id} gap={1}>
+            <input
+              hidden
+              defaultValue={item.name}
+              name={`specifications.${i}.name`}
+            />
+            <input
+              hidden
+              defaultValue={item.label}
+              name={`specifications.${i}.title`}
+            />
+            <Box>
+              {item.options?.length ? (
+                <TextField
+                  fullWidth
+                  select
+                  label={item.label}
+                  name={`specifications.${i}.value`}
+                  defaultValue={
+                    defaultValue?.specifications.find(
+                      (i) => i.name === item.name
+                    )?.value ?? ""
+                  }
+                >
+                  <MenuItem value="">Please Choose An Options</MenuItem>
+                  {item.options.map((o) => (
+                    <MenuItem key={o.id} value={o.value}>
+                      {o.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              ) : (
+                <TextField
+                  fullWidth
+                  label={item.label}
+                  name={`specifications.${i}.value`}
+                  defaultValue={
+                    defaultValue?.specifications.find(
+                      (i) => i.name === item.name
+                    )?.value
+                  }
+                />
+              )}
+
+              <FormControlLabel
+                control={<Checkbox name={`specifications.${i}.isDefault`} />}
+                label="Show This on top page?"
+              />
+            </Box>
+          </Stack>
+        ))}
         <SubmitButton variant="contained">Save</SubmitButton>
       </Stack>
     </form>

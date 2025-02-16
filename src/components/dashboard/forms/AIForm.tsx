@@ -15,10 +15,9 @@ type FormField = {
 
 type AIFormProps = {
   schema: FormField[];
-  bg?: string;
 };
 
-export default function AIForm({ schema, bg }: AIFormProps) {
+export default function AIForm({ schema }: AIFormProps) {
   return (
     <Grid2 container spacing={2}>
       {schema.map((item) => (
@@ -30,20 +29,16 @@ export default function AIForm({ schema, bg }: AIFormProps) {
             />
           ) : (
             <TextField
-              sx={{
-                bgcolor: bg,
-                borderRadius: 2,
-              }}
-              rows={5}
               fullWidth
-              multiline={item.type === "textarea"}
-              name={item.name}
-              label={item.label}
-              type={item.type}
+              defaultValue={item.defaultValue}
               error={item.error}
               helperText={item.helperText}
-              defaultValue={item.defaultValue}
+              label={item.label}
+              multiline={item.type === "textarea"}
+              name={item.name}
               placeholder={item.placeholder}
+              rows={5}
+              type={item.type}
             />
           )}
         </Grid2>
