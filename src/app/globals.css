@@ -33,6 +33,14 @@ body {
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 75%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -60,6 +68,14 @@ body {
     --chart-3: 30 80% 70%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .solarized-theme {
     --background: 45 100% 95%;
@@ -78,6 +94,8 @@ body {
     --accent-foreground: 45 100% 95%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 45 100% 95%;
+    --sidebar-background: 45 100% 95%;
+    --sidebar-foreground: 45 100% 20%;
     --border: 45 100% 85%;
     --input: 45 100% 85%;
     --ring: 192 100% 50%;
@@ -105,6 +123,8 @@ body {
     --accent-foreground: 210 100% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 100% 100%;
+    --sidebar-background: 210 100% 96%;
+    --sidebar-foreground: 210 100% 20%;
     --border: 210 100% 85%;
     --input: 210 100% 85%;
     --ring: 340 100% 50%;
@@ -133,6 +153,10 @@ body {
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     --spotify: 140 100% 50%;
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 140 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --border: 0 0% 25%;
     --input: 0 0% 25%;
     --ring: 140 100% 50%;

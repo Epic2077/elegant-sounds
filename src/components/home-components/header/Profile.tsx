@@ -15,10 +15,11 @@ import ProfileDetail from "./profileComponents/ProfileDetail";
 import { useAuth } from "@/utils/AuthContext";
 import { ConfirmationDialog } from "./ConfirmationDialog";
 import { useUserInfo } from "@/utils/userContext";
+import { cn } from "@/lib/utils";
 
-const Profile = () => {
+const Profile = ({ bg }: { bg?: string }) => {
   const { isLoggedIn, logout } = useAuth();
-  const { isUser, isAdmin, isSeller, user } = useUserInfo();
+  const { isUser, isAdmin, isSeller, profile } = useUserInfo();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -49,14 +50,16 @@ const Profile = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar>
-            <AvatarFallback>
+            <AvatarFallback className={cn(bg && `bg-${bg}`)}>
               <UserIcon className="h-5 w-5" />
             </AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent className=" sm:w-64 md:w-72 lg:w-80">
           <DropdownMenuLabel>
-            {isLoggedIn ? "Welcome " + status + user?.firstName : "My Account"}
+            {isLoggedIn
+              ? "Welcome " + status + profile?.firstName
+              : "My Account"}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           {isLoggedIn ? (

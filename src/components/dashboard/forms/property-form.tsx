@@ -66,12 +66,6 @@ export default function PropertyForm({ defaultValue }: Props) {
           <Stack direction={"row"} spacing={2} key={item.id}>
             <TextField
               fullWidth
-              name={`options.${index}.label`}
-              label="Label"
-              defaultValue={defaultValue?.options?.[index]?.label}
-            />
-            <TextField
-              fullWidth
               name={`options.${index}.value`}
               label="Value"
               defaultValue={defaultValue?.options?.[index]?.value}

@@ -13,7 +13,7 @@ type Props<T extends { id: string }> = {
   setQuery: (q: string) => void;
   error?: boolean;
   helperText?: string | string[];
-  bg?: string;
+  onChange?: (value: T | null) => void;
 };
 
 export default function AsyncListField<T extends { id: string }>({
@@ -27,7 +27,7 @@ export default function AsyncListField<T extends { id: string }>({
   setQuery,
   error,
   helperText,
-  bg,
+  onChange,
 }: Props<T>) {
   const [inputValue, setInputValue] = useState("");
   const [value, setValue] = useState<T | null>(null);
@@ -60,6 +60,7 @@ export default function AsyncListField<T extends { id: string }>({
         value={value}
         onChange={(event: unknown, newValue: T | null) => {
           setValue(newValue);
+          onChange?.(newValue);
         }}
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);
@@ -71,7 +72,6 @@ export default function AsyncListField<T extends { id: string }>({
         renderInput={(params) => (
           <TextField
             sx={{
-              bgcolor: bg,
               borderRadius: 2,
             }}
             {...params}

@@ -29,8 +29,10 @@ export async function createOrUpdateProductAction(
   }
   try {
     if (id) {
+      console.log(validatedFields.data);
       await updateProduct(id.toString(), validatedFields.data);
     } else {
+      console.log(validatedFields.data);
       await createProduct(validatedFields.data);
     }
   } catch (e) {

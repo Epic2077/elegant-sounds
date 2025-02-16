@@ -19,7 +19,7 @@ const ProfileDetail = ({ onLogoutClick }: { onLogoutClick: () => void }) => {
   return (
     <div>
       <DropdownMenuGroup>
-        <Link href="#">
+        <Link href="/profile">
           <DropdownMenuItem>
             <User className="w-4 h-4 mr-2" />
             Profile

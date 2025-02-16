@@ -77,6 +77,14 @@ interface IPropertyValue {
   value: string;
   id: string;
 }
+export interface SellerInfo {
+  lastPrice: number;
+  createdAt: string;
+  discount: number;
+  count: number;
+  id: string;
+  seller: ISeller;
+}
 export interface IProduct extends Timestamp {
   images: {
     main: string;
@@ -90,10 +98,11 @@ export interface IProduct extends Timestamp {
   badges: [];
   category: ICategory;
   brand: IBrand;
-  review: IPropertyValue[];
+  review: string[];
   specifications: IPropertyValue[];
-  expert_reviews: string;
+  expert_review: string;
   id: string;
+  bestSeller?: SellerInfo;
 }
 export interface IUser {
   firstName: string;
