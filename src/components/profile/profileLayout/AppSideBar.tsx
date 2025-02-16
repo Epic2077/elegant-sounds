@@ -29,15 +29,8 @@ import {
   Wallet,
 } from "lucide-react";
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarRail,
-} from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarRail } from "@/components/ui/sidebar";
 import { NavMain } from "./NavMain";
-import { NavProjects } from "./NavItems";
 import { useUserInfo } from "@/utils/userContext";
 
 // This is sample data.

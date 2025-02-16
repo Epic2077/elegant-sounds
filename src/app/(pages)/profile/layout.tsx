@@ -7,12 +7,15 @@ const ProfileLayout = ({ children }: { children: ReactNode }) => {
   return (
     <section className="relative overflow-x-hidden">
       <div className="flex">
-        <SidebarProvider>
+        <SidebarProvider defaultOpen={false} className="fixed">
           <AppSidebar />
           <ProfileHeader />
         </SidebarProvider>
+        <main className="grow p-4 pl-20">
+          <div className="grid items-center justify-start min-h-[55px]"></div>
+          {children}
+        </main>
       </div>
-      <main>{children}</main>
     </section>
   );
 };
