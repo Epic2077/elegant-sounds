@@ -10,7 +10,7 @@ const PaymentMethodDetail = () => {
       value: "Unknown",
     },
     {
-      title: "Cart Holder",
+      title: "Card Holder",
       value: "Unknown",
     },
     {
