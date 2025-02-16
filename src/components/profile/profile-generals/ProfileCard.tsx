@@ -27,7 +27,7 @@ const ProfileCard = () => {
     address = "No Address Set";
   }
   return (
-    <Card className="w-[350px] bg-accent rounded-xl shadow-lg shadow-black mt-2 pb-2">
+    <Card className="w-[350px] bg-muted rounded-xl shadow-lg shadow-black mt-2 pb-2">
       <CardHeader className="p-6 pb-1 flex justify-center items-center">
         <div className="bg-primary flex justify-center items-center rounded-3xl h-max w-max p-5 shadow-lg shadow-black">
           <Image
