@@ -5,7 +5,6 @@ const categories = [
   "Headphone",
   "Speaker",
   "Earbuds",
-  "Wireless",
   "Soundbar",
   "Subwoofer",
   "Amplifier",
