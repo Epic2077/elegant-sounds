@@ -8,6 +8,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/utils/AuthContext";
 import { UserProvider } from "@/utils/userContext";
 
+import GoTop from "@/components/GoTop";
+
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
@@ -51,7 +53,8 @@ export default function RootLayout({
             <UserProvider>
               {children}
               <Toaster />
-              <div className="fixed bottom-8 right-8 z-20">
+              <div className="fixed bottom-8 right-8 z-20 flex flex-row justify-center items-center">
+                <GoTop />
                 <ModeToggle />
               </div>
             </UserProvider>
