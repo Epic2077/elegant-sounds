@@ -73,7 +73,10 @@ const ProductCard: React.FC<ArrivalCardsProps> = ({
             {product.brand.titleEn}
           </ShinyButton>
           <p className="whitespace-pre-wrap text-base font-medium tracking-tighter ">
-            ${product.bestSeller?.lastPrice}.00
+            {product.bestSeller?.lastPrice !== null &&
+            product.bestSeller?.lastPrice !== undefined
+              ? `$${product.bestSeller.lastPrice}.00`
+              : "N/A"}
           </p>
         </div>
         <div className="mt-2">
