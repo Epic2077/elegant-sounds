@@ -1,3 +1,4 @@
+import Cursor from "@/components/cursor";
 import BestSeller from "@/components/home-components/Best Seller/BestSeller";
 // import Category from "@/components/home-components/Categories/Categories";
 import Collection from "@/components/home-components/collection/Collection";
@@ -11,6 +12,8 @@ import React from "react";
 const Home = async () => {
   return (
     <section className="grid gap-12 w-screen">
+      <Cursor />
+
       <Hero />
       <div className="w-screen">
         <LogoCarousel />
