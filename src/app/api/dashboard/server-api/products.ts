@@ -4,9 +4,9 @@ import "server-only";
 import type { IProduct, PaginatedResultApi } from "./types";
 import { revalidateTag } from "next/cache";
 import { ProductType } from "@/lib/validation";
-import { serverApiFetch } from "../../base";
 import { ADMIN_BASE_URL } from "@/app/Base";
 import { getAccessToken } from "./city";
+import { serverApiFetch } from "../../base";
 
 // Create a new Product
 export const createProduct = async (
