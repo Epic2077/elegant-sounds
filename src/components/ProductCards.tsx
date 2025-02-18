@@ -12,17 +12,17 @@ import React from "react";
 
 interface ArrivalCardsProps {
   product: IProduct;
-  status?: "New" | "Hot";
   off?: boolean;
   offPercentage?: number;
 }
 
 const ProductCard: React.FC<ArrivalCardsProps> = ({
   product,
-  status,
   off = false,
   offPercentage,
 }) => {
+  const status = product.badges;
+
   return (
     <BlurFade className="w-max mx-auto">
       <BackgroundGradient
@@ -30,9 +30,12 @@ const ProductCard: React.FC<ArrivalCardsProps> = ({
         containerClassName="w-max"
       >
         <div className="mb-[6px] relative w-full">
-          {status && (
-            <div className="absolute top-2 left-2 bg-primary py-1.5 px-4 rounded flex flex-col gap-6">
-              <p className="text-xs">{status}</p>
+          {status && status[0] && (
+            <div
+              className="absolute top-2 left-2 bg-primary py-1.5 px-4 rounded flex flex-col gap-6"
+              key={status[0].id}
+            >
+              <p className="text-xs">{status[0].title}</p>
             </div>
           )}
           {off && offPercentage !== undefined && (

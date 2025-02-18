@@ -99,9 +99,9 @@ export interface IProduct extends Timestamp {
   titleFa: string;
   titleEn: string;
   status: "marketable" | "unmarketable";
-  badges: [];
+  badges: IBadge[];
   category: ICategory;
-  brand: IBrand;
+  brand: IBrand[];
   review: string[];
   specifications: IPropertyValue[];
   expert_review: string;
