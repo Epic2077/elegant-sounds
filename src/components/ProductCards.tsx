@@ -5,6 +5,7 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { cn } from "@/lib/utils";
 import { BlurFade } from "@/widget/animations/FadeIn";
+import { colors } from "@mui/material";
 import { ArrowBigRightDash, Heart, Tag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,6 +41,17 @@ const ProductCard: React.FC<ArrivalCardsProps> = ({
               <span className="text-xs text-primary-foreground">
                 {offPercentage}% OFF
               </span>
+            </div>
+          )}
+          {product.colors.length > 0 && (
+            <div className="absolute top-12 right-0 bg-muted p-1 py-2 rounded-full flex flex-col gap-2">
+              {product.colors.map((color) => (
+                <div
+                  className="p-1 rounded-full"
+                  key={color.id}
+                  style={{ backgroundColor: color.hexCode }}
+                ></div>
+              ))}
             </div>
           )}
 
