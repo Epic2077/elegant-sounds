@@ -7,9 +7,10 @@ import { useCategoriesQuery } from "@/app/api/shop/client-api/categories";
 
 type Props = {
   name: string;
-  defaultValue: ICategory;
+  defaultValue?: ICategory;
   error?: boolean;
   helperText?: string | string[];
+  onChange?: (category: ICategory | null) => void;
 };
 
 export default function CategoryField({
@@ -17,6 +18,7 @@ export default function CategoryField({
   defaultValue,
   error,
   helperText,
+  onChange,
 }: Props) {
   const [query, setQuery] = useState("");
   const { data, isLoading } = useCategoriesQuery(query);
@@ -32,6 +34,7 @@ export default function CategoryField({
       name={name}
       setQuery={setQuery}
       defaultValue={defaultValue}
+      onChange={onChange}
     />
   );
 }

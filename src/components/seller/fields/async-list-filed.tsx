@@ -27,6 +27,7 @@ type Props<T extends { id: string }> = {
   error?: boolean;
   helperText?: string | string[];
   className?: string;
+  onChange?: (value: T | null) => void;
 };
 
 export default function AsyncListField<T extends { id: string }>({
@@ -41,6 +42,7 @@ export default function AsyncListField<T extends { id: string }>({
   error,
   helperText,
   className,
+  onChange,
 }: Props<T>) {
   const [inputValue, setInputValue] = useState("");
   const [value, setValue] = useState<T | null>(null);
@@ -94,7 +96,7 @@ export default function AsyncListField<T extends { id: string }>({
 
   return (
     <FormProvider {...form}>
-      <FormItem>
+      <FormItem className="w-full">
         {value?.id && <input type="hidden" name={name} value={value.id} />}
         <FormLabel>{label}</FormLabel>
         <Command className="overflow-visible bg-transparent">
@@ -106,6 +108,7 @@ export default function AsyncListField<T extends { id: string }>({
                 setInputValue(val);
                 if (!val) {
                   setValue(null);
+                  onChange?.(null);
                 }
                 debouncedSetQuery(val);
                 setOpen(true);

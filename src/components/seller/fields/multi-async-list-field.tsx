@@ -86,7 +86,7 @@ export default function MultiAsyncListField<T extends { id: string }>({
 
   return (
     <FormProvider {...form}>
-      <FormItem>
+      <FormItem className="w-full">
         {values.map((v, index) => (
           <input
             type="hidden"
@@ -104,6 +104,7 @@ export default function MultiAsyncListField<T extends { id: string }>({
           <div ref={wrapperRef} className="relative">
             <CommandInput
               value={inputValue}
+              onClick={() => setOpen(true)}
               onValueChange={(val) => {
                 setInputValue(val);
                 updateQuery(val);
@@ -136,39 +137,38 @@ export default function MultiAsyncListField<T extends { id: string }>({
           </div>
 
           {open && (
-            <CommandList className=" z-10 w-full mt-1 border rounded-md shadow-md bg-popover">
-              {options.length === 0 ? (
-                <CommandEmpty>No results found</CommandEmpty>
-              ) : (
-                <>
-                  {Object.entries(groupedOptions).map(([group, items]) => (
-                    <CommandGroup key={group} heading={group}>
-                      {items.map((option) => (
-                        <CommandItem
-                          key={option.id}
-                          value={option.id}
-                          onSelect={() => {
-                            setValues((prev) =>
-                              prev.some((v) => v.id === option.id)
-                                ? prev.filter((v) => v.id !== option.id)
-                                : [...prev, option]
-                            );
-                          }}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={values.some((v) => v.id === option.id)}
-                            className="mr-2"
-                            readOnly
-                          />
-                          {getOptionLabel(option)}
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
+            <>
+              {Object.entries(groupedOptions).map(([group, items]) => (
+                <CommandGroup key={group} heading={group}>
+                  {items.map((option) => (
+                    <CommandItem
+                      key={option.id}
+                      value={option.id}
+                      onSelect={() => {
+                        setValues((prev) =>
+                          prev.some((v) => v.id === option.id)
+                            ? prev.filter((v) => v.id !== option.id)
+                            : [...prev, option]
+                        );
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={values.some((v) => v.id === option.id)}
+                        className="mr-2"
+                        readOnly
+                      />
+                      {getOptionLabel(option)}
+                    </CommandItem>
                   ))}
-                </>
-              )}
-            </CommandList>
+                </CommandGroup>
+              ))}
+              <CommandList className=" z-10 w-full mt-1 border rounded-md shadow-md bg-popover">
+                {options.length === 0 ? (
+                  <CommandEmpty>No results found</CommandEmpty>
+                ) : null}
+              </CommandList>
+            </>
           )}
         </Command>
       </FormItem>
