@@ -77,7 +77,7 @@ const ProductCard: React.FC<ArrivalCardsProps> = ({
             alt={product.titleEn}
             width={200}
             height={300}
-            className="mx-auto object-cover w-[250px] h-[300px]"
+            className="mx-auto object-contain w-[250px] h-[300px]"
           />
         </div>
         <div className="flex justify-between items-center">

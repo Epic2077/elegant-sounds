@@ -10,6 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ReactNode, useEffect, useState } from "react";
+import { Button } from "./ui/button";
+import { X } from "lucide-react";
 
 interface FilterableProductGridProps {
   products: IProduct[];
@@ -45,6 +47,21 @@ export function FilterableProductGrid({
     maxPrice,
     products,
   ]);
+
+  const resetFilters = () => {
+    setSearchTerm("");
+    setSelectedCategory("");
+    setSelectedBrand("");
+    setMinPrice("");
+    setMaxPrice("");
+  };
+
+  const hasActiveFilters =
+    !!searchTerm ||
+    !!selectedCategory ||
+    !!selectedBrand ||
+    !!minPrice ||
+    !!maxPrice;
 
   const applyFilters = () => {
     let filtered = [...products];
@@ -137,6 +154,16 @@ export function FilterableProductGrid({
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
           />
+          {hasActiveFilters && (
+            <Button
+              variant="outline"
+              onClick={resetFilters}
+              className="h-full flex gap-2 "
+            >
+              <X className="h-4 w-4" />
+              Clear
+            </Button>
+          )}
         </div>
       </div>
 
