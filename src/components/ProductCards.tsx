@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { BlurFade } from "@/widget/animations/FadeIn";
 import { ArrowBigRightDash, Heart, Tag } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface ArrivalCardsProps {
@@ -85,12 +86,14 @@ const ProductCard: React.FC<ArrivalCardsProps> = ({
           </p>
         </div>
         <div className="flex justify-between items-center mt-2">
-          <div className="flex gap-2 items-center  ">
-            <Tag className="w-5" />
-            <p className="text-muted-foreground text-sm">
-              {product.category.titleEn}
-            </p>
-          </div>
+          <Link href={`/home/categories/${product.category.titleEn}`}>
+            <div className="flex gap-2 items-center  ">
+              <Tag className="w-5" />
+              <p className="text-muted-foreground text-sm">
+                {product.category.titleEn}
+              </p>
+            </div>
+          </Link>
           <ArrowBigRightDash className="w-5 text-ring" />
         </div>
       </BackgroundGradient>
