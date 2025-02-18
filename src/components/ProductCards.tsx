@@ -5,7 +5,6 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { cn } from "@/lib/utils";
 import { BlurFade } from "@/widget/animations/FadeIn";
-import { colors } from "@mui/material";
 import { ArrowBigRightDash, Heart, Tag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
