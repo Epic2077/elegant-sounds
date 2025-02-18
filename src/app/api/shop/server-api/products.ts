@@ -73,7 +73,7 @@ export const deleteProduct = async (id: string) => {
 };
 
 // Get Product by Id
-export const getProduct = async (id: string): Promise<IProduct> => {
+export const getProductById = async (id: string): Promise<IProduct> => {
   const accessToken = await getAccessToken();
   return serverApiFetch<IProduct>(
     `${SHOP_BASE_URL}/products/${id}`,

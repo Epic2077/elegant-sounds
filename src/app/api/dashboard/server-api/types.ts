@@ -78,13 +78,17 @@ interface IPropertyValue {
   id: string;
 }
 export interface SellerInfo {
-  lastPrice: number;
-  createdAt: string;
-  discount: number;
+  product: string;
+  seller: string;
+  price: number;
   count: number;
+  discount: number;
+  createdAt: string;
+  updatedAt: string;
   id: string;
-  seller: ISeller;
+  lastPrice?: number;
 }
+
 export interface IProduct extends Timestamp {
   images: {
     main: string;

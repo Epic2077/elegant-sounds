@@ -58,6 +58,17 @@ export default function AIForm({ schema, bg }: AIFormProps) {
                   className={cn(bg, "rounded-md h-12 w-full")}
                   defaultValue={item.defaultValue as string}
                 />
+              ) : item.type === "number" ? (
+                <Input
+                  type="number"
+                  id={item.name}
+                  name={item.name}
+                  placeholder={item.placeholder}
+                  defaultValue={item.defaultValue as string}
+                  className={cn(bg, "rounded-md")}
+                  min={0}
+                  step={1}
+                />
               ) : (
                 <Input
                   type={item.type}

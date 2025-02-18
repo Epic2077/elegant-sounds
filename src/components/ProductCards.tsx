@@ -73,7 +73,7 @@ const ProductCard: React.FC<ArrivalCardsProps> = ({
             {product.brand.titleEn}
           </ShinyButton>
           <p className="whitespace-pre-wrap text-base font-medium tracking-tighter ">
-            ${product.bestSeller?.count}
+            ${product.bestSeller?.lastPrice}.00
           </p>
         </div>
         <div className="mt-2">

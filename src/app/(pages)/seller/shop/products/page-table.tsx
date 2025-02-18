@@ -6,7 +6,8 @@ import {
 } from "@/app/api/dashboard/server-api/types";
 import SellerTable from "@/components/seller/tables/SellerTable";
 import { Button } from "@/components/ui/button";
-import { Edit } from "lucide-react";
+import { CircleDollarSign, Edit } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function SProductTable({
@@ -25,6 +26,12 @@ export function SProductTable({
                 <Edit className="text-primary" />
               </Button>
             </Link>
+            <Link href={`/seller/shop/products/${p.code}/price/`}>
+              <Button variant={"ghost"}>
+                <h5>Price</h5>
+                <CircleDollarSign className="text-primary" />
+              </Button>
+            </Link>
           </header>
         </div>
       )}
@@ -33,10 +40,12 @@ export function SProductTable({
         {
           title: "Image",
           render: (row) => (
-            <img
+            <Image
               src={row.images.main}
               alt="Product Image"
               style={{ width: "60px", height: "60px" }}
+              width={60}
+              height={60}
             />
           ),
         },
@@ -63,6 +72,10 @@ export function SProductTable({
         {
           title: "Update",
           render: (row) => new Date(row.updatedAt).toLocaleDateString("en"),
+        },
+        {
+          title: "Price",
+          render: (row) => (row.bestSeller ? row.bestSeller.price : "N/A"),
         },
       ]}
     ></SellerTable>

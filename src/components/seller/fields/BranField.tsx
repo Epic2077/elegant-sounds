@@ -1,8 +1,8 @@
 "use client";
 
-import { useBrandsQuery } from "@/app/api/dashboard/client-api/brand";
 import { IBrand } from "@/app/api/dashboard/server-api/types";
 import AsyncListField from "./async-list-filed";
+import { useBrandsQuery } from "@/app/api/shop/client-api/brand";
 
 type props = {
   name: string;

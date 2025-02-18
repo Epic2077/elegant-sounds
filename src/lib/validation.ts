@@ -67,11 +67,11 @@ export type CommentType = z.infer<typeof CommentSchemaZod>;
 export type CommentFormState = FormState<CommentType>;
 
 // Zod Schemas for subdocuments
-const ReviewSchemaZod = z.object({
-  title: z.string().min(1, "Review title is required").trim(),
-  value: z.string().min(1, "Review value is required").trim(),
-  name: z.string().min(1, "Review name is required").trim(),
-});
+// const ReviewSchemaZod = z.object({
+//   title: z.string().min(1, "Review title is required").trim(),
+//   value: z.string().min(1, "Review value is required").trim(),
+//   name: z.string().min(1, "Review name is required").trim(),
+// });
 
 const SpecificationSchemaZod = z.object({
   title: z.string().min(1, "Specification title is required").trim(),
@@ -120,6 +120,15 @@ export const PropertySchemaZod = z.object({
       })
     )
     .optional(), // Options array is optional
+});
+
+export type PriceType = z.infer<typeof PriceSchemaZod>;
+export type PriceFormState = FormState<PriceType>;
+
+export const PriceSchemaZod = z.object({
+  price: z.coerce.number().nonnegative(),
+  discount: z.coerce.number().min(0).max(100),
+  count: z.coerce.number().min(0).optional(),
 });
 
 export type PropertyType = z.infer<typeof PropertySchemaZod>;
