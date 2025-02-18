@@ -19,32 +19,32 @@ import { useUserInfo } from "@/utils/userContext";
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Headphones",
-    href: "/shop/categories/headphones",
+    href: "/home/categories/headphones",
     description: "High-quality headphones for an immersive audio experience.",
   },
   {
     title: "Speakers",
-    href: "/shop/categories/speakers",
+    href: "/home/categories/speakers",
     description: "Top-notch speakers to fill your room with sound.",
   },
   {
     title: "Microphones",
-    href: "/shop/categories/microphones",
+    href: "/home/categories/microphones",
     description: "Professional microphones for recording and streaming.",
   },
   {
     title: "EarBuds",
-    href: "/shop/categories/audio-interfaces",
+    href: "/home/categories/audio-interfaces",
     description: "Compact and convenient earbuds for on-the-go listening.",
   },
   {
     title: "Accessories",
-    href: "/shop/categories/accessories",
+    href: "/home/categories/accessories",
     description: "Essential accessories for your music devices.",
   },
   {
     title: "Show All",
-    href: "/shop/categories",
+    href: "/home/categories",
     description: "Show all the categories.",
   },
 ];
