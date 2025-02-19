@@ -89,8 +89,8 @@ export function Navigation() {
               <ListItem href="/shop/new-arrivals" title="New Arrivals">
                 Check out the latest additions to our devices collection.
               </ListItem>
-              <ListItem href="/shop/sale" title="On Sale">
-                Grab the best deals on our top devices.
+              <ListItem href="/shop" title="Products">
+                Explore our wide range of music devices.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -117,13 +117,6 @@ export function Navigation() {
               <Link href="/admin/dashboard" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Dashboard
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/seller/shop" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Your-Shop
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

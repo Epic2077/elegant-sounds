@@ -71,15 +71,17 @@ export interface IColor extends Timestamp {
   id: string;
 }
 
-interface IPropertyValue {
-  name: string;
-  title: string;
-  value: string;
+export interface ISeller {
   id: string;
+  user: IUser;
+  name: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
 }
 export interface SellerInfo {
+  seller: ISeller;
   product: string;
-  seller: string;
   price: number;
   count: number;
   discount: number;
@@ -87,6 +89,14 @@ export interface SellerInfo {
   updatedAt: string;
   id: string;
   lastPrice?: number;
+}
+
+export interface ISpecification {
+  name: string;
+  title: string;
+  value: string;
+  isDefault: boolean;
+  id: string;
 }
 
 export interface IProduct extends Timestamp {
@@ -103,10 +113,11 @@ export interface IProduct extends Timestamp {
   category: ICategory;
   brand: IBrand;
   review: string[];
-  specifications: IPropertyValue[];
+
   expert_review: string;
   id: string;
   bestSeller?: SellerInfo;
+  specifications?: ISpecification[];
 }
 export interface IUser {
   firstName: string;
