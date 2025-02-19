@@ -101,7 +101,7 @@ export interface IProduct extends Timestamp {
   status: "marketable" | "unmarketable";
   badges: IBadge[];
   category: ICategory;
-  brand: IBrand[];
+  brand: IBrand;
   review: string[];
   specifications: IPropertyValue[];
   expert_review: string;
