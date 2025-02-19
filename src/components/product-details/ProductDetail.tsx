@@ -6,14 +6,32 @@ import { IProduct } from "@/app/api/dashboard/server-api/types";
 import Link from "next/link";
 import { Heart, Minus, Plus, Tag } from "lucide-react";
 import SubmitButton from "../seller/SubmitButton";
+import { cn } from "@/lib/utils";
+import { useAppDispatch } from "@/redux/hooks";
+import { addItem } from "@/redux/features/cartSlice";
 
 const ProductDetailComponent = ({ product }: { product: IProduct }) => {
+  const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState(1);
   const price = product.bestSeller?.lastPrice || 0;
   const totalPrice = quantity * parseFloat(price.toString());
 
+  const [selectedColor, setSelectedColor] = useState(product.colors[0].title);
+
   const handleIncrement = () => setQuantity((prev) => prev + 1);
   const handleDecrement = () => setQuantity((prev) => Math.max(0, prev - 1));
+
+  function handleAddToCart() {
+    dispatch(
+      addItem({
+        code: product.code,
+        title: product.titleEn,
+        price: totalPrice,
+        quantity: quantity,
+        color: selectedColor,
+      })
+    );
+  }
 
   return (
     <div className="flex flex-col  ml-6 gap-6">
@@ -85,9 +103,12 @@ const ProductDetailComponent = ({ product }: { product: IProduct }) => {
         <div className="h-10 border-[2px] border-primary w-max px-6 py-4 rounded-full flex flex-row gap-4 bg-muted items-center">
           {product.colors.map((color) => (
             <div
-              className="p-3 rounded-full"
+              className={cn("p-3 rounded-full", {
+                "border-[2px] border-primary": selectedColor === color.title,
+              })}
               style={{ backgroundColor: color.hexCode }}
               key={color.id}
+              onClick={() => setSelectedColor(color.title)}
             ></div>
           ))}
         </div>
@@ -110,7 +131,10 @@ const ProductDetailComponent = ({ product }: { product: IProduct }) => {
         )}
       </div>
       <div className="flex items-center mt-[50px] w-full ml-10 gap-6">
-        <SubmitButton className="text-3xl py-6 px-9 w-full">
+        <SubmitButton
+          className="text-3xl py-6 px-9 w-full"
+          onClick={handleAddToCart}
+        >
           Add To Cart
         </SubmitButton>
         <div className="py-4 px-9 items-center justify-center grid bg-background border-[2px] border-primary rounded-2xl w-6 hover:bg-primary hover:text-primary-foreground">

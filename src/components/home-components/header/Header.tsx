@@ -6,6 +6,8 @@ import { Navigation } from "./Navigation";
 import Profile from "./Profile";
 import Logo from "@/components/Logo";
 import Burger from "./BurgerMenu";
+import { ShoppingCart } from "lucide-react";
+import { useAppSelector } from "@/redux/hooks";
 
 const Header = () => {
   const [showNotification, setShowNotification] = useState(true);
@@ -30,6 +32,8 @@ const Header = () => {
       clearTimeout(timeoutId);
     };
   }, []);
+
+  const cartItems = useAppSelector((state) => state.cart.items);
 
   return (
     <div className="fixed w-full top-0 left-0 z-50">
@@ -60,6 +64,15 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-4">
+            <div className="relative">
+              {cartItems.length > 0 && (
+                <div className="absolute top-0 right-0 p-0.5 px-1.5 text-destructive-foreground text-xs bg-destructive rounded-full mt-[-5px] mr-[-5px] flex items-center justify-center">
+                  {cartItems.length}
+                </div>
+              )}
+
+              <ShoppingCart />
+            </div>
             <Profile />
             <div className="sm:block md:hidden lg:hidden">
               <Burger />

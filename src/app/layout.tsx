@@ -10,6 +10,9 @@ import { UserProvider } from "@/utils/userContext";
 
 import GoTop from "@/components/GoTop";
 
+import React from "react";
+import ReduxProviderWrapper from "@/components/ReduxProviderWrapper";
+
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
@@ -49,16 +52,18 @@ export default function RootLayout({
             "spotify-theme",
           ]}
         >
-          <AuthProvider>
-            <UserProvider>
-              {children}
-              <Toaster />
-              <div className="fixed bottom-8 right-8 z-20 flex flex-row justify-center items-center">
-                <GoTop />
-                <ModeToggle />
-              </div>
-            </UserProvider>
-          </AuthProvider>
+          <ReduxProviderWrapper>
+            <AuthProvider>
+              <UserProvider>
+                {children}
+                <Toaster />
+                <div className="fixed bottom-8 right-8 z-20 flex flex-row justify-center items-center">
+                  <GoTop />
+                  <ModeToggle />
+                </div>
+              </UserProvider>
+            </AuthProvider>
+          </ReduxProviderWrapper>
         </ThemeProvider>
       </body>
     </html>
