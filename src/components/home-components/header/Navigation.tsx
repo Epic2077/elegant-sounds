@@ -83,10 +83,10 @@ export function Navigation() {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Best Selling">
+              <ListItem href="/shop/badges/hot" title="Best Selling">
                 Discover our most popular music devices products.
               </ListItem>
-              <ListItem href="/shop/new-arrivals" title="New Arrivals">
+              <ListItem href="/shop/badges/new-arrival" title="New Arrivals">
                 Check out the latest additions to our devices collection.
               </ListItem>
               <ListItem href="/shop/b" title="Products">

@@ -1,44 +1,36 @@
+"use client";
+
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import RightToLeftFade from "@/widget/animations/rightToLeftFade-Animation";
-import React from "react";
-import HomeCards from "../Home-Cards";
+import React, { useEffect, useState } from "react";
 import Header4 from "../Header4";
+import ProductCard from "@/components/ProductCards";
+import { IProduct } from "@/app/api/dashboard/server-api/types";
+import { BASE_URL } from "@/app/Base";
 
 const NewArrivals = () => {
-  const fakeArrivals = [
-    {
-      brand: "Skullcandy",
-      name: "Crusher anc 2 wireless headphones",
-      price: 299.99,
-      img: "/images/Arrivals/skullcandy-crusher.png",
-      category: "Wireless Headphones",
-      id: 1,
-    },
-    {
-      brand: "Beats",
-      name: "Studio Pro",
-      price: 349.99,
-      img: "/images/Arrivals/beats-studio-pro.png",
-      category: "Wireless Headphones",
-      id: 2,
-    },
-    {
-      brand: "Sony",
-      name: "WH-CH720N",
-      price: 149.99,
-      img: "/images/Arrivals/sony-wh-ch720n.png",
-      category: "Wireless Headphones",
-      id: 3,
-    },
-    {
-      brand: "SkullCandy",
-      name: "Rail True Wireless",
-      price: 79.99,
-      img: "/images/Arrivals/skullcandy-rail-true.png",
-      category: "Earbuds",
-      id: 4,
-    },
-  ];
+  const [arrivals, setArrivals] = useState<IProduct[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/products`);
+        const data = await res.json();
+        // Filter products by the “new arrival” badge
+        const filtered =
+          data.results?.filter((product: IProduct) =>
+            product.badges?.some(
+              (b) => b.title?.toLowerCase() === "new arrival"
+            )
+          ) || [];
+        // Show first 4
+        setArrivals(filtered.slice(0, 4));
+      } catch (err) {
+        console.error("Failed fetching new arrivals", err);
+      }
+    })();
+  }, []);
+
   return (
     <section>
       <div className="flex items-center justify-between">
@@ -50,9 +42,9 @@ const NewArrivals = () => {
         </RightToLeftFade>
       </div>
 
-      <div className=" grid grid-cols-1 sm:grid-cols-2 justify-center lg:grid-cols-4 gap-6 mt-12">
-        {fakeArrivals.map((product) => (
-          <HomeCards key={product.id} product={product} status="New" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        {arrivals.map((product: IProduct, index: number) => (
+          <ProductCard product={product} key={index} />
         ))}
       </div>
     </section>
