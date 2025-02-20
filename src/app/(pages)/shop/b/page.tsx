@@ -2,14 +2,19 @@
 
 import { IProduct } from "@/app/api/dashboard/server-api/types";
 import { BASE_URL } from "@/app/Base";
+import { FilterableProductGrid } from "@/components/FilterTableProductGrid";
+import { CustomPagination } from "@/components/pagination";
 import ProductCard from "@/components/ProductCards";
-import { useParams } from "next/navigation";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import React, { useEffect, useState } from "react";
-import { FilterableProductGrid } from "../FilterTableProductGrid";
-import { CustomPagination } from "../pagination";
 
 export default function CategoryProducts({}) {
-  const { categoryName } = useParams() as { categoryName: string };
   const [products, setProducts] = useState<IProduct[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -19,16 +24,10 @@ export default function CategoryProducts({}) {
       const res = await fetch(`${BASE_URL}/products`);
       const data = await res.json();
 
-      const filtered = data.results.filter(
-        (item: IProduct) =>
-          item.category?.titleEn?.toLowerCase() ===
-            categoryName.toLowerCase() ||
-          item.category?.slug?.toLowerCase() === categoryName.toLowerCase()
-      );
-      setProducts(filtered);
+      setProducts(data.results);
     }
     fetchProducts();
-  }, [categoryName]);
+  }, []);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -40,10 +39,21 @@ export default function CategoryProducts({}) {
   };
 
   return (
-    <div className="mt-8">
-      <h1 className="text-3xl font-bold text-primary mb-4">
-        Category: <span className="text-foreground">{categoryName}</span>
-      </h1>
+    <div className="mt-14 px-12 py-6">
+      <div className="w-full h-80 bg-[url(/images/banner.jpg)] bg-center rounded-2xl mb-6 brightness-75 flex flex-col items-center justify-center">
+        <h1 className="text-5xl font-bold mb-4">Shop</h1>
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/home">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/home/shop/b">Shop</BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <FilterableProductGrid products={products}>
         {(filteredProducts) => {
           // Apply pagination to the filtered products

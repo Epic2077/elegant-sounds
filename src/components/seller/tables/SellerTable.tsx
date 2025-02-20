@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table";
 import { ReactNode } from "react";
 import STableRow from "./STableRows";
+import TablePagination from "./TablePagination";
 
 interface SellerTableProps<T extends { id: string }, G extends { id: string }> {
   schema: Column<T>[];
@@ -63,6 +64,7 @@ export default function SellerTable<
           )}
         </TableBody>
       </Table>
+      <TablePagination count={data.total} />
     </section>
   );
 }

@@ -89,7 +89,7 @@ export function Navigation() {
               <ListItem href="/shop/new-arrivals" title="New Arrivals">
                 Check out the latest additions to our devices collection.
               </ListItem>
-              <ListItem href="/shop" title="Products">
+              <ListItem href="/shop/b" title="Products">
                 Explore our wide range of music devices.
               </ListItem>
             </ul>
