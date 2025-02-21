@@ -19,7 +19,9 @@ interface ArrivalCardsProps {
 const ProductCard: React.FC<ArrivalCardsProps> = ({ product }) => {
   const status = product.badges;
 
-  const off = product.bestSeller?.discount !== null;
+  const off =
+    product.bestSeller?.discount !== null &&
+    (product.bestSeller?.discount ?? 0) > 0;
   const offPercentage = product.bestSeller?.discount;
 
   return (
@@ -39,7 +41,7 @@ const ProductCard: React.FC<ArrivalCardsProps> = ({ product }) => {
               </div>
             )}
             {off && offPercentage !== undefined && (
-              <div className="absolute top-2 left-16 bg-primary py-1.5 px-4 rounded flex flex-col gap-6">
+              <div className="absolute top-12 left-2 bg-primary py-1.5 px-4 rounded flex flex-col gap-6">
                 <span className="text-xs text-primary-foreground">
                   {offPercentage}% OFF
                 </span>
@@ -90,10 +92,22 @@ const ProductCard: React.FC<ArrivalCardsProps> = ({ product }) => {
             {product.brand.titleEn}
           </ShinyButton>
           <p className="whitespace-pre-wrap text-base font-medium tracking-tighter ">
-            {product.bestSeller?.lastPrice !== null &&
-            product.bestSeller?.lastPrice !== undefined
-              ? `$${product.bestSeller.lastPrice}.00`
-              : "N/A"}
+            {off && offPercentage !== undefined ? (
+              <>
+                <span className="line-through text-muted-foreground">
+                  ${product.bestSeller?.lastPrice}.00
+                </span>
+                <span className="ml-2 text-primary">
+                  $
+                  {(
+                    (product.bestSeller?.lastPrice ?? 0) *
+                    (1 - offPercentage / 100)
+                  ).toFixed(2)}
+                </span>
+              </>
+            ) : (
+              `$${product.bestSeller?.lastPrice}.00`
+            )}
           </p>
         </div>
         <div className="mt-2">
