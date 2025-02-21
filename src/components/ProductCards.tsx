@@ -16,12 +16,11 @@ interface ArrivalCardsProps {
   offPercentage?: number;
 }
 
-const ProductCard: React.FC<ArrivalCardsProps> = ({
-  product,
-  off = false,
-  offPercentage,
-}) => {
+const ProductCard: React.FC<ArrivalCardsProps> = ({ product }) => {
   const status = product.badges;
+
+  const off = product.bestSeller?.discount !== null;
+  const offPercentage = product.bestSeller?.discount;
 
   return (
     <BlurFade className="w-max mx-auto">

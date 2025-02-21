@@ -7,6 +7,7 @@ import Header4 from "../Header4";
 import ProductCard from "@/components/ProductCards";
 import { IProduct } from "@/app/api/dashboard/server-api/types";
 import { BASE_URL } from "@/app/Base";
+import Link from "next/link";
 
 const NewArrivals = () => {
   const [arrivals, setArrivals] = useState<IProduct[]>([]);
@@ -36,9 +37,11 @@ const NewArrivals = () => {
       <div className="flex items-center justify-between">
         <Header4 title="New Arrivals" />
         <RightToLeftFade>
-          <InteractiveHoverButton className="text-sm">
-            Show All
-          </InteractiveHoverButton>
+          <Link href="/shop/badges/new-arrival">
+            <InteractiveHoverButton className="text-sm">
+              Show All
+            </InteractiveHoverButton>
+          </Link>
         </RightToLeftFade>
       </div>
 

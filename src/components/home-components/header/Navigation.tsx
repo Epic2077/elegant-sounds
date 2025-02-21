@@ -34,7 +34,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
   {
     title: "EarBuds",
-    href: "/home/categories/audio-interface",
+    href: "/home/categories/earbuds",
     description: "Compact and convenient earbuds for on-the-go listening.",
   },
   {
