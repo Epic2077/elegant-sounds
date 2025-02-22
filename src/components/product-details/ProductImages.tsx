@@ -25,7 +25,7 @@ const ProductImages = ({ product }: { product: IProduct }) => {
           height={400}
           className="w-full max-h-[380px] object-contain"
         />
-        <div className="bg-primary py-2 px-4 rounded-2xl absolute top-3 left-3 z-30">
+        <div className="bg-primary py-2 px-4 rounded-2xl absolute top-3 left-3 z-0">
           {/* {product.bestSeller?.count} Left */}
           {product.bestSeller && product.bestSeller.count > 10 ? (
             <p>{product.bestSeller?.count} Left</p>
