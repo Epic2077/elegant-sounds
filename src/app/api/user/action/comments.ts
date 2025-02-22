@@ -38,13 +38,19 @@ export async function createOrUpdateCommentAction(
     };
   }
 
+  const commentData: Partial<typeof validatedFields.data> = {
+    ...validatedFields.data,
+  };
+
   try {
     console.log("commentId:", commentId);
     if (commentId) {
+      delete commentData.product;
+      console.log("Commented Data:", commentData);
       const resultUpdate = await updateComment(
         commentId.toString(),
-        validatedFields.data.text,
-        validatedFields.data.rating ?? 0
+        commentData.text ?? "",
+        commentData.rating ?? 0
       );
       console.log("updateComment => result:", resultUpdate);
     } else {
