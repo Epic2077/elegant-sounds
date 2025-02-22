@@ -55,13 +55,13 @@ export type ColorFormState = FormState<ColorType>;
 
 export const CommentSchemaZod = z.object({
   text: z.string().min(1, "Text is required").trim(),
-  rating: z
+  rating: z.coerce
     .number()
     .int()
     .min(1, "Rating must be at least 1")
     .max(5, "Rating cannot exceed 5")
-    .optional(), // Rating is optional
-  product: z.number(),
+    .optional(),
+  product: z.coerce.number(),
 });
 export type CommentType = z.infer<typeof CommentSchemaZod>;
 export type CommentFormState = FormState<CommentType>;

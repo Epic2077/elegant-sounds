@@ -1,5 +1,7 @@
 import { ServerPageProps } from "@/app/api/dashboard/server-api/types";
 import { getProductById } from "@/app/api/user/products";
+import CommentSection from "@/components/product-details/CommentSection";
+import { ExpertReview } from "@/components/product-details/ExpertReview";
 import ProductDetailComponent from "@/components/product-details/ProductDetail";
 import ProductImages from "@/components/product-details/ProductImages";
 import { ProductProperties } from "@/components/product-details/ProductProperties";
@@ -19,7 +21,9 @@ const ProductDetail = async ({ params }: ServerPageProps) => {
           <ProductDetailComponent product={product} />
         </div>
       </div>
+      <ExpertReview products={product} />
       <ProductProperties products={product} />
+      <CommentSection products={product} />
     </div>
   );
 };

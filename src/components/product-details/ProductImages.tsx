@@ -26,7 +26,16 @@ const ProductImages = ({ product }: { product: IProduct }) => {
           className="w-full max-h-[380px] object-contain"
         />
         <div className="bg-primary py-2 px-4 rounded-2xl absolute top-3 left-3 z-30">
-          {product.bestSeller?.count} Left
+          {/* {product.bestSeller?.count} Left */}
+          {product.bestSeller && product.bestSeller.count > 10 ? (
+            <p>{product.bestSeller?.count} Left</p>
+          ) : product.bestSeller &&
+            product.bestSeller.count > 0 &&
+            product.bestSeller.count <= 10 ? (
+            <p>Only {product.bestSeller?.count} Left!</p>
+          ) : (
+            <p className="text-destructive">Out of Stock</p>
+          )}
         </div>
       </div>
       <Carousel
