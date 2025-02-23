@@ -2,18 +2,20 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import cartReducer from "./features/cartSlice";
+import paymentMethodsReducer from "./features/paymentMethodsSlice"; // Add this line to import the reducer
 
 // Persist configuration
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  whitelist: ["cart"],
+  whitelist: ["cart", "paymentMethods"],
 };
 
 // Combine reducers
 const rootReducer = combineReducers({
   cart: cartReducer,
+  paymentMethods: paymentMethodsReducer,
 });
 
 // Create persisted reducer

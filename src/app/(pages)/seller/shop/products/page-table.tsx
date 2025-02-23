@@ -2,11 +2,12 @@
 
 import {
   IProduct,
+  ISpecification,
   PaginatedResultApi,
 } from "@/app/api/dashboard/server-api/types";
 import SellerTable from "@/components/seller/tables/SellerTable";
 import { Button } from "@/components/ui/button";
-import { CircleDollarSign, Edit } from "lucide-react";
+import { Check, CircleDollarSign, Edit, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -40,13 +41,15 @@ export function SProductTable({
         {
           title: "Image",
           render: (row) => (
-            <Image
-              src={row.images.main}
-              alt="Product Image"
-              style={{ width: "60px", height: "60px" }}
-              width={60}
-              height={60}
-            />
+            <Link href={`/shop/product/${row.code}`} target="_blank">
+              <Image
+                src={row.images.main}
+                alt="Product Image"
+                style={{ width: "60px", height: "60px" }}
+                width={60}
+                height={60}
+              />
+            </Link>
           ),
         },
         {
@@ -58,8 +61,11 @@ export function SProductTable({
           render: (row) => row.titleEn,
         },
         {
-          title: "Farsi Title",
-          render: (row) => row.titleFa,
+          title: "Badges",
+          render: (row) =>
+            row.badges.length !== 0
+              ? row.badges.map((b) => b.title).join(", ")
+              : "-",
         },
         {
           title: "Category",
@@ -70,6 +76,24 @@ export function SProductTable({
           render: (row) => row.brand.titleEn,
         },
         {
+          title: "Colors",
+          render: (row) => (
+            <div className="flex gap-2">
+              {row.colors.map((color) => (
+                <div
+                  key={color.id}
+                  className="p-2 rounded-full border-foreground border"
+                  style={{ backgroundColor: color.hexCode }}
+                ></div>
+              ))}
+            </div>
+          ),
+        },
+        {
+          title: "Created At",
+          render: (row) => new Date(row.createdAt).toLocaleDateString("en"),
+        },
+        {
           title: "Update",
           render: (row) => new Date(row.updatedAt).toLocaleDateString("en"),
         },
@@ -78,6 +102,33 @@ export function SProductTable({
           render: (row) => (row.bestSeller ? row.bestSeller.price : "N/A"),
         },
       ]}
+      subTable={{
+        header: "Specification",
+        key: "specifications",
+        schema: [
+          {
+            title: "Number",
+            render: (row: ISpecification) => row.id,
+          },
+          {
+            title: "Title",
+            render: (row) => row.title,
+          },
+          {
+            title: "Name",
+            render: (row) => row.name,
+          },
+          {
+            title: "Default",
+            render: (row) =>
+              row.isDefault ? (
+                <Check className="w-5 h-5 text-green-500" />
+              ) : (
+                <X className="w-5 h-5 text-destructive" />
+              ),
+          },
+        ],
+      }}
     ></SellerTable>
   );
 }

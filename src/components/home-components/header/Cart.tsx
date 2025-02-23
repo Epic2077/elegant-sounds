@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 // Utility function to format prices as USD
 const formatPrice = (price: number) => {
@@ -36,7 +37,7 @@ const Cart = () => {
               {cartItems.length}
             </div>
           )}
-          <ShoppingCart className="h-6 w-6 text-gray-700 hover:text-gray-900 transition-colors" />
+          <ShoppingCart className="h-6 w-6 text-primary hover:text-muted-foreground transition-colors" />
         </div>
       </DropdownMenuTrigger>
 
@@ -45,7 +46,7 @@ const Cart = () => {
         className="w-72 p-4  shadow-lg border  rounded-lg"
         align="end"
       >
-        <DropdownMenuLabel className="text-lg font-semibold text-muted-foreground">
+        <DropdownMenuLabel className="text-lg font-semibold text-foreground">
           Your Cart
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-foreground" />
@@ -56,12 +57,8 @@ const Cart = () => {
             <span className="text-sm text-muted-foreground">
               Your cart is empty
             </span>
-            <Button
-              asChild
-              variant="link"
-              className="p-0 h-auto text-blue-600 hover:text-blue-800"
-            >
-              <Link href="/">Shop Now</Link>
+            <Button asChild variant="link" className="p-0 h-auto text-primary">
+              <Link href="/shop/b">Shop Now</Link>
             </Button>
           </DropdownMenuItem>
         ) : (
@@ -74,10 +71,19 @@ const Cart = () => {
                   className="flex justify-between items-center cursor-default py-2"
                 >
                   <div className="flex flex-col">
-                    <span className="text-sm font-medium text-muted-foreground">
+                    <span>
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={50}
+                        height={50}
+                      />
+                    </span>
+                    <span className="text-sm font-medium text-muted-foreground mt-2">
                       {item.title}
                     </span>
-                    <span className="text-xs text-foreground">
+
+                    <span className="text-xs text-foreground mt-2">
                       {item.quantity} × {formatPrice(item.price)}
                     </span>
                   </div>
@@ -104,7 +110,7 @@ const Cart = () => {
               <Button
                 asChild
                 variant="outline"
-                className="w-full text-sm hover:bg-gray-100"
+                className="w-full text-sm hover:bg-muted"
               >
                 <Link href="/cart">View Cart</Link>
               </Button>

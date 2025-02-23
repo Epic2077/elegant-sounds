@@ -33,6 +33,7 @@ const ProductDetailComponent = ({ product }: { product: IProduct }) => {
         price: discountedPrice,
         quantity: quantity,
         color: selectedColor,
+        image: product.images.main,
       })
     );
   }

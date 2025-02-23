@@ -1,79 +1,87 @@
 "use client";
 
-import { Card, CardHeader } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useUserInfo } from "@/utils/userContext";
-import { CardContent } from "@mui/material";
-import { Edit, Mail, MapPin, Shield } from "lucide-react";
-import Image from "next/image";
+import { AudioLines, Edit, Mail, MapPin, Phone, Shield } from "lucide-react";
 import React from "react";
 
 const ProfileCard = () => {
   const { profile, user } = useUserInfo();
-  let firstName;
-  let LastName;
-  let address;
-  if (user?.role === 3) {
-    firstName = user?.firstName;
-    LastName = user?.lastName;
-  } else {
-    firstName = profile?.firstName;
-    LastName = profile?.lastName;
-  }
-  if (!profile?.addressList) {
-    address = "No Address Found";
-  } else if (profile?.addressList.length > 0) {
-    address = profile?.addressList[0].address;
-  } else {
-    address = "No Address Set";
-  }
+
+  // Handle first and last name based on user role
+  const firstName =
+    profile?.firstName !== undefined ? profile?.firstName : user?.firstName;
+  const lastName =
+    profile?.lastName !== undefined ? profile?.lastName : user?.lastName;
+
+  // Handle address logic
+  const address =
+    profile?.addressList?.length ?? 0 > 0
+      ? profile?.addressList[0].address
+      : "No Address Set";
+
+  const phone =
+    profile?.phoneNumber?.length ?? 0 > 0
+      ? profile?.phoneNumber
+      : "No Phone Number Set";
+
+  // Format createdAt date
+  const createdAt = profile?.createdAt
+    ? new Date(profile.createdAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "N/A";
+
   return (
-    <Card className="w-[350px] bg-muted rounded-xl shadow-lg shadow-black mt-2 pb-2">
-      <CardHeader className="p-6 pb-1 flex justify-center items-center">
-        <div className="bg-primary flex justify-center items-center rounded-3xl h-max w-max p-5 shadow-lg shadow-black">
-          <Image
-            src="/user.svg"
-            alt="profile"
-            className="rounded-3xl"
-            width={200}
-            height={150}
-          />
+    <Card className="w-full min-w-[350px] max-w-sm sm:max-w-md md:max-w-lg bg-muted rounded-xl shadow-lg  p-6 py-0">
+      <CardHeader className="flex justify-center items-center">
+        <div className="bg-primary flex justify-center items-center rounded-full h-24 w-24 p-2 shadow-md">
+          <AudioLines />
         </div>
       </CardHeader>
-      <CardContent className="grid justify-center">
-        <h2 className="text-2xl font-light text-center">{`${firstName} ${LastName}`}</h2>
-
-        <div className=" bg-background rounded-full p-1 px-4 flex items-center justify-center  mx-auto mt-4">
-          <p className="text-foreground">
-            Created At:{" "}
-            <span className="text-primary">
-              {profile?.createdAt.slice(0, 10)}
-            </span>
+      <CardContent className="text-center mt-2">
+        <h2 className="text-2xl font-semibold text-muted-foreground">{`${firstName} ${lastName}`}</h2>
+        <div className="bg-card rounded-full px-4 py-1 mt-2 inline-block">
+          <p className="text-sm text-muted-foreground">
+            Created At: <span className="text-primary">{createdAt}</span>
           </p>
         </div>
-        <div className="w-[350px] h-[2px] bg-muted-foreground my-6"></div>
-        <div className="grid gap-4 justify-center">
-          <div className="flex gap-3 mt-2">
-            <MapPin className="w-5 h-5 text-muted-foreground" />
-            <p className="text-sm">{address}</p>
+        <div className="w-full h-[1px] bg-muted-foreground my-8"></div>
+        <div className="space-y-3 text-left gap-2 flex flex-col">
+          <div className="flex items-center gap-3 border p-2 rounded-xl border-muted-foreground bg-secondary">
+            <Phone className="w-5 h-5 text-primary" />
+            <p className="text-sm text-foreground">{phone}</p>
           </div>
-          <div className="flex gap-3 mt-2">
-            <Mail className="w-5 h-5 text-muted-foreground" />
-            <p className="text-sm">{user?.email}</p>
+          <div className="flex items-center gap-3 border p-2 rounded-xl border-muted-foreground bg-secondary">
+            <MapPin className="w-5 h-5 text-primary" />
+            <p className="text-sm text-foreground">{address}</p>
           </div>
-          <div className="flex gap-3 mt-2">
-            <Shield className="w-5 h-5 text-muted-foreground" />
-            <p className="text-sm">
+          <div className="flex items-center gap-3 border p-2 rounded-xl border-muted-foreground bg-secondary">
+            <Mail className="w-5 h-5 text-primary" />
+            <p className="text-sm text-foreground">{user?.email}</p>
+          </div>
+          <div className="flex items-center gap-3 border p-2 rounded-xl border-muted-foreground bg-secondary">
+            <Shield className="w-5 h-5 text-primary" />
+            <p className="text-sm text-foreground capitalize">
               {user?.role === 3
-                ? "admin"
+                ? "Admin"
                 : user?.role === 2
                 ? "Seller"
-                : "user"}
+                : "User"}
             </p>
           </div>
         </div>
-        <div className="flex gap-2 mx-auto mt-8">
-          <Edit className="w-5 h-5 text-muted-foreground" />
-          <p className="text-sm text-muted-foreground">Edit Profile</p>
+        <div className="mt-6">
+          <Button
+            variant="outline"
+            className="flex items-center gap-2 mt-5 mx-auto bg-primary"
+          >
+            <Edit className="w-4 h-4" />
+            Edit Profile
+          </Button>
         </div>
       </CardContent>
     </Card>

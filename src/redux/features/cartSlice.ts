@@ -6,6 +6,7 @@ type CartItem = {
   color: string;
   price: number;
   quantity: number;
+  image: string; // Added image field
 };
 
 interface CartState {
@@ -28,6 +29,7 @@ const cartSlice = createSlice({
         // Item already in cart, increment quantity
         state.items[itemIndex].quantity += action.payload.quantity;
       } else {
+        // Add new item with all fields, including image
         state.items.push(action.payload);
       }
     },
