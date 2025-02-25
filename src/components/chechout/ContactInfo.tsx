@@ -14,6 +14,14 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
+import SubmitButton from "../seller/SubmitButton";
+import { useCityQuery } from "@/app/api/auth/updateUser/client-api/city";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 const FormSchema = z.object({
   birthday: z.date({
@@ -24,6 +32,9 @@ const FormSchema = z.object({
   }),
   nationCode: z.string({
     required_error: "A nation code is required.",
+  }),
+  city: z.string({
+    required_error: "A city is required.",
   }),
 });
 
@@ -45,11 +56,15 @@ export function DatePickerForm() {
     });
   }
 
+  const { data = { results: [] }, isLoading } = useCityQuery();
+  const cities: { id: string; name: string }[] = data.results;
+
   return (
     <Card>
       <CardContent className="p-6">
         <Form {...form}>
           <form className="flex flex-col gap-6">
+            <h2 className="text-2xl text-primary">Contact Information</h2>
             <div className="flex flex-row gap-4">
               <div className="flex flex-col gap-2">
                 <label htmlFor="nationCode">Nation Code</label>
@@ -104,22 +119,56 @@ export function DatePickerForm() {
                 )}
               />
             </div>
-            <div className="flex flex-col gap-2 mt-2">
+            <div className="w-full h-[2px] bg-muted my-6"></div>
+            <h2 className="text-primary text-2xl ">Shipping Address</h2>
+            <div className="flex flex-col gap-2">
               <label htmlFor="location">Location Code</label>
               <Input name="location" placeholder="34.0522, -118.2437" />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="location">Street</label>
-              <Input name="location" placeholder="34.0522, -118.2437" />
+              <label htmlFor="location">City</label>
+              <FormField
+                control={form.control}
+                name="city"
+                render={({ field }) => (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" className="w-full">
+                        {field.value || "Select a city"}
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-full">
+                      {isLoading ? (
+                        <DropdownMenuItem>Loading...</DropdownMenuItem>
+                      ) : (
+                        cities?.map((city) => (
+                          <DropdownMenuItem
+                            key={city.id}
+                            onSelect={() => field.onChange(city)}
+                          >
+                            {city.name}
+                          </DropdownMenuItem>
+                        ))
+                      )}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
+              />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="location">City</label>
-              <Input name="location" placeholder="34.0522, -118.2437" />
+              <label htmlFor="location">Street</label>
+              <Input name="location" placeholder="Street" />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="location">PostalCode</label>
-              <Input name="location" placeholder="34.0522, -118.2437" />
+              <Input name="location" placeholder="Postal Code" />
             </div>
+            <SubmitButton
+              className="w-full"
+              onClick={form.handleSubmit(onSubmit)}
+            >
+              Save
+            </SubmitButton>
           </form>
         </Form>
       </CardContent>

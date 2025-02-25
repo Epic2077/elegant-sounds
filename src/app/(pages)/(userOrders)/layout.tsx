@@ -1,3 +1,4 @@
+import QueryProvider from "@/components/dashboard/QueryProvider";
 import Footer from "@/components/home-components/Footer/Footer";
 import Header from "@/components/home-components/header/Header";
 
@@ -12,7 +13,9 @@ const layout = ({ children }: { children: ReactNode }) => {
           <Header />
         </div>
       </header>
-      <main>{children}</main>
+      <QueryProvider>
+        <main>{children}</main>
+      </QueryProvider>
       <footer>
         <Footer />
       </footer>

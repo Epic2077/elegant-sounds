@@ -1,4 +1,5 @@
 import ContactInfo from "@/components/chechout/ContactInfo";
+import OrderSummery from "@/components/chechout/OrderSummery";
 import React from "react";
 
 const Checkout = () => {
@@ -30,7 +31,12 @@ const Checkout = () => {
         </div>
       </div>
       <div className="flex gap-10 justify-center">
-        <ContactInfo />
+        <div className="flex flex-col gap-6 w-1/3">
+          <ContactInfo />
+        </div>
+        <div className="flex flex-col gap-6 w-1/3">
+          <OrderSummery />
+        </div>
       </div>
     </div>
   );
