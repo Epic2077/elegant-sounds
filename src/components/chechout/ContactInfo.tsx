@@ -11,6 +11,7 @@ import { toast } from "@/hooks/use-toast";
 import { Button } from "../ui/button";
 import { updateProfileAction } from "@/app/api/auth/updateUser/action/updateAction";
 import { useCityQuery } from "@/app/api/auth/updateUser/client-api/city";
+import { ICity } from "@/app/api/dashboard/server-api/types";
 
 const FormSchema = z.object({
   birthday: z.date({
@@ -227,7 +228,7 @@ export function DatePickerForm() {
                       {isLoading ? (
                         <option disabled>Loading...</option>
                       ) : (
-                        cities.map((city: any) => (
+                        cities.map((city: ICity) => (
                           <option key={city.id} value={city.name}>
                             {city.name}
                           </option>

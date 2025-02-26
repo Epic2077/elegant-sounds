@@ -18,13 +18,11 @@ const ProfileCard = () => {
   // Handle address logic
   const address =
     profile?.addressList?.length ?? 0 > 0
-      ? profile?.addressList[0].address
+      ? profile?.addressList[0].city
       : "No Address Set";
 
   const phone =
-    profile?.phoneNumber?.length ?? 0 > 0
-      ? profile?.phoneNumber
-      : "No Phone Number Set";
+    profile?.mobile?.length ?? 0 > 0 ? profile?.mobile : "No Phone Number Set";
 
   // Format createdAt date
   const createdAt = profile?.createdAt

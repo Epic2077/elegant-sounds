@@ -22,24 +22,26 @@ const ShippingAddressDetail = () => {
           Shipping Address
         </h3>
       </CardHeader>
-      <CardContent className="mt-6">
+      <CardContent className="mt-6 ">
         {shippingAddress ? (
           <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <MapPin className="w-5 h-5 text-muted mt-1" />
-              <div>
+            <div className="flex  gap-5 items-center justify-center">
+              <MapPin className="w-5 h-5 text-foreground mt-1" />
+              <div className="flex flex-col gap-4">
                 <p className="text-sm font-medium text-foreground">
-                  {shippingAddress.address}
+                  <span className="text-primary text-base">Location:</span>{" "}
+                  {shippingAddress.location}
                 </p>
                 {shippingAddress.city && (
-                  <p className="text-sm text-gray-600">
-                    {shippingAddress.city}, {shippingAddress.state}{" "}
-                    {shippingAddress.postalCode}
+                  <p className="text-sm text-foreground">
+                    <span className="text-primary text-base">Address:</span>{" "}
+                    {shippingAddress.city}, {shippingAddress.street}{" "}
                   </p>
                 )}
-                {shippingAddress.country && (
-                  <p className="text-sm text-gray-600">
-                    {shippingAddress.country}
+                {shippingAddress.postalCode && (
+                  <p className="text-sm text-foreground">
+                    <span className="text-primary text-base">PostalCode:</span>{" "}
+                    {shippingAddress.postalCode}
                   </p>
                 )}
               </div>
