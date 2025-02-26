@@ -151,3 +151,20 @@ export const BadgeFormSchema = z.object({
 export type BadgeType = z.infer<typeof BadgeFormSchema>;
 
 export type BadgeFormState = FormState<BadgeType>;
+
+export const address = z.object({
+  location: z.array(z.number()),
+  city: z.string(),
+  street: z.string(),
+  postalCode: z.string(),
+});
+
+export const UpdateProfile = z.object({
+  nationCode: z.string(),
+  mobile: z.string(),
+  birthday: z.string(),
+  addressList: z.array(address),
+});
+
+export type UpdateProfileType = z.infer<typeof UpdateProfile>;
+export type UpdateProfileFormState = FormState<UpdateProfileType>;

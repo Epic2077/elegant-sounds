@@ -5,7 +5,7 @@ export interface Profile {
   addressList: Address[];
   createdAt: string;
   updatedAt: string;
-  phoneNumber?: string;
+  mobile?: string;
   paymentMethod: PaymentMethod[];
   id: string;
   nationCode?: string;
