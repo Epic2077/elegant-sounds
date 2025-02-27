@@ -8,7 +8,7 @@ const ShowCase = () => {
   const cart = useAppSelector((state) => state.cart);
 
   return (
-    <div className="bg-muted rounded-2xl grid grid-cols-2 gap-10 p-6">
+    <div className="bg-muted rounded-2xl grid sm:grid-cols-1 md:grid-cols-2 gap-10 p-6">
       {cart.items.map((item) => (
         <div key={item.code} className="flex flex-row items-center gap-4">
           <Image src={item.image} width={100} height={100} alt={item.title} />

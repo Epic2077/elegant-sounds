@@ -8,8 +8,10 @@ export default function Profile() {
   return (
     <div className="grid mt-2">
       <h1 className="font-bold text-3xl ">Profile</h1>
-      <div className="flex mt-5 gap-8 h-max mx-auto items-center">
-        <ProfileCard />
+      <div className="flex mt-5 gap-8 h-max mx-auto w-full items-center justify-center">
+        <div className="w-1/4">
+          <ProfileCard />
+        </div>
         <div className="grid gap-12 h-full">
           <AccountDetail />
           <ShippingAddressDetail />

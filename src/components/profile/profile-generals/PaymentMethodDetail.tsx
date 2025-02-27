@@ -4,23 +4,31 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CreditCard, Edit } from "lucide-react";
 import React from "react";
-import { useUserInfo } from "@/utils/userContext";
+import { useAppSelector } from "@/redux/hooks";
 
 const PaymentMethodDetail = () => {
   // Mock payment method data (replace with actual data from your context/API)
 
-  const { profile } = useUserInfo();
-  const paymentMethod = profile?.paymentMethod || null;
+  const paymentMethod = useAppSelector((state) => state.paymentMethods);
 
   const paymentDetails = paymentMethod
     ? [
-        { title: "Payment Method", value: paymentMethod.type || "N/A" },
-        { title: "Card Holder", value: paymentMethod.cardHolder || "N/A" },
-        { title: "Expiry Date", value: paymentMethod.expiry || "N/A" },
+        {
+          title: "Payment Method",
+          value: paymentMethod.methods[0].type || "N/A",
+        },
+        {
+          title: "Card Holder",
+          value: paymentMethod.methods[0].cardHolder || "N/A",
+        },
+        {
+          title: "Expiry Date",
+          value: paymentMethod.methods[0].expiry || "N/A",
+        },
         {
           title: "Card Number",
-          value: paymentMethod.last4
-            ? `**** **** **** ${paymentMethod.last4}`
+          value: paymentMethod.methods[0].last4
+            ? `**** **** **** ${paymentMethod.methods[0].last4.slice(-4)}`
             : "N/A",
         },
       ]
@@ -52,14 +60,23 @@ const PaymentMethodDetail = () => {
             <div className="bg-gradient-to-tr from-primary/50 to-primary/100 w-full h-48 rounded-xl p-4 text-foreground flex flex-col justify-between">
               <div className="flex justify-between items-center">
                 <CreditCard className="w-8 h-8" />
-                <p className="text-sm">{paymentMethod.type || "Card"}</p>
+                <p className="text-sm">
+                  {paymentMethod.methods[0].type || "Card"}
+                </p>
               </div>
               <div>
-                <p className="text-lg font-semibold">
-                  **** **** **** {paymentMethod.last4 || "****"}
+                <p className="text-lg font-semibold text-center mb-10">
+                  **** **** ****{" "}
+                  {paymentMethod.methods[0].last4.slice(-4) || "****"}
                 </p>
-                <p className="text-sm">{paymentMethod.cardHolder || "N/A"}</p>
-                <p className="text-sm">Exp: {paymentMethod.expiry || "N/A"}</p>
+                <div className="flex justify-between">
+                  <p className="text-sm">
+                    {paymentMethod.methods[0].cardHolder || "N/A"}
+                  </p>
+                  <p className="text-sm">
+                    Exp: {paymentMethod.methods[0].expiry || "N/A"}
+                  </p>
+                </div>
               </div>
             </div>
             <div className="grid gap-4">
