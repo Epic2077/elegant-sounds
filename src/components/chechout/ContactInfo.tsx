@@ -196,21 +196,6 @@ export function DatePickerForm() {
                 </FormItem>
               )}
             />
-            <div className="w-full h-[2px] bg-muted my-2"></div>
-            <h2 className="text-primary text-2xl">Shipping Address</h2>
-
-            <FormField
-              control={form.control}
-              name="location"
-              render={({ field }) => (
-                <FormItem className="flex flex-col gap-2">
-                  <FormLabel>Location</FormLabel>
-                  <FormControl>
-                    <Input placeholder="34.0522, -118.2437" {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
 
             <FormField
               control={form.control}

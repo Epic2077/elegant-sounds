@@ -7,6 +7,7 @@ type CartItem = {
   price: number;
   quantity: number;
   image: string; // Added image field
+  sellerId: string;
 };
 
 interface CartState {

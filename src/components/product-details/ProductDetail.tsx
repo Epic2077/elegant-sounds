@@ -34,6 +34,7 @@ const ProductDetailComponent = ({ product }: { product: IProduct }) => {
         quantity: quantity,
         color: selectedColor,
         image: product.images.main,
+        sellerId: product.bestSeller.id,
       })
     );
   }

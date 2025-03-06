@@ -52,6 +52,7 @@ export interface ICategory extends Timestamp {
   id: string;
   icon?: string;
 }
+
 export interface IBrand extends Timestamp {
   titleFa: string;
   titleEn: string;
@@ -72,7 +73,7 @@ export interface IColor extends Timestamp {
 }
 
 export interface ISeller {
-  id: string;
+  _id: string;
   user: IUser;
   name: string;
   slug: string;
@@ -116,7 +117,7 @@ export interface IProduct extends Timestamp {
 
   expert_review: string;
   id: string;
-  bestSeller?: SellerInfo;
+  bestSeller: SellerInfo;
   specifications?: ISpecification[];
 }
 export interface IUser {
@@ -169,4 +170,12 @@ export interface IOrderItem {
   quantity: number;
   order: string;
   seller: ISeller;
+}
+
+export interface OrdersResponse {
+  results: IOrder[];
+  total: number;
+  totalPages: number;
+  page: number;
+  pageSize: number;
 }

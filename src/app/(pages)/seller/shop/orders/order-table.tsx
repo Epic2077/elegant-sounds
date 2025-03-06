@@ -38,7 +38,7 @@ export function SOrderTable({
         ]}
         subTable={{
           header: "Item",
-          key: "orderItems",
+          key: "id",
           schema: [
             {
               title: "Item",

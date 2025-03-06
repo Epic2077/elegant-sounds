@@ -38,6 +38,25 @@ export const CitySchemaZod = z.object({
   updatedAt: z.date().optional(),
 });
 
+export type OrderType = z.infer<typeof OrderSchemaZod>;
+export type OrderFormState = FormState<OrderType>;
+
+export const OrderSchemaZod = z.object({
+  shippingAddress: z.object({
+    street: z.string(),
+    city: z.string(),
+    postalCode: z.string(),
+    location: z.array(z.coerce.number()),
+  }),
+  deliveryDate: z.string().datetime(),
+  orderItems: z.array(
+    z.object({
+      productSeller: z.string(),
+      quantity: z.coerce.number().int().positive(),
+    })
+  ),
+});
+
 export type CityType = z.infer<typeof CitySchemaZod>;
 export type CityFormState = FormState<CityType>;
 
