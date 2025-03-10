@@ -52,6 +52,7 @@ export interface ICategory extends Timestamp {
   id: string;
   icon?: string;
 }
+
 export interface IBrand extends Timestamp {
   titleFa: string;
   titleEn: string;
@@ -71,12 +72,34 @@ export interface IColor extends Timestamp {
   id: string;
 }
 
-interface IPropertyValue {
+export interface ISeller {
+  _id: string;
+  user: IUser;
+  name: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface SellerInfo {
+  seller: ISeller;
+  product: string;
+  price: number;
+  count: number;
+  discount: number;
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+  lastPrice?: number;
+}
+
+export interface ISpecification {
   name: string;
   title: string;
   value: string;
+  isDefault: boolean;
   id: string;
 }
+
 export interface IProduct extends Timestamp {
   images: {
     main: string;
@@ -87,13 +110,15 @@ export interface IProduct extends Timestamp {
   titleFa: string;
   titleEn: string;
   status: "marketable" | "unmarketable";
-  badges: [];
+  badges: IBadge[];
   category: ICategory;
   brand: IBrand;
-  review: IPropertyValue[];
-  specifications: IPropertyValue[];
-  expert_reviews: string;
+  review: string[];
+
+  expert_review: string;
   id: string;
+  bestSeller: SellerInfo;
+  specifications?: ISpecification[];
 }
 export interface IUser {
   firstName: string;
@@ -145,4 +170,12 @@ export interface IOrderItem {
   quantity: number;
   order: string;
   seller: ISeller;
+}
+
+export interface OrdersResponse {
+  results: IOrder[];
+  total: number;
+  totalPages: number;
+  page: number;
+  pageSize: number;
 }

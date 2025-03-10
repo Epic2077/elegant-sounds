@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const protectedRoutes = ["/home"];
-  const authRoutes = ["/login", "/signup"];
+  const authRoutes = ["/auth/login", "/auth/signup"];
   const accessToken = request.cookies.get("accessToken")?.value;
   console.log("Middleware accessToken:", accessToken);
 
@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
   // Handle protected routes
   if (protectedRoutes.some((route) => pathname.startsWith(route))) {
     if (!accessToken) {
-      return NextResponse.redirect(new URL("/login", request.url));
+      return NextResponse.redirect(new URL("/auth/login", request.url));
     }
 
     try {
@@ -36,7 +36,9 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next();
     } catch (error) {
       // Invalid token: Clear cookie and redirect
-      const response = NextResponse.redirect(new URL("/login", request.url));
+      const response = NextResponse.redirect(
+        new URL("/auth/login", request.url)
+      );
       response.cookies.delete("accessToken");
       return response;
     }

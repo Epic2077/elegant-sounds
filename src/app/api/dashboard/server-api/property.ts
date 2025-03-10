@@ -3,8 +3,8 @@ import "server-only";
 
 import { IProperty, PaginatedResultApi } from "./types";
 import { revalidateTag } from "next/cache";
-import { ADMIN_BASE_URL } from "../../Base";
-import { serverApiFetch } from "./base";
+import { ADMIN_BASE_URL } from "../../../Base";
+import { serverApiFetch } from "../../base";
 import { PropertyType } from "@/lib/validation";
 import { getAccessToken } from "./city";
 

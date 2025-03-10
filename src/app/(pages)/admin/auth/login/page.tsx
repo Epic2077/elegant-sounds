@@ -1,0 +1,19 @@
+import { LoginForm } from "@/components/auth-components/login-form";
+import { AuthRedirectModal } from "@/modules/AuthRedirectModal";
+
+export default function LoginPage() {
+  return (
+    <>
+      <AuthRedirectModal />
+      <div className="grid min-h-svh ">
+        <div className="flex flex-col gap-4 p-6 md:p-10">
+          <div className="flex flex-1 items-center justify-center">
+            <div className="w-full max-w-xs">
+              <LoginForm status="as Admin" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

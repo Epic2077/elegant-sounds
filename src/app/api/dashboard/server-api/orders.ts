@@ -1,6 +1,6 @@
 import { IOrder, PaginatedResultApi } from "./types";
-import { ADMIN_BASE_URL } from "../../Base";
-import { serverApiFetch } from "./base";
+import { ADMIN_BASE_URL } from "../../../Base";
+import { serverApiFetch } from "../../base";
 import { getAccessToken } from "./city";
 
 // Get a paginated list of colors

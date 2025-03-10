@@ -1,78 +1,34 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Header4 from "../Header4";
 import RightToLeftFade from "@/widget/animations/rightToLeftFade-Animation";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
-import HomeCards from "../Home-Cards";
-
-const fakeSeller = [
-  {
-    id: 1,
-    brand: "Sony",
-    name: "WH-1000XM5",
-    price: 299.99,
-    img: "/images/BestSeller/sony-wh-1000xm5.png",
-    category: "Wireless Headphones",
-  },
-  {
-    id: 2,
-    brand: "Beats",
-    name: "Studio Pro",
-    price: 349.99,
-    img: "/images/BestSeller/beats-studio-pro.png",
-    category: "Wireless Headphones",
-  },
-  {
-    id: 3,
-    brand: "Sony",
-    name: "WH-CH720N",
-    price: 329.99,
-    img: "/images/BestSeller/sony-wh-ch720n.png",
-    category: "Wireless Headphones",
-  },
-  {
-    id: 4,
-    brand: "SkullCandy",
-    name: "Rail True",
-    price: 399.99,
-    img: "/images/BestSeller/skullcandy-rail-true.png",
-    category: "Wireless Headphones",
-  },
-  {
-    id: 5,
-    brand: "Beats",
-    name: "Studio Pro Earbuds",
-    price: 549.99,
-    img: "/images/BestSeller/beats-earbuds.png",
-    category: "Earbuds",
-  },
-  {
-    id: 6,
-    brand: "JBL",
-    name: "Reflect Flow Pro +",
-    price: 249.99,
-    img: "/images/BestSeller/jbl-reflect-flow-pro+.png",
-    category: "Earbuds",
-    off: 50,
-  },
-  {
-    id: 7,
-    brand: "Bose",
-    name: "QuiteComfort",
-    price: 299.99,
-    img: "/images/BestSeller/bose-quite-comfort.png",
-    category: "Wireless Headphones",
-  },
-  {
-    id: 8,
-    brand: "AKG",
-    name: "Y600NC",
-    price: 499.99,
-    img: "/images/BestSeller/akg-y600nc.png",
-    category: "Wireless Headphones",
-  },
-];
+import { IProduct } from "@/app/api/dashboard/server-api/types";
+import ProductCard from "@/components/ProductCards";
+import { BASE_URL } from "@/app/Base";
 
 const BestSeller = () => {
+  const [hot, setHot] = useState<IProduct[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/products`);
+        const data = await res.json();
+        // Filter products by the “new arrival” badge
+        const filtered =
+          data.results?.filter((product: IProduct) =>
+            product.badges?.some((b) => b.title?.toLowerCase() === "hot")
+          ) || [];
+        // Show first 4
+        setHot(filtered.slice(0, 8));
+      } catch (err) {
+        console.error("Failed fetching new arrivals", err);
+      }
+    })();
+  }, []);
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -84,14 +40,8 @@ const BestSeller = () => {
         </RightToLeftFade>
       </div>
       <div className=" grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 justify-center">
-        {fakeSeller.map((product) => (
-          <HomeCards
-            key={product.id}
-            product={product}
-            status="Hot"
-            off={!!product.off}
-            offPercentage={product.off || 0}
-          />
+        {hot.map((product, index) => (
+          <ProductCard product={product} key={index} />
         ))}
       </div>
     </div>

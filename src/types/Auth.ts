@@ -12,6 +12,7 @@ export interface SignupRequest {
 export interface LoginRequest {
   email: string;
   password: string;
+  role: number;
 }
 
 export interface SignupResponse {

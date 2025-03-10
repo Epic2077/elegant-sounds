@@ -9,6 +9,7 @@ type Props = {
   defaultValue?: ICategory;
   error?: boolean;
   helperText?: string | string[];
+  onChange?: (value: ICategory | null) => void;
 };
 
 export default function CategoryField({
@@ -16,6 +17,7 @@ export default function CategoryField({
   defaultValue,
   error,
   helperText,
+  onChange,
 }: Props) {
   const [query, setQuery] = useState("");
   const { data, isLoading } = useCategoriesQuery(query);
@@ -31,6 +33,7 @@ export default function CategoryField({
       name={name}
       setQuery={setQuery}
       defaultValue={defaultValue}
+      onChange={onChange}
     />
   );
 }

@@ -43,10 +43,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         credentials: "include",
       });
       const data = await res.json();
-      if (data.user.role === 3) {
+      if (data.profile.role === 3) {
         router.push("/admin/dashboard");
+        window.location.reload();
       } else {
         router.push("/home"); // Redirect to protected page after login
+        window.location.reload();
       }
     } catch (error) {
       console.error("Login failed:", error);
@@ -57,6 +59,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
       setIsLoggedIn(false);
+      window.location.reload();
     } catch (error) {
       console.error("Logout failed:", error);
     }

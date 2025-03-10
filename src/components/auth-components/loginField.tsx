@@ -16,6 +16,7 @@ import { loginSchema } from "@/validation/loginSchema"; // You'll need to create
 type LoginFormData = {
   email: string;
   password: string;
+  role: number;
 };
 
 const LoginField = () => {
@@ -35,14 +36,31 @@ const LoginField = () => {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      console.log("Submitting form data:", data);
+      // Get the current URL
+      const currentPath = window.location.pathname;
+
+      // Determine role based on URL
+      let role = 1; // default role
+      if (currentPath.includes("admin")) {
+        role = 3;
+      } else if (currentPath.includes("seller")) {
+        role = 2;
+      }
+
+      // Add role to the data
+      const loginData = {
+        ...data,
+        role,
+      };
+
+      console.log("Submitting form data:", loginData);
 
       const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(loginData),
         credentials: "include",
       });
 

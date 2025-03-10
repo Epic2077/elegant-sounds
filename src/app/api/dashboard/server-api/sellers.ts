@@ -3,8 +3,8 @@ import "server-only";
 
 import { ISeller, PaginatedResultApi } from "./types";
 import { revalidateTag } from "next/cache";
-import { ADMIN_BASE_URL } from "../../Base";
-import { serverApiFetch } from "./base";
+import { ADMIN_BASE_URL } from "../../../Base";
+import { serverApiFetch } from "../../base";
 import { SellerType } from "@/lib/validation";
 import { getAccessToken } from "./city";
 

@@ -15,10 +15,11 @@ import ProfileDetail from "./profileComponents/ProfileDetail";
 import { useAuth } from "@/utils/AuthContext";
 import { ConfirmationDialog } from "./ConfirmationDialog";
 import { useUserInfo } from "@/utils/userContext";
+import { cn } from "@/lib/utils";
 
-const Profile = () => {
+const Profile = ({ bg }: { bg?: string }) => {
   const { isLoggedIn, logout } = useAuth();
-  const { isUser, isAdmin, profile } = useUserInfo();
+  const { isUser, isAdmin, isSeller, profile } = useUserInfo();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -40,6 +41,8 @@ const Profile = () => {
     status = "admin ";
   } else if (isUser === true && isAdmin === false) {
     status = "user ";
+  } else if (isSeller === true && isAdmin === false) {
+    status = "seller ";
   }
 
   return (
@@ -47,7 +50,7 @@ const Profile = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar>
-            <AvatarFallback>
+            <AvatarFallback className={cn(bg && `bg-${bg}`)}>
               <UserIcon className="h-5 w-5" />
             </AvatarFallback>
           </Avatar>

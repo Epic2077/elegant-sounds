@@ -19,38 +19,38 @@ import { useUserInfo } from "@/utils/userContext";
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Headphones",
-    href: "/shop/categories/headphones",
+    href: "/home/categories/headphone",
     description: "High-quality headphones for an immersive audio experience.",
   },
   {
     title: "Speakers",
-    href: "/shop/categories/speakers",
+    href: "/home/categories/speaker",
     description: "Top-notch speakers to fill your room with sound.",
   },
   {
     title: "Microphones",
-    href: "/shop/categories/microphones",
+    href: "/home/categories/microphone",
     description: "Professional microphones for recording and streaming.",
   },
   {
     title: "EarBuds",
-    href: "/shop/categories/audio-interfaces",
+    href: "/home/categories/earbuds",
     description: "Compact and convenient earbuds for on-the-go listening.",
   },
   {
     title: "Accessories",
-    href: "/shop/categories/accessories",
+    href: "/home/categories/accessories",
     description: "Essential accessories for your music devices.",
   },
   {
     title: "Show All",
-    href: "/shop/categories",
+    href: "/home/categories",
     description: "Show all the categories.",
   },
 ];
 
 export function Navigation() {
-  const { isAdmin } = useUserInfo();
+  const { isAdmin, isSeller } = useUserInfo();
 
   return (
     <NavigationMenu>
@@ -83,14 +83,14 @@ export function Navigation() {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Best Selling">
+              <ListItem href="/shop/badges/hot" title="Best Selling">
                 Discover our most popular music devices products.
               </ListItem>
-              <ListItem href="/shop/new-arrivals" title="New Arrivals">
+              <ListItem href="/shop/badges/new-arrival" title="New Arrivals">
                 Check out the latest additions to our devices collection.
               </ListItem>
-              <ListItem href="/shop/sale" title="On Sale">
-                Grab the best deals on our top devices.
+              <ListItem href="/shop/b" title="Products">
+                Explore our wide range of music devices.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -112,10 +112,21 @@ export function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         {isAdmin && (
+          <>
+            <NavigationMenuItem>
+              <Link href="/admin/dashboard" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Dashboard
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </>
+        )}
+        {isSeller && (
           <NavigationMenuItem>
-            <Link href="/admin/dashboard" legacyBehavior passHref>
+            <Link href="/seller/shop" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Dashboard
+                Your-Shop
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

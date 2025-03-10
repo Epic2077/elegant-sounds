@@ -38,6 +38,25 @@ export const CitySchemaZod = z.object({
   updatedAt: z.date().optional(),
 });
 
+export type OrderType = z.infer<typeof OrderSchemaZod>;
+export type OrderFormState = FormState<OrderType>;
+
+export const OrderSchemaZod = z.object({
+  shippingAddress: z.object({
+    street: z.string(),
+    city: z.string(),
+    postalCode: z.string(),
+    location: z.array(z.coerce.number()),
+  }),
+  deliveryDate: z.string().datetime(),
+  orderItems: z.array(
+    z.object({
+      productSeller: z.string(),
+      quantity: z.coerce.number().int().positive(),
+    })
+  ),
+});
+
 export type CityType = z.infer<typeof CitySchemaZod>;
 export type CityFormState = FormState<CityType>;
 
@@ -55,28 +74,29 @@ export type ColorFormState = FormState<ColorType>;
 
 export const CommentSchemaZod = z.object({
   text: z.string().min(1, "Text is required").trim(),
-  rating: z
+  rating: z.coerce
     .number()
     .int()
     .min(1, "Rating must be at least 1")
     .max(5, "Rating cannot exceed 5")
-    .optional(), // Rating is optional
-  product: z.number(),
+    .optional(),
+  product: z.coerce.number(),
 });
 export type CommentType = z.infer<typeof CommentSchemaZod>;
 export type CommentFormState = FormState<CommentType>;
 
 // Zod Schemas for subdocuments
-const ReviewSchemaZod = z.object({
-  title: z.string().min(1, "Review title is required").trim(),
-  value: z.string().min(1, "Review value is required").trim(),
-  name: z.string().min(1, "Review name is required").trim(),
-});
+// const ReviewSchemaZod = z.object({
+//   title: z.string().min(1, "Review title is required").trim(),
+//   value: z.string().min(1, "Review value is required").trim(),
+//   name: z.string().min(1, "Review name is required").trim(),
+// });
 
 const SpecificationSchemaZod = z.object({
   title: z.string().min(1, "Specification title is required").trim(),
   value: z.string().min(1, "Specification value is required").trim(),
   name: z.string().min(1, "Specification name is required").trim(),
+  isDefault: z.coerce.boolean().optional().default(false),
 });
 
 const ImageSchemaZod = z.object({
@@ -91,15 +111,17 @@ export const ProductSchemaZod = z.object({
   code: z.coerce.number().int().positive("Code must be a positive integer"),
   titleFa: z.string().min(1, "Title (FA) is required").trim(),
   titleEn: z.string().min(1, "Title (EN) is required").trim(),
-  status: z.enum(["marketable", "unmarketable"]).default("marketable"),
   images: ImageSchemaZod,
   colors: z.array(z.string()).optional(),
   badges: z.array(z.string()).optional(),
   category: z.string(),
   brand: z.string(),
-  review: z.array(ReviewSchemaZod).optional(),
-  specifications: z.array(SpecificationSchemaZod).optional(),
-  expert_reviews: z.string().trim().optional(),
+  review: z.string(),
+  specifications: z
+    .array(SpecificationSchemaZod)
+    .transform((specifications) => specifications.filter((i) => !!i.value))
+    .optional(),
+  expert_review: z.string().trim().optional(),
 });
 
 export type ProductType = z.infer<typeof ProductSchemaZod>;
@@ -113,11 +135,19 @@ export const PropertySchemaZod = z.object({
   options: z
     .array(
       z.object({
-        label: z.string().min(1, "Option label is required").trim(),
         value: z.string().min(1, "Option value is required").trim(),
       })
     )
     .optional(), // Options array is optional
+});
+
+export type PriceType = z.infer<typeof PriceSchemaZod>;
+export type PriceFormState = FormState<PriceType>;
+
+export const PriceSchemaZod = z.object({
+  price: z.coerce.number().nonnegative(),
+  discount: z.coerce.number().min(0).max(100),
+  count: z.coerce.number().min(0).optional(),
 });
 
 export type PropertyType = z.infer<typeof PropertySchemaZod>;
@@ -140,3 +170,20 @@ export const BadgeFormSchema = z.object({
 export type BadgeType = z.infer<typeof BadgeFormSchema>;
 
 export type BadgeFormState = FormState<BadgeType>;
+
+export const address = z.object({
+  location: z.array(z.number()),
+  city: z.string(),
+  street: z.string(),
+  postalCode: z.string(),
+});
+
+export const UpdateProfile = z.object({
+  nationCode: z.string(),
+  mobile: z.string(),
+  birthday: z.string(),
+  addressList: z.array(address),
+});
+
+export type UpdateProfileType = z.infer<typeof UpdateProfile>;
+export type UpdateProfileFormState = FormState<UpdateProfileType>;

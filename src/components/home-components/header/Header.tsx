@@ -6,6 +6,7 @@ import { Navigation } from "./Navigation";
 import Profile from "./Profile";
 import Logo from "@/components/Logo";
 import Burger from "./BurgerMenu";
+import Cart from "./Cart";
 
 const Header = () => {
   const [showNotification, setShowNotification] = useState(true);
@@ -34,13 +35,15 @@ const Header = () => {
   return (
     <div className="fixed w-full top-0 left-0 z-50">
       {/* Notification Bar with smooth transition */}
-      <div
-        className={`transition-all duration-300 ease-out overflow-hidden hidden md:block ${
-          showNotification ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <NotificationBar />
-      </div>
+      {window.location.pathname.includes("home") && (
+        <div
+          className={`transition-all duration-300 ease-out overflow-hidden hidden md:block ${
+            showNotification ? "max-h-20 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <NotificationBar />
+        </div>
+      )}
 
       {/* Main Header with shadow transition */}
       <div
@@ -58,6 +61,7 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-4">
+            <Cart />
             <Profile />
             <div className="sm:block md:hidden lg:hidden">
               <Burger />

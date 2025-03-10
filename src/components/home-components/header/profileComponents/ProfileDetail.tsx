@@ -19,7 +19,7 @@ const ProfileDetail = ({ onLogoutClick }: { onLogoutClick: () => void }) => {
   return (
     <div>
       <DropdownMenuGroup>
-        <Link href="#">
+        <Link href="/profile">
           <DropdownMenuItem>
             <User className="w-4 h-4 mr-2" />
             Profile
@@ -46,13 +46,13 @@ const ProfileDetail = ({ onLogoutClick }: { onLogoutClick: () => void }) => {
             Wishlist
           </DropdownMenuItem>
         </Link>
-        <Link href="#">
+        <Link href="/cart">
           <DropdownMenuItem>
             <ShoppingCart className="w-4 h-4 mr-2" />
             Cart
           </DropdownMenuItem>
         </Link>
-        <Link href="#">
+        <Link href="/home/orders">
           <DropdownMenuItem>
             <ShoppingBag className="w-4 h-4 mr-2" />
             Orders

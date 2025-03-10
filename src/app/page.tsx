@@ -1,5 +1,3 @@
-"use client";
-
 import Logo from "@/components/Logo";
 import { MagneticButton } from "@/widget/animations/MagneticButton";
 import { AudioLines, GithubIcon, Play } from "lucide-react";

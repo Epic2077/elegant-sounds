@@ -29,16 +29,16 @@ export default function AIForm({ schema }: AIFormProps) {
             />
           ) : (
             <TextField
-              rows={5}
               fullWidth
-              multiline={item.type === "textarea"}
-              name={item.name}
-              label={item.label}
-              type={item.type}
+              defaultValue={item.defaultValue}
               error={item.error}
               helperText={item.helperText}
-              defaultValue={item.defaultValue}
+              label={item.label}
+              multiline={item.type === "textarea"}
+              name={item.name}
               placeholder={item.placeholder}
+              rows={5}
+              type={item.type}
             />
           )}
         </Grid2>

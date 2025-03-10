@@ -5,9 +5,13 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ModeToggle } from "@/components/theme/ToggleBtn";
 import { Toaster } from "@/components/ui/toaster";
-import Cursor from "@/components/cursor";
 import { AuthProvider } from "@/utils/AuthContext";
-import { UserContext, UserProvider } from "@/utils/userContext";
+import { UserProvider } from "@/utils/userContext";
+
+import GoTop from "@/components/GoTop";
+
+import React from "react";
+import ReduxProviderWrapper from "@/components/ReduxProviderWrapper";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -48,16 +52,18 @@ export default function RootLayout({
             "spotify-theme",
           ]}
         >
-          <AuthProvider>
-            <UserProvider>
-              <Cursor />
-              {children}
-              <Toaster />
-              <div className="fixed bottom-8 right-8 z-20">
-                <ModeToggle />
-              </div>
-            </UserProvider>
-          </AuthProvider>
+          <ReduxProviderWrapper>
+            <AuthProvider>
+              <UserProvider>
+                {children}
+                <Toaster />
+                <div className="fixed bottom-8 right-8 z-20 flex flex-row justify-center items-center">
+                  <GoTop />
+                  <ModeToggle />
+                </div>
+              </UserProvider>
+            </AuthProvider>
+          </ReduxProviderWrapper>
         </ThemeProvider>
       </body>
     </html>
