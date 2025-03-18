@@ -19,6 +19,7 @@ Elegant Sounds is a comprehensive web application designed to provide a seamless
 
 ## Features
 
+- Admin and Seller Dashboard
 - Modern and responsive design
 - User authentication and authorization
 - Product listings and detailed views
