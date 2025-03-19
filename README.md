@@ -1,3 +1,7 @@
+<div align="center">
+<img src="./public/images/Screen Shot 2025-03-19 at 14.18.26.png">
+</div>
+
 # Elegant Sounds
 
 A Complete Website Focused on Electronics for Listening to Music. Developed in Next.js.
