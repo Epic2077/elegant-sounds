@@ -2,8 +2,8 @@
 import { BASE_URL } from "@/app/Base";
 import { cookies } from "next/headers";
 import "server-only";
-import { serverApiFetch } from "../base";
 import { IUser } from "../dashboard/server-api/types";
+import { serverApiFetch } from "../base";
 
 // Define comment interfaces
 interface Comment {

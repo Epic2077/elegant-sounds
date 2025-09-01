@@ -133,7 +133,7 @@ To build and start the production server:
 
 Include screenshots of your web application here.
 
-![Home Page](screenshots/home-page.png)
+![Home Page](./public/images/Screenshot%202025-09-02%20005740.png)
 _Description of the home page screenshot_
 
 ![Product Page](screenshots/product-page.png)
