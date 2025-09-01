@@ -1,5 +1,19 @@
 <div align="center">
   <img src="./public/images/Screen Shot 2025-03-19 at 14.18.26.png" alt="Elegant Sounds Main Screenshot" width="600"/>
+  
+  <!-- Tech Stack Badges -->
+  <p>
+    <img src="https://img.shields.io/badge/Next.js-15.1.4-000?logo=nextdotjs&logoColor=white" alt="Next.js"/>
+    <img src="https://img.shields.io/badge/React-19.0.0-61DAFB?logo=react&logoColor=black" alt="React"/>
+    <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript&logoColor=white" alt="TypeScript"/>
+    <img src="https://img.shields.io/badge/Tailwind%20CSS-3.4.1-38B2AC?logo=tailwindcss&logoColor=white" alt="Tailwind CSS"/>
+    <img src="https://img.shields.io/badge/Redux%20Toolkit-2.5.1-764ABC?logo=redux&logoColor=white" alt="Redux Toolkit"/>
+    <img src="https://img.shields.io/badge/NextAuth.js-5.0.0--beta.25-0A0A0A?logo=nextdotjs&logoColor=white" alt="NextAuth.js"/>
+    <img src="https://img.shields.io/badge/Express.js-4.x-000?logo=express&logoColor=white" alt="Express.js"/>
+    <img src="https://img.shields.io/badge/Axios-1.7.9-5A29E4?logo=axios&logoColor=white" alt="Axios"/>
+    <img src="https://img.shields.io/badge/Zod-3.24.1-3A7AFE?logo=zod&logoColor=white" alt="Zod"/>
+    <img src="https://img.shields.io/badge/JSON%20Web%20Token-9.0.2-000?logo=jsonwebtokens&logoColor=white" alt="JWT"/>
+  </p>
 </div>
 
 # 🎧 Elegant Sounds
@@ -157,6 +171,11 @@ npm start
 
 <img src="./public/images/category-spotify.png" alt="Category Spotify" width="600"/>
 <p><em>Browse categories in a Spotify-inspired theme for a familiar music experience.</em></p>
+
+### 📊 Sellers Dashboard
+
+<img src="./public/images/cart.png" alt="cart" width="600"/>
+<p><em>Manage your products, orders, inside your cart and see what you are buying.</em></p>
 
 ### 📊 Sellers Dashboard
 
