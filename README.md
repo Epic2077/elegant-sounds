@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/images/Screen Shot 2025-03-19 at 14.18.26.png" alt="Elegant Sounds Main Screenshot" width="600"/>
+  <img src="./public/images/Screen Shot 2025-03-19 at 14.18.26.png" alt="Elegant Sounds Main Screenshot"/>
   
   <!-- Tech Stack Badges -->
   <p>
