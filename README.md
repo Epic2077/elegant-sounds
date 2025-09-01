@@ -1,10 +1,12 @@
 <div align="center">
-<img src="./public/images/Screen Shot 2025-03-19 at 14.18.26.png">
+  <img src="./public/images/Screen Shot 2025-03-19 at 14.18.26.png" alt="Elegant Sounds Main Screenshot" width="600"/>
 </div>
 
-# Elegant Sounds
+# 🎧 Elegant Sounds
 
 A Complete Website Focused on Electronics for Listening to Music. Developed in Next.js.
+
+---
 
 ## Table of Contents
 
@@ -16,24 +18,31 @@ A Complete Website Focused on Electronics for Listening to Music. Developed in N
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
+- [Thanks To](#thanks-to)
+
+---
 
 ## Overview
 
-Elegant Sounds is a comprehensive web application designed to provide a seamless experience for electronics enthusiasts and music lovers. The website offers a variety of features including product listings, user reviews, and much more.
+Elegant Sounds is a comprehensive web application designed to provide a seamless experience for electronics enthusiasts and music lovers. The website offers a variety of features including product listings, user reviews, dashboards for sellers and admins, and much more.
+
+---
 
 ## Features
 
-- Admin and Seller Dashboard
-- Modern and responsive design
-- User authentication and authorization
-- Product listings and detailed views
-- User reviews and ratings
-- Interactive UI components
-- Dark mode support
+- 🛠️ Admin and Seller Dashboard
+- 🎨 Modern and responsive design
+- 🔒 User authentication and authorization
+- 🎵 Product listings and detailed views
+- ⭐ User reviews and ratings
+- 🧩 Interactive UI components
+- 🌙 Dark mode support
+
+---
 
 ## Technology Stack
 
-Elegant Sounds is built using a variety of modern web technologies. Below is a comprehensive list of the technologies and libraries used in this project:
+Elegant Sounds is built using a variety of modern web technologies:
 
 ### Frontend
 
@@ -49,6 +58,7 @@ Elegant Sounds is built using a variety of modern web technologies. Below is a c
 ### Backend
 
 - **NextAuth.js**: ^5.0.0-beta.25
+- **Express.js**
 - **Axios**: ^1.7.9
 - **Zod**: ^3.24.1
 - **JSON Web Token**: ^9.0.2
@@ -89,66 +99,96 @@ Elegant Sounds is built using a variety of modern web technologies. Below is a c
   - `@types/react-dom`: ^19
 - **Tailwind CSS Animate**: ^1.0.7
 
+---
+
 ## Installation
 
 To set up this project locally, follow these steps:
 
-1. Clone the repository:
+### 1. Clone the repository
 
-   ```bash
-   git clone https://github.com/Epic2077/elegant-sounds.git
-   cd elegant-sounds
-   ```
+```bash
+git clone https://github.com/Epic2077/elegant-sounds.git
+cd elegant-sounds
+```
 
-2. Install dependencies:
+### 2. Install dependencies
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. Run the development server:
+### 3. Set up the backend
 
-   ```bash
-   npm run dev
-   ```
+Elegant Sounds requires a backend server to function.  
+Please visit the [Elegant Sounds Backend Repository](https://github.com/Epic2077/elegant-backend) and follow the installation instructions in its README.
 
-4. Open your browser and navigate to `http://localhost:3000`.
+### 4. Run the development server
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
+
+---
 
 ## Usage
 
 To build and start the production server:
 
-1. Build the application:
+```bash
+npm run build
+npm start
+```
 
-   ```bash
-   npm run build
-   ```
-
-2. Start the server:
-   ```bash
-   npm start
-   ```
+---
 
 ## Screenshots
 
-Include screenshots of your web application here.
+<div align="center">
 
-![Home Page](./public/images/Screenshot%202025-09-02%20005740.png)
-_Description of the home page screenshot_
+### 🏆 Best Selling Section (Home Page, Vibrant Theme)
 
-![Product Page](screenshots/product-page.png)
-_Description of the product page screenshot_
+<img src="./public/images/best-selling-vibrant.png" alt="Best Selling Vibrant" width="600"/>
+<p><em>The vibrant theme highlights the best selling products on the home page.</em></p>
+
+### 🎶 Category Page (Spotify Theme)
+
+<img src="./public/images/category-spotify.png" alt="Category Spotify" width="600"/>
+<p><em>Browse categories in a Spotify-inspired theme for a familiar music experience.</em></p>
+
+### 📊 Sellers Dashboard
+
+<img src="./public/images/seller-dashboard.png" alt="Seller Dashboard" width="600"/>
+<p><em>Manage your products, orders, and analytics from the seller dashboard.</em></p>
+
+### ✏️ Edit Product (Seller Dashboard)
+
+<img src="./public/images/seller-edit-product.png" alt="Seller Edit Product" width="600"/>
+<p><em>Sellers can easily edit product details and keep their listings up to date.</em></p>
+
+</div>
+
+---
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+This project is **Open Source** and contributions are warmly welcomed!  
+Feel free to fork the repository and submit a pull request with your improvements or fixes.
+
+---
 
 ## License
 
-This project is licensed under the Proprietary License.
+This project is licensed under the [Proprietary License](LICENSE).
+
+---
 
 ## Thanks To
 
-Thanks to [MaktabSharif](https://maktabsharif.ir/) for making this happen and help me become a Front-End Developer.
+Thanks to [MaktabSharif](https://maktabsharif.ir/) for making this happen and helping me become a Front-End Developer.
 
-Special thanks to [Ali Komijani](https://github.com/alikomijani) for helping me over come the challenges.
+Special thanks to [Ali Komijani](https://github.com/alikomijani) for helping me overcome the challenges.
+
+---
