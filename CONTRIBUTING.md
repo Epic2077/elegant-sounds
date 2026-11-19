@@ -10,7 +10,7 @@ Thank you for considering contributing to Elegant Sounds! 🎧
 2. **Clone your fork locally**
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/elegant-sounds.git
+   git clone https://github.com/Epic2077/elegant-sounds.git
    cd elegant-sounds
    ```
 
