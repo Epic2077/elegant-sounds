@@ -35,11 +35,16 @@ const SignupField = () => {
     confirmPassword: string;
   }
 
-  const onSubmit = async (data: SignupRequest) => {
+  const onSubmit = async (data: SignupFormData) => {
     try {
       console.log("Submitting form data:", data);
 
-      const { confirmPassword, ...signupData } = data;
+      const signupData: SignupRequest = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        password: data.password,
+      };
       console.log("Submitting form data after removing confirm:", signupData);
 
       // Call the signup Api Route
@@ -62,7 +67,7 @@ const SignupField = () => {
         const accessToken = result.tokens.accessToken;
         console.log("Access Token:", accessToken);
 
-        login(result.profile.firstName);
+        login();
 
         toast({
           title: "Success!",

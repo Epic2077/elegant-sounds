@@ -137,7 +137,7 @@ function ProductForm({ defaultValue }: ProductFormProps) {
                     <Select
                       name={`specifications.${i}.value`}
                       defaultValue={
-                        defaultValue?.specifications.find(
+                        defaultValue?.specifications?.find(
                           (spec) => spec.name === item.name
                         )?.value ?? ""
                       }
@@ -165,7 +165,7 @@ function ProductForm({ defaultValue }: ProductFormProps) {
                     <Input
                       name={`specifications.${i}.value`}
                       defaultValue={
-                        defaultValue?.specifications.find(
+                        defaultValue?.specifications?.find(
                           (spec) => spec.name === item.name
                         )?.value
                       }

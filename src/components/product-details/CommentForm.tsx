@@ -14,7 +14,7 @@ import { Loader2 } from "lucide-react";
 import { createOrUpdateCommentAction } from "@/app/api/user/action/comments";
 
 interface Comment {
-  id: number;
+  id: string;
   text: string;
   rating: number;
 }

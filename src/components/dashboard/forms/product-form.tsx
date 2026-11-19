@@ -132,7 +132,7 @@ function ProductForm({ defaultValue }: ProductFormProps) {
                   label={item.label}
                   name={`specifications.${i}.value`}
                   defaultValue={
-                    defaultValue?.specifications.find(
+                    defaultValue?.specifications?.find(
                       (i) => i.name === item.name
                     )?.value ?? ""
                   }
@@ -150,7 +150,7 @@ function ProductForm({ defaultValue }: ProductFormProps) {
                   label={item.label}
                   name={`specifications.${i}.value`}
                   defaultValue={
-                    defaultValue?.specifications.find(
+                    defaultValue?.specifications?.find(
                       (i) => i.name === item.name
                     )?.value
                   }

@@ -1,9 +1,6 @@
-import { ServerPageProps } from "@/app/api/dashboard/server-api/types";
 import { Box, Card, CardContent, Typography } from "@mui/material";
-import React from "react";
 
-export default async function UpdateBadgePage({ params }: ServerPageProps) {
-  const { badgeID } = await params;
+export default function UpdateBadgePage() {
   return (
     <Box maxWidth={500}>
       <Card>

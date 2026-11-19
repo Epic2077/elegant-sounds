@@ -48,7 +48,7 @@ export default function OrderList() {
       {orders.length === 0 ? (
         <div className="text-center py-8 text-gray-500">No orders found</div>
       ) : (
-        orders.map((order) => <OrderCard key={order._id} order={order} />)
+        orders.map((order) => <OrderCard key={order.id} order={order} />)
       )}
     </div>
   );
@@ -66,7 +66,7 @@ function OrderCard({ order }: { order: IOrder }) {
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
             <CardTitle className="text-lg">
-              Order #{order._id.slice(-6).toUpperCase()}
+              Order #{order.id.slice(-6).toUpperCase()}
             </CardTitle>
             <div className="text-sm text-gray-500">
               Ordered: {new Date(order.createdAt).toLocaleDateString()}
@@ -177,9 +177,9 @@ function getStatusVariant(status: string) {
     case "pending":
       return "secondary";
     case "shipped":
-      return "info";
+      return "outline";
     case "delivered":
-      return "success";
+      return "default";
     case "cancelled":
       return "destructive";
     default:

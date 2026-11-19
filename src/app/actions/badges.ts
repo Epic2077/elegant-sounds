@@ -35,7 +35,7 @@ export async function createOrUpdateBadgeAction(
     if (e instanceof ApiError) {
       return {
         message: e.message,
-        errors: e.body?.errors as BadgeFormState["errors"],
+        errors: { general: [e.message] } as BadgeFormState["errors"],
       };
     } else {
       return {

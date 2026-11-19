@@ -44,7 +44,7 @@ export const updateCity = async (
 
 // Get a paginated list of cities
 export const getCities = async (
-  params?: any
+  params?: unknown
 ): Promise<PaginatedResultApi<ICity>> => {
   const accessToken = await getAccessToken();
   const search = new URLSearchParams(params as Record<string, string>);

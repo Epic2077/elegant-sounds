@@ -57,10 +57,10 @@ export default function SSubTable<T>({
                         </TableCell>
                       </TableRow>
                     )}
-                    {safeData.map((row) => (
-                      <TableRow key={(row as any).id}>
+                    {safeData.map((row, index) => (
+                      <TableRow key={index}>
                         {subTitleSchema.map((item) => (
-                          <TableCell key={(row as any).id + item.title}>
+                          <TableCell key={item.title}>
                             {item.render(row)}
                           </TableCell>
                         ))}

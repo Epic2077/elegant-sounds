@@ -8,7 +8,7 @@ const api = axios.create({
 });
 
 let isRefreshing = false;
-let failedRequests: any[] = [];
+let failedRequests: (() => void)[] = [];
 
 api.interceptors.response.use(
   (response) => response,

@@ -55,10 +55,10 @@ export default function AISubTable<T>({
                     </TableCell>
                   </TableRow>
                 )}
-                {data.map((row) => (
-                  <TableRow key={(row as any).id}>
+                {data.map((row, index) => (
+                  <TableRow key={index}>
                     {subTitleSchema.map((item) => (
-                      <TableCell key={(row as any).id + item.title}>
+                      <TableCell key={item.title}>
                         {item.render(row)}
                       </TableCell>
                     ))}

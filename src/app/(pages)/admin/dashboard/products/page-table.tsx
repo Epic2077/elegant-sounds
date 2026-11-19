@@ -6,7 +6,7 @@ import {
 } from "@/app/api/dashboard/server-api/types";
 // import DeleteAlertDialog from "@/components/dashboard/DeleteAlertDialog";
 import AITable from "@/components/dashboard/tables/AITable";
-import { Delete, Edit } from "@mui/icons-material";
+import { Edit } from "@mui/icons-material";
 import { IconButton, Stack, Tooltip } from "@mui/material";
 import Link from "next/link";
 

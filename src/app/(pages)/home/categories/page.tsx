@@ -23,7 +23,7 @@ import Link from "next/link";
 const CategoryShowcase = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const categories = [
+  const categories: Category[] = [
     {
       id: 1,
       name: "Headphone",

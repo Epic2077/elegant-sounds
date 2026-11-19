@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
         await verifyToken(accessToken);
         // Valid token: Redirect to home
         return NextResponse.redirect(new URL("/home", request.url));
-      } catch (error) {
+      } catch {
         // Invalid token: Clear cookie and proceed
         const response = NextResponse.next();
         response.cookies.delete("accessToken");
@@ -34,7 +34,7 @@ export async function middleware(request: NextRequest) {
     try {
       await verifyToken(accessToken);
       return NextResponse.next();
-    } catch (error) {
+    } catch {
       // Invalid token: Clear cookie and redirect
       const response = NextResponse.redirect(
         new URL("/auth/login", request.url)

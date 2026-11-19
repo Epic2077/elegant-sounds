@@ -39,7 +39,7 @@ export async function createOrUpdateCityAction(
     if (e instanceof ApiError) {
       return {
         message: e.message,
-        errors: e.body?.errors,
+        errors: { general: [e.message] } as CityFormState["errors"],
       };
     }
     return {

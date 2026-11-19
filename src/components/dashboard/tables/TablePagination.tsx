@@ -33,7 +33,7 @@ export default function TablePagination({ count }: Props) {
       count={count}
       rowsPerPage={pageSize}
       page={page}
-      labelDisplayedRows={({ count, from, page, to }) =>
+      labelDisplayedRows={({ count, from, to }) =>
         `show ${from} amount ${to} from ${count} items`
       }
       labelRowsPerPage={"Items count in a page"}
