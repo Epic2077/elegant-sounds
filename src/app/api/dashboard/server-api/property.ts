@@ -38,7 +38,7 @@ export const updateProperties = async (
       body: JSON.stringify(body),
     }
   );
-  revalidateTag(`properties-${id}`);
+  revalidateTag(`properties-${id}`, "max");
   return data;
 };
 

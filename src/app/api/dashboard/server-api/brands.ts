@@ -31,7 +31,7 @@ export const updateBrand = async (
       body: JSON.stringify(body),
     }
   );
-  revalidateTag(`brands-${id}`);
+  revalidateTag(`brands-${id}`, "max");
   return data;
 };
 

@@ -35,7 +35,7 @@ export const updateSeller = async (
         body: JSON.stringify(body),
       }
     );
-    revalidateTag(`sellers-${id}`);
+    revalidateTag(`sellers-${id}`, "max");
     return data;
   } catch (e) {
     throw e;

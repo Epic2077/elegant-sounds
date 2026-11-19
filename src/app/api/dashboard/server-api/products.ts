@@ -34,7 +34,7 @@ export const updateProduct = async (
       body: JSON.stringify(body),
     }
   );
-  revalidateTag(`products-${id}`);
+  revalidateTag(`products-${id}`, "max");
   return data;
 };
 

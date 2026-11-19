@@ -42,7 +42,7 @@ export const updateCategory = async (
       body: JSON.stringify(body),
     }
   );
-  revalidateTag(`categories-${id}`);
+  revalidateTag(`categories-${id}`, "max");
   return data;
 };
 

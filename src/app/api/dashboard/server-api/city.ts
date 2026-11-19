@@ -38,7 +38,7 @@ export const updateCity = async (
       body: JSON.stringify(body),
     }
   );
-  revalidateTag(`cities-${id}`);
+  revalidateTag(`cities-${id}`, "max");
   return data;
 };
 

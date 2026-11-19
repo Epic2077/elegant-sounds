@@ -26,7 +26,7 @@ export const addPrice = async (
       body: JSON.stringify(body),
     }
   );
-  revalidateTag(`product-${code}`);
+  revalidateTag(`product-${code}`, "max");
 
   return data;
 };

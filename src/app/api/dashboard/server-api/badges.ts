@@ -28,7 +28,7 @@ export const updateBadge = async (id: string, body: unknown) => {
       body: JSON.stringify(body),
     }
   );
-  revalidateTag(`badges-${id.toString()}`);
+  revalidateTag(`badges-${id.toString()}`, "max");
   return data;
 };
 

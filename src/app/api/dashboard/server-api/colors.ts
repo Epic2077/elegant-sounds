@@ -31,7 +31,7 @@ export const updateColor = async (
       body: JSON.stringify(body),
     }
   );
-  revalidateTag(`colors-${id}`);
+  revalidateTag(`colors-${id}`, "max");
   return data;
 };
 
