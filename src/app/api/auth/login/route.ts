@@ -34,8 +34,14 @@ export async function POST(request: Request) {
     console.error("API route error:", error);
 
     if (axios.isAxiosError(error)) {
+      const data = error.response?.data as {
+        message?: string;
+        messages?: string[];
+      };
+      const message =
+        data?.message ?? data?.messages?.[0] ?? "Login failed";
       return NextResponse.json(
-        { message: error.response?.data?.message || "Login failed" },
+        { message },
         { status: error.response?.status || 500 }
       );
     }
