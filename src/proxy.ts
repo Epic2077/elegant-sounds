@@ -1,15 +1,21 @@
 import { verifyToken } from "@/lib/auth";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
+const protectedRoutes = ["/home"];
+const authRoutes = ["/auth/login", "/auth/signup"];
+
+// Next.js 16 renamed `middleware.ts` to `proxy.ts`. The file must live in the
+// project root or next to `app` inside `src` (NOT inside `src/app`), and it must
+// export a function named `proxy` (or a default export).
+export default async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const protectedRoutes = ["/home"];
-  const authRoutes = ["/auth/login", "/auth/signup"];
   const accessToken = request.cookies.get("accessToken")?.value;
-  console.log("Middleware accessToken:", accessToken);
+
+  const matches = (route: string) =>
+    pathname === route || pathname.startsWith(`${route}/`);
 
   // Handle auth routes (login, signup)
-  if (authRoutes.some((route) => pathname.startsWith(route))) {
+  if (authRoutes.some(matches)) {
     if (accessToken) {
       try {
         await verifyToken(accessToken);
@@ -26,7 +32,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Handle protected routes
-  if (protectedRoutes.some((route) => pathname.startsWith(route))) {
+  if (protectedRoutes.some(matches)) {
     if (!accessToken) {
       return NextResponse.redirect(new URL("/auth/login", request.url));
     }
@@ -37,7 +43,7 @@ export async function middleware(request: NextRequest) {
     } catch {
       // Invalid token: Clear cookie and redirect
       const response = NextResponse.redirect(
-        new URL("/auth/login", request.url)
+        new URL("/auth/login", request.url),
       );
       response.cookies.delete("accessToken");
       return response;
@@ -46,3 +52,11 @@ export async function middleware(request: NextRequest) {
 
   return NextResponse.next();
 }
+
+export const config = {
+  // Skip API routes, Next.js internals and static assets so auth redirects
+  // never interfere with /api/auth/* handlers or asset loading.
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico)$).*)",
+  ],
+};

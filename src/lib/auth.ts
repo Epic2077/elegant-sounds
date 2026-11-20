@@ -14,9 +14,6 @@ export async function verifyToken(token: string) {
     // const isValid = await checkTokenInDB(token);
     // if (!isValid) throw new Error("Token revoked");
 
-    console.log("Token:", token);
-    console.log("Secret:", process.env.JWT_SECRET);
-
     return decoded;
   } catch (error) {
     console.error("Token verification failed:", error);
